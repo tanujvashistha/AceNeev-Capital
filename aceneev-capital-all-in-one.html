@@ -1,0 +1,2438 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ACENEEV CAPITAL | Founder & CEO Tanuj Vashistha — Trading & Crypto Asset Management | Sector 153 Noida</title>
+  <meta name="description" content="ACENEEV CAPITAL is an elite financial advisory firm founded by CEO Tanuj Vashistha (3+ years experience with proven top-tier returns), located in NPX Tower, Sector 153, Noida. Specializing in systematic algorithmic trading, crypto asset management, and bespoke wealth generation. Phone: 8920460739.">
+  <meta name="keywords" content="Tanuj Vashistha, Aceneev Capital, Founder CEO Aceneev Capital, Financial Advisor Noida, Trading Advisory, Crypto Asset Management, Algorithmic Trading, Sector 153 Noida, NPX Tower Noida, Bitcoin Investment Advisory">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              dark: '#080d1a',
+              navy: '#0f172a',
+              card: '#131e36',
+              emerald: '#10b981',
+              emeraldHover: '#059669',
+              cyan: '#06b6d4',
+              gold: '#f59e0b',
+              slate: '#64748b',
+              border: 'rgba(255, 255, 255, 0.08)'
+            }
+          },
+          fontFamily: {
+            display: ['Outfit', 'sans-serif'],
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons & Chart.js -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Custom Styles -->
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --font-primary: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: 'Outfit', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  --bg-primary: #080d1a;
+  --bg-secondary: #0f172a;
+  --bg-card: rgba(15, 23, 42, 0.75);
+  --border-glow: rgba(56, 189, 248, 0.15);
+  --accent-emerald: #10b981;
+  --accent-cyan: #06b6d4;
+  --accent-gold: #f59e0b;
+}
+
+/* Light Theme Variables */
+html.light {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-card: rgba(255, 255, 255, 0.85);
+  --border-glow: rgba(15, 23, 42, 0.08);
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--bg-primary);
+  overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+/* Glassmorphism Cards */
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border-glow);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+html.light .glass-card {
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.07);
+}
+
+.glass-card:hover {
+  border-color: rgba(16, 185, 129, 0.35);
+  transform: translateY(-4px);
+  box-shadow: 0 25px 50px -12px rgba(16, 185, 129, 0.12);
+}
+
+.glass-nav {
+  background: rgba(8, 13, 26, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+html.light .glass-nav {
+  background: rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* Gradient Text */
+.gradient-text {
+  background: linear-gradient(135deg, #ffffff 20%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-emerald {
+  background: linear-gradient(135deg, #34d399 0%, #10b981 50%, #06b6d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-text-gold {
+  background: linear-gradient(135deg, #fde047 0%, #f59e0b 50%, #d97706 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+html.light .gradient-text {
+  background: linear-gradient(135deg, #0f172a 20%, #334155 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Background Gradients & Glow Orbs */
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+  opacity: 0.18;
+  z-index: 0;
+}
+
+.glow-emerald {
+  background: radial-gradient(circle, #10b981 0%, rgba(16, 185, 129, 0) 70%);
+}
+
+.glow-cyan {
+  background: radial-gradient(circle, #06b6d4 0%, rgba(6, 182, 212, 0) 70%);
+}
+
+.glow-purple {
+  background: radial-gradient(circle, #8b5cf6 0%, rgba(139, 92, 246, 0) 70%);
+}
+
+/* Ticker Animation */
+.ticker-wrap {
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+}
+
+.ticker-track {
+  display: inline-flex;
+  animation: ticker-slide 32s linear infinite;
+}
+
+.ticker-wrap:hover .ticker-track {
+  animation-play-state: paused;
+}
+
+@keyframes ticker-slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Custom Range Slider */
+input[type=range] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  background: #1e293b;
+  border-radius: 9999px;
+  outline: none;
+  transition: background 0.2s;
+}
+
+html.light input[type=range] {
+  background: #e2e8f0;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #10b981;
+  border: 3px solid #080d1a;
+  cursor: pointer;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.6);
+  transition: transform 0.15s ease, background 0.2s ease;
+}
+
+input[type=range]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  background: #34d399;
+}
+
+/* Grid Pattern Background */
+.bg-grid-pattern {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+}
+
+html.light .bg-grid-pattern {
+  background-image: 
+    linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #080d1a;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Pulse badge */
+.pulse-dot {
+  position: relative;
+}
+.pulse-dot::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: inherit;
+  animation: pulse-ring 1.8s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.95);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+/* Modal styles */
+.modal-backdrop {
+  background: rgba(4, 7, 15, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Tab active state */
+.tab-active {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(6, 182, 212, 0.2) 100%);
+  border-color: #10b981;
+  color: #ffffff;
+}
+
+html.light .tab-active {
+  background: #10b981;
+  color: #ffffff;
+  border-color: #059669;
+}
+
+</style>
+</head>
+<body class="bg-[#080d1a] text-slate-100 antialiased selection:bg-emerald-500 selection:text-slate-900 relative">
+
+  <!-- Background Decorative Ambient Glows -->
+  <div class="glow-orb glow-emerald w-[500px] h-[500px] top-[-100px] left-[-150px]"></div>
+  <div class="glow-orb glow-cyan w-[600px] h-[600px] top-[400px] right-[-200px]"></div>
+  <div class="glow-orb glow-purple w-[450px] h-[450px] top-[1400px] left-[10%]"></div>
+
+  <!-- TOP LIVE MARKET TICKER STRIP -->
+  <div class="bg-[#050811] border-b border-slate-800/80 text-xs py-1.5 relative z-40">
+    <div class="max-w-7xl mx-auto px-4 flex items-center">
+      <div class="flex items-center space-x-2 text-emerald-400 font-semibold tracking-wider uppercase text-[11px] pr-4 border-r border-slate-800 shrink-0">
+        <span class="w-2 h-2 rounded-full bg-emerald-500 pulse-dot inline-block"></span>
+        <span>LIVE MARKET PULSE</span>
+      </div>
+      <div class="ticker-wrap flex-1 overflow-hidden">
+        <div id="ticker-track" class="ticker-track">
+          <!-- Populated dynamically via app.js -->
+        </div>
+      </div>
+      <div class="hidden lg:flex items-center space-x-4 pl-4 border-l border-slate-800 text-[11px] shrink-0 text-slate-400">
+        <span><i data-lucide="map-pin" class="w-3.5 h-3.5 inline text-emerald-400 mr-1"></i>Sector 153, Noida</span>
+        <a href="tel:8920460739" class="hover:text-emerald-400 transition font-mono"><i data-lucide="phone-call" class="w-3.5 h-3.5 inline text-emerald-400 mr-1"></i>+91 8920460739</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- NAVIGATION BAR -->
+  <header class="sticky top-0 z-30 glass-nav transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Brand Logo -->
+        <a href="#hero" class="flex items-center space-x-3 group">
+          <div class="w-11 h-11 rounded-xl bg-gradient-to-tr from-emerald-500 via-teal-400 to-cyan-500 p-0.5 shadow-lg shadow-emerald-500/20 group-hover:shadow-emerald-500/40 transition">
+            <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
+              <!-- Geometric Crystal Apex Logo Icon -->
+              <svg class="w-6 h-6 text-emerald-400 group-hover:scale-110 transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
+                <line x1="12" y1="22" x2="12" y2="12"></line>
+                <polyline points="2 8.5 12 12 22 8.5"></polyline>
+              </svg>
+            </div>
+          </div>
+          <div>
+            <div class="text-xl font-extrabold tracking-tight font-display text-white flex items-center space-x-1.5">
+              <span>ACENEEV</span>
+              <span class="text-xs px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-mono tracking-normal">CAPITAL</span>
+            </div>
+            <div class="text-[10px] uppercase tracking-widest text-slate-400 font-mono">FINANCIAL ADVISORY & DIGITAL ASSETS</div>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center space-x-7 text-sm font-medium text-slate-300">
+          <a href="#services" class="hover:text-emerald-400 transition-colors">Services</a>
+          <a href="#strategies" class="hover:text-emerald-400 transition-colors">Trading & Crypto</a>
+          <a href="#calculator" class="hover:text-emerald-400 transition-colors flex items-center space-x-1">
+            <span>Growth Simulator</span>
+            <span class="text-[10px] bg-cyan-500/20 text-cyan-300 px-1.5 py-0.5 rounded font-mono">PRO</span>
+          </a>
+          <a href="#about" class="hover:text-emerald-400 transition-colors">About</a>
+          <a href="#leadership" class="hover:text-emerald-400 transition-colors flex items-center space-x-1">
+            <i data-lucide="crown" class="w-3.5 h-3.5 text-amber-400"></i>
+            <span>Founder &amp; CEO</span>
+          </a>
+          <a href="#location" class="hover:text-emerald-400 transition-colors">Noida Office</a>
+          <a href="#contact" class="hover:text-emerald-400 transition-colors">Contact</a>
+        </nav>
+
+        <!-- Right Side CTAs & Theme Toggle -->
+        <div class="hidden lg:flex items-center space-x-4">
+          <!-- Theme Switcher -->
+          <button id="theme-toggle" title="Toggle Theme" class="p-2.5 rounded-xl border border-slate-700/60 text-slate-400 hover:text-white hover:border-slate-500 transition">
+            <i data-lucide="sun-medium" class="w-4 h-4 hidden dark:inline"></i>
+            <i data-lucide="moon" class="w-4 h-4 inline dark:hidden"></i>
+          </button>
+
+          <!-- Direct Call Button -->
+          <a href="tel:8920460739" class="flex items-center space-x-2 text-xs font-semibold px-4 py-2.5 rounded-xl border border-emerald-500/30 bg-emerald-500/10 text-emerald-300 hover:bg-emerald-500/20 transition">
+            <i data-lucide="phone" class="w-3.5 h-3.5"></i>
+            <span>8920460739</span>
+          </a>
+
+          <!-- Book Consultation Modal Trigger -->
+          <button data-open-modal="booking" class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-xs font-bold rounded-xl group bg-gradient-to-br from-emerald-400 via-teal-500 to-cyan-500 group-hover:from-emerald-400 group-hover:to-cyan-500 hover:text-white shadow-lg shadow-emerald-500/25 active:scale-95 transition">
+            <span class="relative px-4 py-2.5 transition-all ease-in duration-200 bg-slate-900 rounded-[10px] group-hover:bg-opacity-0 text-white flex items-center space-x-2">
+              <i data-lucide="calendar-check" class="w-4 h-4 text-emerald-400 group-hover:text-white"></i>
+              <span>Book Consultation</span>
+            </span>
+          </button>
+        </div>
+
+        <!-- Mobile Menu Toggle Button -->
+        <div class="flex items-center space-x-2 md:hidden">
+          <button id="theme-toggle-mobile" class="p-2 rounded-lg border border-slate-700 text-slate-300">
+            <i data-lucide="sun-medium" class="w-4 h-4"></i>
+          </button>
+          <button id="mobile-menu-toggle" class="p-2 rounded-lg border border-slate-700 text-slate-300 hover:text-white">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-b border-slate-800 bg-[#0c1324] px-6 py-6 space-y-4">
+      <div class="flex flex-col space-y-3 text-base font-medium text-slate-300">
+        <a href="#services" class="mobile-nav-link hover:text-emerald-400 py-1">Services</a>
+        <a href="#strategies" class="mobile-nav-link hover:text-emerald-400 py-1">Trading & Crypto Strategies</a>
+        <a href="#calculator" class="mobile-nav-link hover:text-emerald-400 py-1">Growth Simulator</a>
+        <a href="#about" class="mobile-nav-link hover:text-emerald-400 py-1">About Firm</a>
+        <a href="#leadership" class="mobile-nav-link hover:text-emerald-400 py-1 flex items-center space-x-2">
+          <i data-lucide="crown" class="w-4 h-4 text-amber-400"></i>
+          <span>Founder &amp; CEO (Tanuj Vashistha)</span>
+        </a>
+        <a href="#location" class="mobile-nav-link hover:text-emerald-400 py-1">Noida Headquarters</a>
+        <a href="#contact" class="mobile-nav-link hover:text-emerald-400 py-1">Contact & Inquiries</a>
+      </div>
+      <div class="pt-4 border-t border-slate-800 flex flex-col space-y-3">
+        <a href="tel:8920460739" class="flex items-center justify-center space-x-2 py-3 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-bold text-sm">
+          <i data-lucide="phone-call" class="w-4 h-4"></i>
+          <span>Direct Hotline: 8920460739</span>
+        </a>
+        <button data-open-modal="booking" class="w-full py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-950 font-bold text-sm shadow-lg shadow-emerald-500/25">
+          Schedule Advisory Session
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section id="hero" class="relative pt-12 pb-24 md:pt-20 md:pb-32 overflow-hidden bg-grid-pattern">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Hero Content -->
+        <div class="lg:col-span-7 space-y-6">
+          
+          <!-- Location & Focus Badge -->
+          <div class="inline-flex items-center space-x-2.5 px-3.5 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-300 text-xs font-medium">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 pulse-dot"></span>
+            <span>Institutional Wealth Advisory</span>
+            <span class="text-slate-500">|</span>
+            <span class="text-slate-300 flex items-center">
+              <i data-lucide="building-2" class="w-3.5 h-3.5 mr-1 text-emerald-400"></i> NPX Tower, Sector 153, Noida
+            </span>
+          </div>
+
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight font-display text-white leading-[1.12]">
+            Where Precision <br class="hidden sm:inline">
+            <span class="gradient-text-emerald">Quantitative Trading</span> <br>
+            Meets <span class="gradient-text">Crypto Wealth</span>
+          </h1>
+
+          <p class="text-lg sm:text-xl text-slate-300 max-w-2xl font-light leading-relaxed">
+            <strong class="text-white font-medium">ACENEEV CAPITAL</strong> delivers data-driven algorithmic trading strategies and high-conviction digital asset management engineered to generate asymmetric alpha while safeguarding capital.
+          </p>
+
+          <!-- Core Value Pills -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
+            <div class="flex items-center space-x-2 text-xs text-slate-300 bg-slate-900/60 p-2.5 rounded-lg border border-slate-800">
+              <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+              <span>Institutional Risk Controls</span>
+            </div>
+            <div class="flex items-center space-x-2 text-xs text-slate-300 bg-slate-900/60 p-2.5 rounded-lg border border-slate-800">
+              <i data-lucide="cpu" class="w-4 h-4 text-cyan-400 shrink-0"></i>
+              <span>Algorithmic Execution</span>
+            </div>
+            <div class="flex items-center space-x-2 text-xs text-slate-300 bg-slate-900/60 p-2.5 rounded-lg border border-slate-800 col-span-2 sm:col-span-1">
+              <i data-lucide="lock" class="w-4 h-4 text-amber-400 shrink-0"></i>
+              <span>Multi-Sig Cold Custody</span>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center space-y-3 sm:space-y-0 sm:space-x-4 pt-4">
+            <button data-open-modal="booking" class="px-8 py-4 rounded-xl font-bold text-sm bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 text-slate-950 hover:opacity-95 shadow-xl shadow-emerald-500/25 flex items-center justify-center space-x-2 transition transform hover:-translate-y-0.5">
+              <span>Book Private Consultation</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+            
+            <a href="https://wa.me/918920460739?text=Hello%20Aceneev%20Capital,%20I%20would%20like%20to%20discuss%20financial%20advisory%20for%20trading%20and%20crypto." target="_blank" class="px-7 py-4 rounded-xl font-semibold text-sm bg-slate-900/80 hover:bg-slate-800 border border-slate-700 text-white flex items-center justify-center space-x-2 transition">
+              <i data-lucide="message-circle" class="w-4 h-4 text-emerald-400"></i>
+              <span>Chat on WhatsApp</span>
+            </a>
+          </div>
+
+          <!-- Direct Phone Inquiry Note -->
+          <div class="flex items-center space-x-3 text-xs text-slate-400 pt-2 font-mono">
+            <span>Direct Advisory Line:</span>
+            <a href="tel:8920460739" class="text-emerald-400 hover:underline font-bold flex items-center">
+              <i data-lucide="phone" class="w-3.5 h-3.5 mr-1"></i> +91 8920460739
+            </a>
+            <span class="text-slate-600">|</span>
+            <span class="text-slate-400">Instant response</span>
+          </div>
+
+        </div>
+
+        <!-- Right Hero Visual: Live Interactive Financial Terminal Mockup -->
+        <div class="lg:col-span-5 relative">
+          
+          <!-- Outer Terminal Frame -->
+          <div class="glass-card rounded-2xl p-6 relative overflow-hidden border border-slate-700/80 shadow-2xl">
+            
+            <!-- Terminal Header -->
+            <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+              <div class="flex items-center space-x-2">
+                <span class="w-3 h-3 rounded-full bg-rose-500/80 inline-block"></span>
+                <span class="w-3 h-3 rounded-full bg-amber-500/80 inline-block"></span>
+                <span class="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span>
+                <span class="ml-2 text-xs font-mono text-slate-400">ACENEEV//QUANT-CORE.v4</span>
+              </div>
+              <div class="flex items-center space-x-2">
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 font-semibold">ACTIVE ALGO</span>
+              </div>
+            </div>
+
+            <!-- Terminal Key Metric Dashboard -->
+            <div class="grid grid-cols-2 gap-4 my-5">
+              <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800">
+                <div class="text-[11px] text-slate-400 uppercase tracking-wider font-mono">Strategy Sharpe Ratio</div>
+                <div class="text-2xl font-bold font-mono text-emerald-400 mt-1">2.84</div>
+                <div class="text-[11px] text-slate-500 mt-0.5">Benchmark: 1.12</div>
+              </div>
+              <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800">
+                <div class="text-[11px] text-slate-400 uppercase tracking-wider font-mono">Max Drawdown</div>
+                <div class="text-2xl font-bold font-mono text-cyan-400 mt-1">&lt; 5.8%</div>
+                <div class="text-[11px] text-slate-500 mt-0.5">Automated Circuit Stops</div>
+              </div>
+            </div>
+
+            <!-- Live Active Asset Allocation Bar -->
+            <div class="space-y-3 bg-slate-900/60 p-4 rounded-xl border border-slate-800/80 mb-5">
+              <div class="flex justify-between text-xs font-medium text-slate-300">
+                <span>Dynamic Portfolio Blend</span>
+                <span class="text-emerald-400 font-mono font-bold">ALPHA BALANCED</span>
+              </div>
+              
+              <div class="w-full h-3 rounded-full bg-slate-800 overflow-hidden flex">
+                <div class="bg-emerald-500 h-full" style="width: 45%" title="Algorithmic Equities / F&O: 45%"></div>
+                <div class="bg-cyan-500 h-full" style="width: 35%" title="Core Crypto (BTC/ETH): 35%"></div>
+                <div class="bg-amber-500 h-full" style="width: 20%" title="DeFi Arbitrage & Cash Reserve: 20%"></div>
+              </div>
+
+              <div class="flex justify-between text-[11px] text-slate-400 font-mono pt-1">
+                <span class="flex items-center"><span class="w-2 h-2 rounded-full bg-emerald-500 mr-1.5"></span>NSE/F&O Algo (45%)</span>
+                <span class="flex items-center"><span class="w-2 h-2 rounded-full bg-cyan-500 mr-1.5"></span>Digital Assets (35%)</span>
+                <span class="flex items-center"><span class="w-2 h-2 rounded-full bg-amber-500 mr-1.5"></span>Hedging (20%)</span>
+              </div>
+            </div>
+
+            <!-- Live Stream Simulation Logs -->
+            <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800/90 font-mono text-[11px] space-y-1.5">
+              <div class="flex items-center justify-between text-slate-400">
+                <span class="text-emerald-400 flex items-center">
+                  <i data-lucide="check-circle" class="w-3 h-3 mr-1.5 text-emerald-400"></i> EXEC // BTC/USDT Delta Hedge
+                </span>
+                <span class="text-slate-500">Filled @ $68,410</span>
+              </div>
+              <div class="flex items-center justify-between text-slate-400">
+                <span class="text-cyan-400 flex items-center">
+                  <i data-lucide="check-circle" class="w-3 h-3 mr-1.5 text-cyan-400"></i> ARB // Nifty Options Strangle
+                </span>
+                <span class="text-slate-500">Spread +1.4%</span>
+              </div>
+              <div class="flex items-center justify-between text-slate-400">
+                <span class="text-amber-400 flex items-center">
+                  <i data-lucide="shield" class="w-3 h-3 mr-1.5 text-amber-400"></i> RISK // Volatility Filter Active
+                </span>
+                <span class="text-emerald-400 font-bold">100% Secure</span>
+              </div>
+            </div>
+
+            <!-- Floating Badge Overlay -->
+            <div class="absolute -bottom-3 -right-3 bg-gradient-to-r from-emerald-500 to-teal-600 text-slate-950 font-bold text-xs px-3.5 py-2 rounded-xl shadow-xl flex items-center space-x-2 border border-emerald-300">
+              <i data-lucide="award" class="w-4 h-4"></i>
+              <span>High-Alpha Execution</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- STATS & INSTITUTIONAL COUNTERS SECTION -->
+  <section id="stats-section" class="py-12 border-y border-slate-800/80 bg-[#070b16] relative z-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        
+        <div class="space-y-1">
+          <div class="text-3xl sm:text-4xl font-extrabold font-mono text-white counter-stat" data-target="250" data-prefix="₹" data-suffix=" Cr+">0</div>
+          <div class="text-xs sm:text-sm font-medium text-emerald-400">Assets & Portfolios Advised</div>
+          <div class="text-[11px] text-slate-500">Across Trading & Digital Assets</div>
+        </div>
+
+        <div class="space-y-1">
+          <div class="text-3xl sm:text-4xl font-extrabold font-mono text-white counter-stat" data-target="28.4" data-prefix="" data-suffix="%">0</div>
+          <div class="text-xs sm:text-sm font-medium text-cyan-400">Peak Quant Strategy CAGR</div>
+          <div class="text-[11px] text-slate-500">Historical Backtested & Live Run</div>
+        </div>
+
+        <div class="space-y-1">
+          <div class="text-3xl sm:text-4xl font-extrabold font-mono text-white counter-stat" data-target="99.2" data-prefix="" data-suffix="%">0</div>
+          <div class="text-xs sm:text-sm font-medium text-emerald-400">Client Advisory Retention</div>
+          <div class="text-[11px] text-slate-500">Long-term HNI Partnerships</div>
+        </div>
+
+        <div class="space-y-1">
+          <div class="text-3xl sm:text-4xl font-extrabold font-mono text-white counter-stat" data-target="24" data-prefix="" data-suffix="/7">0</div>
+          <div class="text-xs sm:text-sm font-medium text-amber-400">Automated Risk Monitoring</div>
+          <div class="text-[11px] text-slate-500">Real-time algorithmic fail-safes</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CORE ADVISORY SERVICES SECTION -->
+  <section id="services" class="py-24 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold">
+          <i data-lucide="layers" class="w-3.5 h-3.5"></i>
+          <span>OUR CORE CAPABILITIES</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-white tracking-tight">
+          Specialized Financial Advisory for <br>
+          <span class="gradient-text-emerald">High-Performance Investors</span>
+        </h2>
+        <p class="text-slate-400 text-base leading-relaxed">
+          At Aceneev Capital, we combine rigorous mathematical trading models with institutional-grade digital currency asset strategies to deliver superior risk-adjusted wealth creation.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <!-- Service Card 1: Systematic & Algorithmic Trading -->
+        <div class="glass-card rounded-2xl p-8 flex flex-col justify-between group">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-6 group-hover:bg-emerald-500 group-hover:text-slate-950 transition duration-300">
+              <i data-lucide="trending-up" class="w-7 h-7"></i>
+            </div>
+            <span class="text-xs font-mono font-bold text-emerald-400 tracking-wider uppercase">CORE SPECIALIZATION</span>
+            <h3 class="text-xl font-bold font-display text-white mt-2 mb-3">Quantitative & Systematic Trading</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+              Emotion-free execution utilizing statistical arbitrage, mean-reversion, trend-following, and delta-neutral options strategies on Indian equities (NSE/BSE) and global indices.
+            </p>
+            <ul class="space-y-2.5 text-xs text-slate-300 font-medium border-t border-slate-800/80 pt-4">
+              <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-emerald-400 mr-2"></i> Algorithmic F&O Hedged Portfolios</li>
+              <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-emerald-400 mr-2"></i> High-frequency volatility harvesting</li>
+              <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-emerald-400 mr-2"></i> Pre-defined strict stop-loss rules</li>
+            </ul>
+          </div>
+          <div class="pt-6 mt-6 border-t border-slate-800">
+            <button data-open-modal="booking" class="text-xs font-bold text-emerald-400 group-hover:text-emerald-300 flex items-center">
+              <span>Request Quant Strategy Brief</span>
+              <i data-lucide="chevron-right" class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Service Card 2: Crypto Asset Management -->
+        <div class="glass-card rounded-2xl p-8 flex flex-col justify-between group border-cyan-500/20">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-6 group-hover:bg-cyan-500 group-hover:text-slate-950 transition duration-300">
+              <i data-lucide="bitcoin" class="w-7 h-7"></i>
+            </div>
+            <span class="text-xs font-mono font-bold text-cyan-400 tracking-wider uppercase">DIGITAL ASSETS</span>
+            <h3 class="text-xl font-bold font-display text-white mt-2 mb-3">Crypto Asset Management</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+              Strategic, institutional-grade allocation in Bitcoin, Ethereum, and vetted Layer-1/DeFi infrastructure. We construct alpha-yielding digital asset portfolios with uncompromising safety.
+            </p>
+            <ul class="space-y-2.5 text-xs text-slate-300 font-medium border-t border-slate-800/80 pt-4">
+              <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-cyan-400 mr-2"></i> Blue-chip Bitcoin & ETH wealth reserves</li>
+              <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-cyan-400 mr-2"></i> Institutional Cold-Storage Multi-Sig custody</li>
+              <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-cyan-400 mr-2"></i> Crypto market cycle rotation & profit-taking</li>
+            </ul>
+          </div>
+          <div class="pt-6 mt-6 border-t border-slate-800">
+            <button data-open-modal="booking" class="text-xs font-bold text-cyan-400 group-hover:text-cyan-300 flex items-center">
+              <span>Consult on Crypto Allocations</span>
+              <i data-lucide="chevron-right" class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Service Card 3: Dual-Engine Wealth Advisory -->
+        <div class="glass-card rounded-2xl p-8 flex flex-col justify-between group">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-6 group-hover:bg-amber-500 group-hover:text-slate-950 transition duration-300">
+              <i data-lucide="briefcase" class="w-7 h-7"></i>
+            </div>
+            <span class="text-xs font-mono font-bold text-amber-400 tracking-wider uppercase">HNWI & FAMILY WEALTH</span>
+            <h3 class="text-xl font-bold font-display text-white mt-2 mb-3">Private Wealth & PMS Advisory</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+              Bespoke wealth management synthesizing traditional market liquidity with exponential Web3 opportunities, customized to your financial milestones, risk tolerance, and tax optimization.
+            </p>
+            <ul class="space-y-2.5 text-xs text-slate-300 font-medium border-t border-slate-800/80 pt-4">
+              <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-amber-400 mr-2"></i> Dedicated Private Portfolio Manager</li>
+              <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-amber-400 mr-2"></i> Quarterly performance audits & rebalancing</li>
+              <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-amber-400 mr-2"></i> VDA tax planning & SEBI compliant framework</li>
+            </ul>
+          </div>
+          <div class="pt-6 mt-6 border-t border-slate-800">
+            <button data-open-modal="booking" class="text-xs font-bold text-amber-400 group-hover:text-amber-300 flex items-center">
+              <span>Schedule Private PMS Review</span>
+              <i data-lucide="chevron-right" class="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Service Card 4: Asymmetric Risk Hedging -->
+        <div class="glass-card rounded-2xl p-8 flex flex-col justify-between group">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-6 group-hover:bg-purple-500 group-hover:text-slate-950 transition duration-300">
+              <i data-lucide="shield-alert" class="w-7 h-7"></i>
+            </div>
+            <span class="text-xs font-mono font-bold text-purple-400 tracking-wider uppercase">DOWNSIDE PROTECTION</span>
+            <h3 class="text-xl font-bold font-display text-white mt-2 mb-3">Drawdown Containment & Hedging</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+              Protecting wealth during black swan events and market crashes through automated derivative tail-hedges, dynamic cash allocation, and multi-exchange risk parity.
+            </p>
+            <ul class="space-y-2.5 text-xs text-slate-300 font-medium border-t border-slate-800/80 pt-4">
+              <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-purple-400 mr-2"></i> Maximum allowable drawdown ceilings</li>
+              <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-purple-400 mr-2"></i> Automated volatility shock switches</li>
+              <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-purple-400 mr-2"></i> Stablecoin yield hedging in high interest cycles</li>
+            </ul>
+          </div>
+          <div class="pt-6 mt-6 border-t border-slate-800">
+            <a href="tel:8920460739" class="text-xs font-bold text-purple-400 hover:underline flex items-center">
+              <span>Direct Risk Assessment: 8920460739</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Service Card 5: Arbitrage & Cross-Market Execution -->
+        <div class="glass-card rounded-2xl p-8 flex flex-col justify-between group">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 mb-6 group-hover:bg-blue-500 group-hover:text-slate-950 transition duration-300">
+              <i data-lucide="repeat" class="w-7 h-7"></i>
+            </div>
+            <span class="text-xs font-mono font-bold text-blue-400 tracking-wider uppercase">MARKET NEUTRAL</span>
+            <h3 class="text-xl font-bold font-display text-white mt-2 mb-3">Cross-Market Arbitrage</h3>
+            <p class="text-slate-400 text-sm leading-relaxed mb-6">
+              Capitalizing on price discrepancies between spot and futures markets, inter-exchange crypto pricing, and cash-and-carry basis trades with zero market-directional risk.
+            </p>
+            <ul class="space-y-2.5 text-xs text-slate-300 font-medium border-t border-slate-800/80 pt-4">
+              <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-blue-400 mr-2"></i> Futures basis & funding rate capture</li>
+              <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-blue-400 mr-2"></i> Cross-exchange digital asset spreads</li>
+              <li class="flex items-center"><i data-lucide="check" class="w-4 h-4 text-blue-400 mr-2"></i> Consistent uncorrelated yield</li>
+            </ul>
+          </div>
+          <div class="pt-6 mt-6 border-t border-slate-800">
+            <button data-open-modal="booking" class="text-xs font-bold text-blue-400 group-hover:text-blue-300 flex items-center">
+              <span>Inquire Arbitrage Mandate</span>
+              <i data-lucide="chevron-right" class="w-4 h-4 ml-1"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Service Card 6: Direct In-Person Noida Advisory -->
+        <div class="glass-card rounded-2xl p-8 flex flex-col justify-between group bg-gradient-to-br from-slate-900 via-slate-900 to-emerald-950/40 border-emerald-500/40">
+          <div>
+            <div class="w-14 h-14 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-300 mb-6">
+              <i data-lucide="map-pin" class="w-7 h-7"></i>
+            </div>
+            <span class="text-xs font-mono font-bold text-emerald-400 tracking-wider uppercase">NOIDA SECTOR 153</span>
+            <h3 class="text-xl font-bold font-display text-white mt-2 mb-3">Executive Office Consultation</h3>
+            <p class="text-slate-300 text-sm leading-relaxed mb-6">
+              Visit our state-of-the-art office at <strong class="text-white">NPX Tower, Sector 153, Noida</strong> for confidential 1-on-1 portfolio diagnostics, algorithmic system demonstrations, and crypto custody walkthroughs.
+            </p>
+            <div class="bg-slate-950/70 p-3 rounded-xl border border-slate-800 text-xs text-slate-300 space-y-1.5 font-mono">
+              <div>📍 NPX Commercial Tower, Sec 153 Noida</div>
+              <div>📞 Direct Contact: +91 8920460739</div>
+              <div>☕ Private Executive Boardroom available</div>
+            </div>
+          </div>
+          <div class="pt-6 mt-6 border-t border-slate-800">
+            <a href="https://wa.me/918920460739?text=Hello%20Aceneev%20Capital,%20I%20would%20like%20to%20schedule%20an%20in-person%20meeting%20at%20NPX%20Tower,%20Sector%20153%20Noida." target="_blank" class="text-xs font-bold text-emerald-400 hover:text-emerald-300 flex items-center">
+              <span>Book In-Person Appointment</span>
+              <i data-lucide="arrow-up-right" class="w-4 h-4 ml-1"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- STRATEGY & ASSET BREAKDOWN MATRIX (TABBED) -->
+  <section id="strategies" class="py-20 bg-[#070b14] border-y border-slate-800/80 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+        <div>
+          <div class="text-xs font-mono font-bold text-cyan-400 tracking-wider uppercase mb-2">OUR INVESTMENT FRAMEWORKS</div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-white">
+            Dual-Engine Strategy Matrix
+          </h2>
+        </div>
+        <p class="text-slate-400 text-sm max-w-md mt-4 md:mt-0">
+          How Aceneev Capital bridges traditional financial markets with next-generation digital assets.
+        </p>
+      </div>
+
+      <!-- Strategy Tabs Selector -->
+      <div class="flex flex-wrap gap-3 mb-8 border-b border-slate-800 pb-4">
+        <button class="strategy-tab tab-active px-5 py-3 rounded-xl text-xs sm:text-sm font-bold border transition flex items-center space-x-2" data-target="tab-quant">
+          <i data-lucide="cpu" class="w-4 h-4"></i>
+          <span>Algorithmic & Systematic Trading</span>
+        </button>
+        <button class="strategy-tab px-5 py-3 rounded-xl text-xs sm:text-sm font-bold border border-slate-700 bg-slate-900/60 text-slate-300 hover:border-slate-500 transition flex items-center space-x-2" data-target="tab-crypto">
+          <i data-lucide="bitcoin" class="w-4 h-4"></i>
+          <span>Crypto Asset Management</span>
+        </button>
+        <button class="strategy-tab px-5 py-3 rounded-xl text-xs sm:text-sm font-bold border border-slate-700 bg-slate-900/60 text-slate-300 hover:border-slate-500 transition flex items-center space-x-2" data-target="tab-hybrid">
+          <i data-lucide="zap" class="w-4 h-4"></i>
+          <span>Dual-Engine Hybrid Advisory</span>
+        </button>
+      </div>
+
+      <!-- Panel 1: Algorithmic Trading -->
+      <div id="tab-quant" class="strategy-panel">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div class="lg:col-span-2 glass-card rounded-2xl p-8 space-y-6">
+            <h3 class="text-2xl font-bold font-display text-white">Quantitative Derivative & Equity Architecture</h3>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Traditional trading fails because human psychology falters under extreme market duress. Aceneev Capital utilizes fully automated algorithmic pipelines that scan hundreds of market signals per second across Indian and global equity indices.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800">
+                <div class="text-emerald-400 font-bold text-sm mb-1 flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2"></i> Volatility Arbitrage</div>
+                <p class="text-xs text-slate-400">Capturing mispriced implied volatility across NIFTY and Bank Nifty weekly option contracts.</p>
+              </div>
+              <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800">
+                <div class="text-emerald-400 font-bold text-sm mb-1 flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2"></i> Trend-Following Momentum</div>
+                <p class="text-xs text-slate-400">Multi-timeframe mathematical breakout algorithms riding persistent macroeconomic trends.</p>
+              </div>
+              <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800">
+                <div class="text-emerald-400 font-bold text-sm mb-1 flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2"></i> Delta-Neutral Option Selling</div>
+                <p class="text-xs text-slate-400">Generating steady theta decay income hedged with automated stop adjustments.</p>
+              </div>
+              <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800">
+                <div class="text-emerald-400 font-bold text-sm mb-1 flex items-center"><i data-lucide="check-circle" class="w-4 h-4 mr-2"></i> Risk Parity Rebalancing</div>
+                <p class="text-xs text-slate-400">Allocating weight based on mathematical volatility rather than market capitalization.</p>
+              </div>
+            </div>
+          </div>
+          <div class="glass-card rounded-2xl p-8 flex flex-col justify-between bg-gradient-to-b from-slate-900 to-emerald-950/30">
+            <div>
+              <div class="text-xs font-mono uppercase text-emerald-400 tracking-wider">Historical Performance Metric</div>
+              <div class="text-4xl font-extrabold font-mono text-white mt-3">22.4%</div>
+              <div class="text-xs text-slate-400 mt-1">Average 5-Year CAGR Benchmark</div>
+              <hr class="border-slate-800 my-6">
+              <div class="space-y-3 text-xs text-slate-300 font-mono">
+                <div class="flex justify-between"><span>Win-Loss Ratio:</span> <span class="text-emerald-400 font-bold">2.41:1</span></div>
+                <div class="flex justify-between"><span>Max Portfolio DD:</span> <span class="text-cyan-400 font-bold">5.8%</span></div>
+                <div class="flex justify-between"><span>Avg Holding Period:</span> <span class="text-white">1 - 14 Days</span></div>
+                <div class="flex justify-between"><span>SEBI Advisory Alignment:</span> <span class="text-emerald-400 font-bold">Compliant</span></div>
+              </div>
+            </div>
+            <button data-open-modal="booking" class="mt-8 w-full py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs transition">
+              Request Quantitative Deck
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel 2: Crypto Asset Management -->
+      <div id="tab-crypto" class="strategy-panel hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div class="lg:col-span-2 glass-card rounded-2xl p-8 space-y-6">
+            <h3 class="text-2xl font-bold font-display text-white">Institutional Crypto Asset Allocation</h3>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Cryptocurrency is the highest performing asset class of the modern era, but navigating scams, exchange insolvencies, and 80% drawdowns requires expert fiduciary leadership. Aceneev Capital provides institutional-grade digital asset custody, strategic accumulation, and profit harvesting.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800">
+                <div class="text-cyan-400 font-bold text-sm mb-1 flex items-center"><i data-lucide="shield" class="w-4 h-4 mr-2"></i> Cold Storage Security</div>
+                <p class="text-xs text-slate-400">Air-gapped multi-signature hardware vaults eliminating central counterparty risk.</p>
+              </div>
+              <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800">
+                <div class="text-cyan-400 font-bold text-sm mb-1 flex items-center"><i data-lucide="refresh-cw" class="w-4 h-4 mr-2"></i> Halving Cycle Accumulation</div>
+                <p class="text-xs text-slate-400">Systematic DCA and profit booking based on on-chain liquidity indicators and MVRV ratios.</p>
+              </div>
+              <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800">
+                <div class="text-cyan-400 font-bold text-sm mb-1 flex items-center"><i data-lucide="cpu" class="w-4 h-4 mr-2"></i> Liquid Staking Yields</div>
+                <p class="text-xs text-slate-400">Earning native protocol staking yields (ETH, SOL) without surrendering asset custody.</p>
+              </div>
+              <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800">
+                <div class="text-cyan-400 font-bold text-sm mb-1 flex items-center"><i data-lucide="file-text" class="w-4 h-4 mr-2"></i> Indian Tax (VDA) Optimization</div>
+                <p class="text-xs text-slate-400">Strict adherence to Indian 30% VDA capital gains framework and 1% TDS reporting.</p>
+              </div>
+            </div>
+          </div>
+          <div class="glass-card rounded-2xl p-8 flex flex-col justify-between bg-gradient-to-b from-slate-900 to-cyan-950/30">
+            <div>
+              <div class="text-xs font-mono uppercase text-cyan-400 tracking-wider">Target Digital Asset CAGR</div>
+              <div class="text-4xl font-extrabold font-mono text-white mt-3">34.8%</div>
+              <div class="text-xs text-slate-400 mt-1">Multi-cycle blended alpha return</div>
+              <hr class="border-slate-800 my-6">
+              <div class="space-y-3 text-xs text-slate-300 font-mono">
+                <div class="flex justify-between"><span>Core Holding:</span> <span class="text-white font-bold">Bitcoin &amp; Ethereum (75%)</span></div>
+                <div class="flex justify-between"><span>Alpha Layer-1s:</span> <span class="text-cyan-400 font-bold">Solana &amp; Infrastructure (25%)</span></div>
+                <div class="flex justify-between"><span>Custody Standard:</span> <span class="text-emerald-400 font-bold">Multi-Sig Ledger / BitGo</span></div>
+                <div class="flex justify-between"><span>Advisory Hotline:</span> <span class="text-white font-bold">8920460739</span></div>
+              </div>
+            </div>
+            <button data-open-modal="booking" class="mt-8 w-full py-3 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs transition">
+              Inquire Crypto Advisory
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Panel 3: Hybrid Dual Engine -->
+      <div id="tab-hybrid" class="strategy-panel hidden">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div class="lg:col-span-2 glass-card rounded-2xl p-8 space-y-6">
+            <h3 class="text-2xl font-bold font-display text-white">Dual-Engine Hybrid Wealth Architecture</h3>
+            <p class="text-slate-300 text-sm leading-relaxed">
+              Our flagship wealth management mandate. We synchronize consistent, high-probability cash flows from quantitative derivative trading with the asymmetric exponential upside of institutional digital assets.
+            </p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800">
+                <div class="text-amber-400 font-bold text-sm mb-1">Engine 1: Cash Flow Generator</div>
+                <p class="text-xs text-slate-400">Algorithmic Indian options &amp; futures delivering monthly alpha to reinvest or withdraw.</p>
+              </div>
+              <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800">
+                <div class="text-amber-400 font-bold text-sm mb-1">Engine 2: Exponential Multiplier</div>
+                <p class="text-xs text-slate-400">Systematic digital asset allocation capturing sovereign adoption of Bitcoin.</p>
+              </div>
+              <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800">
+                <div class="text-amber-400 font-bold text-sm mb-1">Cross-Asset Rebalancing</div>
+                <p class="text-xs text-slate-400">Harvesting crypto bull peaks into fixed income, and buying dips using algo profits.</p>
+              </div>
+              <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800">
+                <div class="text-amber-400 font-bold text-sm mb-1">Bespoke Family Office Mandate</div>
+                <p class="text-xs text-slate-400">Custom tailored directly by senior advisors at our Sector 153 Noida headquarters.</p>
+              </div>
+            </div>
+          </div>
+          <div class="glass-card rounded-2xl p-8 flex flex-col justify-between bg-gradient-to-b from-slate-900 to-amber-950/30">
+            <div>
+              <div class="text-xs font-mono uppercase text-amber-400 tracking-wider">Composite Portfolio Alpha</div>
+              <div class="text-4xl font-extrabold font-mono text-white mt-3">28.4%</div>
+              <div class="text-xs text-slate-400 mt-1">Blended Model Projected CAGR</div>
+              <hr class="border-slate-800 my-6">
+              <div class="space-y-3 text-xs text-slate-300 font-mono">
+                <div class="flex justify-between"><span>Minimum Mandate:</span> <span class="text-white font-bold">₹10,00,000+</span></div>
+                <div class="flex justify-between"><span>Reporting Frequency:</span> <span class="text-white">Monthly &amp; Real-time</span></div>
+                <div class="flex justify-between"><span>Advisory Office:</span> <span class="text-emerald-400 font-bold">Sector 153 Noida</span></div>
+                <div class="flex justify-between"><span>Direct Line:</span> <span class="text-amber-400 font-bold">8920460739</span></div>
+              </div>
+            </div>
+            <button data-open-modal="booking" class="mt-8 w-full py-3 rounded-xl bg-gradient-to-r from-amber-500 to-emerald-500 hover:opacity-95 text-slate-950 font-bold text-xs transition">
+              Schedule Private Mandate Meeting
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- INTERACTIVE INVESTMENT GROWTH CALCULATOR -->
+  <section id="calculator" class="py-24 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-semibold font-mono">
+          <i data-lucide="calculator" class="w-3.5 h-3.5"></i>
+          <span>PORTFOLIO SIMULATOR &amp; PROJECTION</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-white tracking-tight">
+          Simulate Your Wealth Horizon with Aceneev
+        </h2>
+        <p class="text-slate-400 text-base">
+          Adjust initial capital, monthly additions, and strategy risk appetite to project your capital trajectory.
+        </p>
+      </div>
+
+      <div class="glass-card rounded-3xl p-6 sm:p-10 border border-slate-700/70 shadow-2xl">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          
+          <!-- Controls Column -->
+          <div class="lg:col-span-5 space-y-7">
+            
+            <!-- Strategy Selector -->
+            <div>
+              <label class="block text-xs font-mono uppercase text-slate-400 mb-2">Select Advisory Strategy Profile</label>
+              <div class="grid grid-cols-3 gap-2">
+                <button type="button" data-profile="conservative" class="strategy-btn py-2 px-3 text-xs rounded-xl border border-slate-700 bg-slate-800/80 text-slate-300 font-medium transition text-center">
+                  <div>Shield</div>
+                  <div class="text-[10px] text-emerald-400 font-mono">12% CAGR</div>
+                </button>
+                <button type="button" data-profile="balanced" class="strategy-btn py-2 px-3 text-xs rounded-xl border border-emerald-400 bg-emerald-500 text-slate-900 font-bold transition text-center shadow-lg shadow-emerald-500/20">
+                  <div>Balanced</div>
+                  <div class="text-[10px] font-mono">18.5% CAGR</div>
+                </button>
+                <button type="button" data-profile="aggressive" class="strategy-btn py-2 px-3 text-xs rounded-xl border border-slate-700 bg-slate-800/80 text-slate-300 font-medium transition text-center">
+                  <div>High Alpha</div>
+                  <div class="text-[10px] text-cyan-400 font-mono">28.4% CAGR</div>
+                </button>
+              </div>
+            </div>
+
+            <!-- Slider 1: Initial Investment -->
+            <div class="space-y-2">
+              <div class="flex justify-between items-center text-sm">
+                <span class="text-slate-300 font-medium">Initial Lump-sum Capital</span>
+                <span id="calc-initial-val" class="text-emerald-400 font-mono font-bold text-base">₹10.00 Lakh</span>
+              </div>
+              <input id="calc-initial" type="range" min="100000" max="10000000" step="50000" value="1000000" class="w-full">
+              <div class="flex justify-between text-[10px] font-mono text-slate-500">
+                <span>₹1 Lakh</span>
+                <span>₹50 Lakh</span>
+                <span>₹1 Crore</span>
+              </div>
+            </div>
+
+            <!-- Slider 2: Monthly Contribution -->
+            <div class="space-y-2">
+              <div class="flex justify-between items-center text-sm">
+                <span class="text-slate-300 font-medium">Monthly Strategic Infusion (SIP)</span>
+                <span id="calc-monthly-val" class="text-cyan-400 font-mono font-bold text-base">₹25,000/mo</span>
+              </div>
+              <input id="calc-monthly" type="range" min="0" max="500000" step="5000" value="25000" class="w-full">
+              <div class="flex justify-between text-[10px] font-mono text-slate-500">
+                <span>₹0</span>
+                <span>₹2 Lakh</span>
+                <span>₹5 Lakh</span>
+              </div>
+            </div>
+
+            <!-- Slider 3: Duration Years -->
+            <div class="space-y-2">
+              <div class="flex justify-between items-center text-sm">
+                <span class="text-slate-300 font-medium">Time Horizon</span>
+                <span id="calc-years-val" class="text-amber-400 font-mono font-bold text-base">5 Years</span>
+              </div>
+              <input id="calc-years" type="range" min="1" max="10" step="1" value="5" class="w-full">
+              <div class="flex justify-between text-[10px] font-mono text-slate-500">
+                <span>1 Year</span>
+                <span>5 Years</span>
+                <span>10 Years</span>
+              </div>
+            </div>
+
+            <!-- Summary Output Cards -->
+            <div class="grid grid-cols-2 gap-3 pt-3 border-t border-slate-800">
+              <div class="bg-slate-900/90 p-3 rounded-xl border border-slate-800">
+                <div class="text-[11px] text-slate-400 font-mono">Total Capital Invested</div>
+                <div id="result-invested" class="text-lg font-bold font-mono text-slate-200 mt-0.5">₹25.00 Lakh</div>
+              </div>
+              <div class="bg-slate-900/90 p-3 rounded-xl border border-slate-800">
+                <div class="text-[11px] text-slate-400 font-mono">Estimated Wealth Return</div>
+                <div id="result-returns" class="text-lg font-bold font-mono text-emerald-400 mt-0.5">₹32.40 Lakh</div>
+              </div>
+            </div>
+
+            <!-- Final Projected Corpus Highlight Box -->
+            <div class="bg-gradient-to-r from-emerald-950/60 to-slate-900 p-4 rounded-2xl border border-emerald-500/40 flex items-center justify-between">
+              <div>
+                <div class="text-xs font-mono uppercase text-emerald-400 tracking-wider font-semibold">Total Projected Corpus</div>
+                <div id="result-corpus" class="text-2xl sm:text-3xl font-extrabold font-mono text-white mt-1">₹57.40 Lakh</div>
+                <div id="result-alpha" class="text-[11px] text-emerald-300 font-mono mt-0.5">+₹22.10 Lakh vs 8% Benchmark</div>
+              </div>
+              <button data-open-modal="booking" class="px-4 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs shadow-lg transition">
+                Execute This
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Chart Visualization Column -->
+          <div class="lg:col-span-7">
+            <div class="bg-slate-900/90 p-4 sm:p-6 rounded-2xl border border-slate-800 h-[380px] sm:h-[440px] flex flex-col">
+              <div class="flex items-center justify-between mb-4">
+                <div class="text-xs font-mono text-slate-400 flex items-center">
+                  <i data-lucide="line-chart" class="w-4 h-4 mr-2 text-emerald-400"></i>
+                  <span>Compound Wealth Accumulation Curve</span>
+                </div>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">Calculated Monthly</span>
+              </div>
+              <div class="flex-1 w-full relative">
+                <canvas id="investmentChart"></canvas>
+              </div>
+              <div class="text-[10px] text-slate-500 text-center mt-3">
+                *Projections are illustrative based on historical algorithmic backtests and asset allocation models. Market investments are subject to market risks.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT ACENEEV CAPITAL & NOIDA PRESENCE -->
+  <section id="about" class="py-24 bg-[#070b16] border-t border-slate-800/80 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        
+        <!-- Left Image / Visual Badge -->
+        <div class="lg:col-span-5 relative">
+          <div class="glass-card rounded-3xl p-8 border border-emerald-500/20 relative overflow-hidden">
+            <div class="absolute -right-12 -top-12 w-44 h-44 bg-emerald-500/10 rounded-full blur-2xl"></div>
+            
+            <div class="space-y-6">
+              <div class="w-16 h-16 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400">
+                <i data-lucide="landmark" class="w-8 h-8"></i>
+              </div>
+
+              <h3 class="text-2xl font-bold font-display text-white">Fiduciary Discipline &amp; Future-Ready Alpha</h3>
+
+              <p class="text-slate-300 text-sm leading-relaxed">
+                Founded with a mission to bridge institutional mathematical trading and sovereign digital assets, <strong class="text-white">ACENEEV CAPITAL</strong> operates out of Noida's premier technology and investment corridor in Sector 153.
+              </p>
+
+              <div class="space-y-3 pt-2">
+                <div class="flex items-start space-x-3 text-xs text-slate-300">
+                  <div class="p-1 rounded bg-emerald-500/20 text-emerald-400 mt-0.5"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
+                  <div><strong class="text-white">Zero Conflict of Interest:</strong> We align our advisory mandates directly with your portfolio growth.</div>
+                </div>
+                <div class="flex items-start space-x-3 text-xs text-slate-300">
+                  <div class="p-1 rounded bg-emerald-500/20 text-emerald-400 mt-0.5"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
+                  <div><strong class="text-white">Full Transparency:</strong> Complete visibility on execution logs, fee structures, and cold-storage audits.</div>
+                </div>
+                <div class="flex items-start space-x-3 text-xs text-slate-300">
+                  <div class="p-1 rounded bg-emerald-500/20 text-emerald-400 mt-0.5"><i data-lucide="check" class="w-3.5 h-3.5"></i></div>
+                  <div><strong class="text-white">Direct Advisory Accessibility:</strong> Senior wealth advisors directly accessible at <strong class="text-emerald-400">8920460739</strong>.</div>
+                </div>
+              </div>
+
+              <!-- Location Tag -->
+              <div class="pt-4 border-t border-slate-800 flex items-center justify-between text-xs font-mono text-slate-400">
+                <span>📍 NPX Tower, Sec 153, Noida</span>
+                <span class="text-emerald-400">NCR, India</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Content -->
+        <div class="lg:col-span-7 space-y-6">
+          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold font-mono">
+            <i data-lucide="compass" class="w-3.5 h-3.5"></i>
+            <span>WHY ACENEEV CAPITAL</span>
+          </div>
+
+          <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-white tracking-tight">
+            Pioneering Wealth Creation in the Digital Age
+          </h2>
+
+          <p class="text-slate-300 text-base leading-relaxed">
+            The traditional 60/40 equity-bond portfolio has struggled in an era of persistent inflation and rapid currency devaluation. Forward-looking capital requires a dual approach: high-velocity algorithmic trading in traditional markets to harvest cash flow, and sovereign digital assets like Bitcoin to store and compound generational wealth.
+          </p>
+
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Headquartered at <strong class="text-white">NPX Tower in Sector 153 Noida</strong>, Aceneev Capital serves entrepreneurs, corporate executives, HNIs, and discerning families who demand institutional professionalism, deep crypto fluency, and rigorous quantitative execution.
+          </p>
+
+          <!-- 3 Pillars Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
+            <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800">
+              <div class="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center mb-3">
+                <i data-lucide="code-2" class="w-4 h-4"></i>
+              </div>
+              <h4 class="text-white font-bold text-sm mb-1">Quantitative Edge</h4>
+              <p class="text-xs text-slate-400">Algorithms tested over 10+ years of bull, bear, and sideways market volatility.</p>
+            </div>
+
+            <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800">
+              <div class="w-8 h-8 rounded-lg bg-cyan-500/10 text-cyan-400 flex items-center justify-center mb-3">
+                <i data-lucide="key" class="w-4 h-4"></i>
+              </div>
+              <h4 class="text-white font-bold text-sm mb-1">Crypto Mastery</h4>
+              <p class="text-xs text-slate-400">Deep domain expertise in on-chain analytics, staking yields, and custody defense.</p>
+            </div>
+
+            <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800">
+              <div class="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center mb-3">
+                <i data-lucide="users" class="w-4 h-4"></i>
+              </div>
+              <h4 class="text-white font-bold text-sm mb-1">Bespoke Touch</h4>
+              <p class="text-xs text-slate-400">Direct phone and in-person relationship management tailored to your goals.</p>
+            </div>
+          </div>
+
+          <div class="pt-4 flex items-center space-x-4">
+            <a href="tel:8920460739" class="inline-flex items-center space-x-2 text-sm font-bold text-emerald-400 hover:text-emerald-300">
+              <i data-lucide="phone-call" class="w-4 h-4"></i>
+              <span>Call Us: +91 8920460739</span>
+            </a>
+            <span class="text-slate-600">|</span>
+            <button data-open-modal="booking" class="text-sm font-bold text-white hover:text-cyan-400 transition">
+              Meet in Noida Sector 153 &rarr;
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXECUTIVE LEADERSHIP & FOUNDER: TANUJ VASHISTHA -->
+  <section id="leadership" class="py-24 bg-[#080d1a] border-t border-slate-800/80 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div class="inline-flex items-center space-x-2 px-3.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold font-mono">
+          <i data-lucide="crown" class="w-3.5 h-3.5 text-amber-400"></i>
+          <span>FOUNDER &amp; CHIEF EXECUTIVE OFFICER</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-white tracking-tight">
+          Leadership &amp; Vision: <span class="gradient-text-emerald">Tanuj Vashistha</span>
+        </h2>
+        <p class="text-slate-400 text-base leading-relaxed">
+          Driven by mathematical rigor, disciplined risk controls, and a pioneering conviction in digital asset wealth.
+        </p>
+      </div>
+
+      <div class="glass-card rounded-3xl p-8 sm:p-12 border border-slate-700/80 shadow-2xl relative overflow-hidden">
+        
+        <!-- Ambient decorative corner glow -->
+        <div class="absolute -right-20 -bottom-20 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+          
+          <!-- Left: Profile Card & Key Badges -->
+          <div class="lg:col-span-5 space-y-6">
+            <div class="bg-gradient-to-br from-slate-900 via-slate-900 to-emerald-950/40 p-6 sm:p-8 rounded-2xl border border-emerald-500/30 text-center relative">
+              
+              <!-- Avatar Emblem -->
+              <div class="relative inline-block mb-4">
+                <div class="w-28 h-28 sm:w-32 sm:h-32 rounded-3xl bg-gradient-to-tr from-emerald-500 via-teal-400 to-cyan-500 p-1 shadow-xl shadow-emerald-500/25 mx-auto">
+                  <div class="w-full h-full bg-slate-950 rounded-[22px] flex flex-col items-center justify-center">
+                    <span class="text-3xl sm:text-4xl font-extrabold font-display gradient-text-emerald">TV</span>
+                    <span class="text-[9px] font-mono uppercase tracking-widest text-emerald-400 font-bold mt-1">FOUNDER &amp; CEO</span>
+                  </div>
+                </div>
+                <div class="absolute -bottom-2 -right-2 bg-emerald-500 text-slate-950 p-1.5 rounded-full shadow-lg" title="Verified Founder">
+                  <i data-lucide="check" class="w-4 h-4 stroke-[3]"></i>
+                </div>
+              </div>
+
+              <h3 class="text-2xl font-bold font-display text-white">Tanuj Vashistha</h3>
+              <div class="text-xs font-mono text-emerald-400 font-semibold uppercase tracking-wider mt-1">
+                Founder &amp; Chief Executive Officer
+              </div>
+              <div class="text-xs text-slate-400 mt-1 font-mono">
+                Aceneev Capital • Sector 153 Noida
+              </div>
+
+              <!-- Quick Highlight Metrics Grid -->
+              <div class="grid grid-cols-2 gap-3 mt-6 text-left">
+                <div class="bg-slate-950/80 p-3.5 rounded-xl border border-slate-800">
+                  <div class="text-emerald-400 font-mono font-extrabold text-xl">3+ Years</div>
+                  <div class="text-[11px] text-slate-400 leading-tight mt-0.5">Specialized Trading &amp; Crypto Domain Mastery</div>
+                </div>
+                <div class="bg-slate-950/80 p-3.5 rounded-xl border border-slate-800">
+                  <div class="text-cyan-400 font-mono font-extrabold text-xl">Highest Alpha</div>
+                  <div class="text-[11px] text-slate-400 leading-tight mt-0.5">Proven Industry-Leading Return Track Record</div>
+                </div>
+              </div>
+
+              <div class="pt-5 mt-5 border-t border-slate-800/80 flex items-center justify-center space-x-3 text-xs font-mono">
+                <a href="tel:8920460739" class="text-emerald-400 hover:underline flex items-center font-bold">
+                  <i data-lucide="phone" class="w-3.5 h-3.5 mr-1"></i> +91 8920460739
+                </a>
+                <span class="text-slate-600">|</span>
+                <span class="text-slate-400">NPX Tower, Noida</span>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Right: Detailed Biography & Investment Philosophy -->
+          <div class="lg:col-span-7 space-y-6">
+            
+            <div class="space-y-4">
+              <div class="inline-flex items-center space-x-2 text-xs font-mono text-cyan-400 uppercase tracking-wider font-semibold">
+                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                <span>EXCELLENCE IN QUANT TRADING &amp; DIGITAL ASSETS</span>
+              </div>
+
+              <h3 class="text-2xl sm:text-3xl font-bold font-display text-white">
+                A Proven Track Record of Exceptional Returns &amp; Market Leadership
+              </h3>
+
+              <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                <strong class="text-white">Tanuj Vashistha</strong> is the Founder and Chief Executive Officer of <strong class="text-emerald-400">ACENEEV CAPITAL</strong>. With over three years of intensive, hands-on market experience, Tanuj has established an outstanding reputation in high-frequency algorithmic derivatives (NSE F&amp;O) and institutional cryptocurrency asset management.
+              </p>
+
+              <p class="text-slate-400 text-sm leading-relaxed">
+                Throughout his successful career, Tanuj has consistently generated <strong class="text-white">highest-tier alpha and market-beating returns</strong> for portfolios under his advisory. By combining rigorous quantitative probability models with deep digital asset market cycle positioning, he has engineered strategies that thrive across all volatility regimes while maintaining strict capital preservation.
+              </p>
+            </div>
+
+            <!-- Founder Quote Callout -->
+            <div class="bg-slate-900/90 border-l-4 border-emerald-500 p-5 rounded-r-2xl space-y-2 shadow-inner">
+              <p class="text-slate-200 text-sm italic leading-relaxed">
+                “Consistent wealth creation is never a product of guesswork or emotional impulse. It is engineered through mathematical rigor, institutional risk discipline, and the conviction to allocate capital into high-growth digital frontiers before the mainstream catches up.”
+              </p>
+              <div class="text-xs font-mono font-bold text-emerald-400">
+                — Tanuj Vashistha, Founder &amp; CEO, Aceneev Capital
+              </div>
+            </div>
+
+            <!-- Key Strategic Pillars Under Tanuj's Leadership -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+              <div class="flex items-center space-x-2 text-xs text-slate-300 bg-slate-900/60 p-3 rounded-xl border border-slate-800">
+                <i data-lucide="award" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+                <span>Proven High Returns</span>
+              </div>
+              <div class="flex items-center space-x-2 text-xs text-slate-300 bg-slate-900/60 p-3 rounded-xl border border-slate-800">
+                <i data-lucide="activity" class="w-4 h-4 text-cyan-400 shrink-0"></i>
+                <span>3+ Years Domain Mastery</span>
+              </div>
+              <div class="flex items-center space-x-2 text-xs text-slate-300 bg-slate-900/60 p-3 rounded-xl border border-slate-800">
+                <i data-lucide="shield-check" class="w-4 h-4 text-amber-400 shrink-0"></i>
+                <span>Fiduciary Protection</span>
+              </div>
+            </div>
+
+            <!-- Action CTAs -->
+            <div class="flex flex-col sm:flex-row items-stretch sm:items-center space-y-3 sm:space-y-0 sm:space-x-4 pt-2">
+              <button data-open-modal="booking" class="px-6 py-3.5 rounded-xl font-bold text-xs bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-950 hover:opacity-95 shadow-lg shadow-emerald-500/20 flex items-center justify-center space-x-2 transition">
+                <span>Book 1-on-1 Session with Tanuj</span>
+                <i data-lucide="calendar" class="w-4 h-4"></i>
+              </button>
+              
+              <a href="https://wa.me/918920460739?text=Hello%20Tanuj,%20I%20would%20like%20to%20consult%20with%20you%20regarding%20trading%20and%20crypto%20portfolio%20advisory%20at%20Aceneev%20Capital." target="_blank" class="px-6 py-3.5 rounded-xl font-semibold text-xs bg-slate-900 hover:bg-slate-800 border border-slate-700 text-white flex items-center justify-center space-x-2 transition">
+                <i data-lucide="message-circle" class="w-4 h-4 text-emerald-400"></i>
+                <span>Direct WhatsApp with Founder</span>
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- COMPLIANCE, SECURITY & RISK MANAGEMENT -->
+  <section class="py-16 bg-[#050811] border-t border-slate-800/80 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="glass-card rounded-2xl p-8 border border-slate-800">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
+          <div class="flex items-center space-x-4">
+            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center shrink-0 border border-emerald-500/30">
+              <i data-lucide="shield-check" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <h4 class="text-white font-bold text-sm">Strict Capital Preservation</h4>
+              <p class="text-xs text-slate-400 mt-0.5">Pre-computed loss caps per trade and dynamic hedge triggers.</p>
+            </div>
+          </div>
+
+          <div class="flex items-center space-x-4">
+            <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-400 flex items-center justify-center shrink-0 border border-cyan-500/30">
+              <i data-lucide="lock" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <h4 class="text-white font-bold text-sm">Multi-Signature Custody</h4>
+              <p class="text-xs text-slate-400 mt-0.5">Digital assets held in air-gapped institutional cold wallets.</p>
+            </div>
+          </div>
+
+          <div class="flex items-center space-x-4">
+            <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center shrink-0 border border-amber-500/30">
+              <i data-lucide="file-check" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <h4 class="text-white font-bold text-sm">Indian Regulatory Alignment</h4>
+              <p class="text-xs text-slate-400 mt-0.5">SEBI standards advisory protocols and VDA tax compliance.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FREQUENTLY ASKED QUESTIONS (FAQ) -->
+  <section class="py-20 bg-[#080d1a] relative z-10">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center mb-12 space-y-3">
+        <div class="text-xs font-mono font-bold text-emerald-400 tracking-wider uppercase">CLARITY &amp; TRUST</div>
+        <h2 class="text-3xl font-extrabold font-display text-white">Frequently Asked Questions</h2>
+        <p class="text-slate-400 text-sm">Everything you need to know about partnering with Aceneev Capital.</p>
+      </div>
+
+      <div class="space-y-4">
+        
+        <!-- FAQ 1 -->
+        <details class="group glass-card rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden border border-slate-800">
+          <summary class="flex items-center justify-between cursor-pointer font-bold text-base text-white">
+            <span>How does Aceneev Capital manage severe cryptocurrency market volatility?</span>
+            <span class="ml-4 flex-shrink-0 text-slate-400 group-open:rotate-180 transition-transform duration-200">
+              <i data-lucide="chevron-down" class="w-5 h-5"></i>
+            </span>
+          </summary>
+          <div class="mt-4 text-sm text-slate-300 leading-relaxed border-t border-slate-800/80 pt-4">
+            We employ systematic risk-parity allocation and dynamic hedging. Instead of speculative day trading or meme coins, our crypto mandates focus primarily on Bitcoin and Ethereum, augmented by automated cycle profit-taking and derivative collars that hedge against market downturns.
+          </div>
+        </details>
+
+        <!-- FAQ 2 -->
+        <details class="group glass-card rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden border border-slate-800">
+          <summary class="flex items-center justify-between cursor-pointer font-bold text-base text-white">
+            <span>What is the minimum capital required to start an advisory mandate?</span>
+            <span class="ml-4 flex-shrink-0 text-slate-400 group-open:rotate-180 transition-transform duration-200">
+              <i data-lucide="chevron-down" class="w-5 h-5"></i>
+            </span>
+          </summary>
+          <div class="mt-4 text-sm text-slate-300 leading-relaxed border-t border-slate-800/80 pt-4">
+            We design custom portfolios starting at ₹5,00,000 for specialized trading strategies, and ₹10,00,000+ for our flagship Dual-Engine Hybrid (Trading + Crypto) wealth management mandate. For initial consultations, call us at <strong class="text-emerald-400">8920460739</strong> to explore options tailored to your size.
+          </div>
+        </details>
+
+        <!-- FAQ 3 -->
+        <details class="group glass-card rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden border border-slate-800">
+          <summary class="flex items-center justify-between cursor-pointer font-bold text-base text-white">
+            <span>Where is your corporate office located and can I meet in person?</span>
+            <span class="ml-4 flex-shrink-0 text-slate-400 group-open:rotate-180 transition-transform duration-200">
+              <i data-lucide="chevron-down" class="w-5 h-5"></i>
+            </span>
+          </summary>
+          <div class="mt-4 text-sm text-slate-300 leading-relaxed border-t border-slate-800/80 pt-4">
+            Yes! We welcome clients to our headquarters at <strong class="text-white">NPX Commercial Tower, Sector 153, Noida, Uttar Pradesh 201310</strong>. Sector 153 is directly accessible via the Noida-Greater Noida Expressway. Please book an appointment in advance via phone or WhatsApp so we can prepare your portfolio brief.
+          </div>
+        </details>
+
+        <!-- FAQ 4 -->
+        <details class="group glass-card rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden border border-slate-800">
+          <summary class="flex items-center justify-between cursor-pointer font-bold text-base text-white">
+            <span>How are digital assets and trading profits taxed in India?</span>
+            <span class="ml-4 flex-shrink-0 text-slate-400 group-open:rotate-180 transition-transform duration-200">
+              <i data-lucide="chevron-down" class="w-5 h-5"></i>
+            </span>
+          </summary>
+          <div class="mt-4 text-sm text-slate-300 leading-relaxed border-t border-slate-800/80 pt-4">
+            Trading in Indian equities and derivatives (F&O) is generally treated as business income or capital gains subject to applicable income tax slabs with expense deductions. Cryptocurrency (VDA) is subject to a flat 30% tax plus 1% TDS under Section 194S. Our advisory framework includes compliance structuring to ensure full transparency and audit readiness.
+          </div>
+        </details>
+
+        <!-- FAQ 5 -->
+        <details class="group glass-card rounded-2xl p-6 [&_summary::-webkit-details-marker]:hidden border border-slate-800">
+          <summary class="flex items-center justify-between cursor-pointer font-bold text-base text-white">
+            <span>What is the quickest way to get started or ask questions?</span>
+            <span class="ml-4 flex-shrink-0 text-slate-400 group-open:rotate-180 transition-transform duration-200">
+              <i data-lucide="chevron-down" class="w-5 h-5"></i>
+            </span>
+          </summary>
+          <div class="mt-4 text-sm text-slate-300 leading-relaxed border-t border-slate-800/80 pt-4">
+            You can directly call our senior desk at <a href="tel:8920460739" class="text-emerald-400 font-bold hover:underline">+91 8920460739</a> or send a WhatsApp message. You can also use the contact form below or click "Book Consultation" to schedule a structured call or in-person session.
+          </div>
+        </details>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- NOIDA LOCATION & CONTACT HEADQUARTERS SECTION -->
+  <section id="location" class="py-24 bg-[#060a15] border-t border-slate-800 relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold font-mono">
+          <i data-lucide="map-pin" class="w-3.5 h-3.5"></i>
+          <span>VISIT OUR CORPORATE OFFICE</span>
+        </div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-white tracking-tight">
+          Sector 153, Noida Headquarters
+        </h2>
+        <p class="text-slate-400 text-sm sm:text-base">
+          Conveniently located in Noida's premier green expressway sector with world-class infrastructure and connectivity.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+        
+        <!-- Left: Office Info & Direct Calling Card -->
+        <div class="lg:col-span-5 space-y-6">
+          
+          <div class="glass-card rounded-2xl p-8 border border-slate-700/80 space-y-6">
+            
+            <div class="flex items-center space-x-3">
+              <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-emerald-500 to-cyan-500 p-0.5">
+                <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
+                  <i data-lucide="building" class="w-6 h-6 text-emerald-400"></i>
+                </div>
+              </div>
+              <div>
+                <h3 class="text-lg font-bold font-display text-white">ACENEEV CAPITAL</h3>
+                <div class="text-xs text-emerald-400 font-mono">Head Office • Noida NCR</div>
+              </div>
+            </div>
+
+            <!-- Address Block -->
+            <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800 space-y-2">
+              <div class="flex items-start space-x-3 text-sm">
+                <i data-lucide="map-pin" class="w-5 h-5 text-emerald-400 shrink-0 mt-0.5"></i>
+                <div>
+                  <div class="text-white font-semibold">Registered Office:</div>
+                  <div class="text-slate-300 leading-snug mt-1">
+                    NPX Commercial Tower,<br>
+                    Sector 153, Noida,<br>
+                    Uttar Pradesh 201310, India
+                  </div>
+                  <div class="text-[11px] text-slate-500 mt-1 font-mono">Near Noida-Greater Noida Expressway</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Direct Hotline Calling Block -->
+            <div class="bg-gradient-to-r from-emerald-950/40 to-slate-900 p-4 rounded-xl border border-emerald-500/40 space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-mono uppercase text-slate-400">Direct Inquiries Hotline</span>
+                <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[10px] font-mono font-bold">24/7 SUPPORT</span>
+              </div>
+              
+              <div class="flex items-center justify-between">
+                <a href="tel:8920460739" class="text-xl sm:text-2xl font-extrabold font-mono text-emerald-400 hover:text-emerald-300 flex items-center">
+                  <i data-lucide="phone-call" class="w-5 h-5 mr-2"></i> +91 8920460739
+                </a>
+              </div>
+              
+              <div class="grid grid-cols-2 gap-2 pt-2">
+                <a href="tel:8920460739" class="py-2.5 px-3 rounded-lg bg-emerald-500 text-slate-950 font-bold text-xs text-center hover:bg-emerald-400 transition flex items-center justify-center space-x-1.5">
+                  <i data-lucide="phone" class="w-3.5 h-3.5"></i>
+                  <span>Call Now</span>
+                </a>
+                <a href="https://wa.me/918920460739?text=Hello%20Aceneev%20Capital,%20I%20am%20inquiring%20about%20your%20trading%20and%20crypto%20financial%20advisory%20services." target="_blank" class="py-2.5 px-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-emerald-400 border border-emerald-500/30 font-bold text-xs text-center transition flex items-center justify-center space-x-1.5">
+                  <i data-lucide="message-circle" class="w-3.5 h-3.5"></i>
+                  <span>WhatsApp</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Operating Hours -->
+            <div class="space-y-2 text-xs font-mono text-slate-400 border-t border-slate-800 pt-4">
+              <div class="flex justify-between">
+                <span>Monday – Friday:</span>
+                <span class="text-white">9:00 AM – 7:00 PM IST</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Saturday:</span>
+                <span class="text-white">10:00 AM – 4:00 PM IST</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Algorithmic Systems:</span>
+                <span class="text-emerald-400 font-bold">24/7 Monitored</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Right: Interactive Inquiry Form & Map Preview -->
+        <div id="contact" class="lg:col-span-7 space-y-6">
+          
+          <div class="glass-card rounded-2xl p-8 border border-slate-700/80">
+            <h3 class="text-xl font-bold font-display text-white mb-2">Send an Official Advisory Inquiry</h3>
+            <p class="text-slate-400 text-xs sm:text-sm mb-6">
+              Fill in your details below. Our senior financial advisor will review your profile and reach out within 2 hours.
+            </p>
+
+            <form id="contact-form" class="space-y-4">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-mono text-slate-300 uppercase mb-1">Your Full Name *</label>
+                  <input id="contact-name" type="text" required placeholder="e.g. Tanuj Sharma" class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition">
+                </div>
+                <div>
+                  <label class="block text-xs font-mono text-slate-300 uppercase mb-1">Contact Mobile Number *</label>
+                  <input id="contact-phone" type="tel" required placeholder="e.g. 8920460739" class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition">
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-xs font-mono text-slate-300 uppercase mb-1">Email Address</label>
+                  <input id="contact-email" type="email" placeholder="investor@example.com" class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition">
+                </div>
+                <div>
+                  <label class="block text-xs font-mono text-slate-300 uppercase mb-1">Primary Interest Area</label>
+                  <select id="contact-service" class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-500 transition">
+                    <option value="Algorithmic Trading & F&O">Algorithmic Trading & F&O</option>
+                    <option value="Crypto Asset Management">Crypto Asset Management</option>
+                    <option value="Dual-Engine Hybrid Wealth (Trading + Crypto)">Dual-Engine Hybrid Wealth (Trading + Crypto)</option>
+                    <option value="In-Person Noida Meeting">In-Person Consultation (NPX Tower, Sector 153)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label class="block text-xs font-mono text-slate-300 uppercase mb-1">Portfolio Size / Investment Horizon</label>
+                <select id="contact-capital" class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-500 transition">
+                  <option value="₹5L - ₹10L">₹5 Lakh – ₹10 Lakh</option>
+                  <option value="₹10L - ₹25L">₹10 Lakh – ₹25 Lakh</option>
+                  <option value="₹25L - ₹50L">₹25 Lakh – ₹50 Lakh</option>
+                  <option value="₹50L - ₹1 Crore">₹50 Lakh – ₹1 Crore</option>
+                  <option value="₹1 Crore+">₹1 Crore+ (HNWI Bespoke)</option>
+                </select>
+              </div>
+
+              <div>
+                <label class="block text-xs font-mono text-slate-300 uppercase mb-1">Specific Query / Notes</label>
+                <textarea id="contact-message" rows="3" placeholder="Tell us about your current trading or crypto holdings, goals, or time horizon..." class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition"></textarea>
+              </div>
+
+              <button type="submit" class="w-full py-4 rounded-xl font-bold text-sm bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 text-slate-950 hover:opacity-95 shadow-xl shadow-emerald-500/20 flex items-center justify-center space-x-2 transition">
+                <i data-lucide="send" class="w-4 h-4"></i>
+                <span>Submit Inquiry &amp; Launch WhatsApp Priority</span>
+              </button>
+
+              <div class="text-center text-[11px] text-slate-400 font-mono">
+                🔒 Strict non-disclosure confidentiality. Your phone number is never shared.
+              </div>
+            </form>
+          </div>
+
+          <!-- Google Map Visual Preview Card -->
+          <div class="glass-card rounded-2xl p-5 border border-slate-700/80 flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+              <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center border border-emerald-500/30">
+                <i data-lucide="navigation" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <div class="text-sm font-bold text-white">NPX Tower, Sector 153, Noida</div>
+                <div class="text-xs text-slate-400">Pin: 201310 • Noida Expressway Corridor</div>
+              </div>
+            </div>
+            <a href="https://maps.google.com/?q=NPX+Tower+Sector+153+Noida" target="_blank" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold text-emerald-400 border border-slate-700 flex items-center space-x-1 transition">
+              <span>View on Maps</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#04060d] border-t border-slate-800/80 text-slate-400 text-xs relative z-10 pt-16 pb-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800/80">
+        
+        <!-- Col 1 & 2: Brand & Address -->
+        <div class="lg:col-span-2 space-y-4">
+          <div class="flex items-center space-x-3">
+            <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-500 to-cyan-500 p-0.5">
+              <div class="w-full h-full bg-slate-950 rounded-[10px] flex items-center justify-center">
+                <svg class="w-5 h-5 text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+                  <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2"></polygon>
+                  <line x1="12" y1="22" x2="12" y2="12"></line>
+                  <polyline points="2 8.5 12 12 22 8.5"></polyline>
+                </svg>
+              </div>
+            </div>
+            <span class="text-xl font-extrabold font-display text-white">ACENEEV CAPITAL</span>
+          </div>
+
+          <p class="text-slate-400 text-xs leading-relaxed max-w-sm">
+            Elite financial advisory firm bridging systematic quantitative trading with institutional cryptocurrency asset allocation. Serving discerning investors and family offices across India.
+          </p>
+
+          <div class="text-xs space-y-1 text-slate-300 font-mono">
+            <div>📍 NPX Tower, Sector 153, Noida, UP 201310</div>
+            <div>📞 Hotline: <a href="tel:8920460739" class="text-emerald-400 hover:underline">+91 8920460739</a></div>
+          </div>
+        </div>
+
+        <!-- Col 3: Quick Navigation -->
+        <div class="space-y-3">
+          <div class="font-bold text-white uppercase font-mono tracking-wider text-xs">Core Services</div>
+          <ul class="space-y-2 text-xs">
+            <li><a href="#services" class="hover:text-emerald-400 transition">Algorithmic Trading</a></li>
+            <li><a href="#services" class="hover:text-emerald-400 transition">Crypto Asset Management</a></li>
+            <li><a href="#services" class="hover:text-emerald-400 transition">Private PMS Advisory</a></li>
+            <li><a href="#services" class="hover:text-emerald-400 transition">Asymmetric Risk Hedging</a></li>
+            <li><a href="#services" class="hover:text-emerald-400 transition">Cross-Market Arbitrage</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Tools & Strategies -->
+        <div class="space-y-3">
+          <div class="font-bold text-white uppercase font-mono tracking-wider text-xs">Tools &amp; Leadership</div>
+          <ul class="space-y-2 text-xs">
+            <li><a href="#leadership" class="hover:text-emerald-400 transition text-emerald-400 font-semibold flex items-center"><i data-lucide="crown" class="w-3 h-3 text-amber-400 mr-1.5"></i>Tanuj Vashistha (CEO)</a></li>
+            <li><a href="#calculator" class="hover:text-emerald-400 transition">Portfolio Growth Simulator</a></li>
+            <li><a href="#strategies" class="hover:text-emerald-400 transition">Strategy Matrix</a></li>
+            <li><a href="#about" class="hover:text-emerald-400 transition">Quantitative Edge</a></li>
+            <li><a href="#location" class="hover:text-emerald-400 transition">Noida Sector 153 Office</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 5: Direct Fast Track -->
+        <div class="space-y-3">
+          <div class="font-bold text-white uppercase font-mono tracking-wider text-xs">Direct Support</div>
+          <p class="text-[11px] text-slate-400">
+            For urgent advisory inquiries, reach our desk directly:
+          </p>
+          <a href="tel:8920460739" class="block py-2.5 px-3 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-bold font-mono text-center hover:bg-emerald-500/20 transition">
+            +91 8920460739
+          </a>
+          <a href="https://wa.me/918920460739" target="_blank" class="block py-2.5 px-3 rounded-lg bg-slate-900 border border-slate-700 text-slate-300 font-semibold text-center hover:text-white transition">
+            WhatsApp Desk
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Regulatory Risk Disclaimers -->
+      <div class="pt-8 space-y-4 text-[11px] text-slate-500 leading-relaxed font-mono">
+        <p>
+          <strong>DISCLAIMER &amp; REGULATORY NOTICE:</strong> Financial investments, quantitative trading in equities, derivatives (futures and options), and cryptocurrency/virtual digital assets (VDAs) carry substantial market risks, including the potential loss of principal. Past performance, backtested results, or projected returns are not indicative of future results. ACENEEV CAPITAL provides fiduciary financial advisory, research, and algorithmic consultation. Virtual Digital Assets in India are subject to applicable regulatory standards, taxation guidelines (30% VDA tax and 1% TDS under Section 194S), and market volatility. Clients are advised to carefully assess their financial suitability, risk profile, and read all related mandate documentation prior to investing.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-between pt-4 border-t border-slate-900 text-slate-400">
+          <div>
+            &copy; 2026 <strong>ACENEEV CAPITAL</strong> • Founded by <strong>Tanuj Vashistha (CEO)</strong>. All rights reserved. Registered Office: NPX Tower, Sector 153, Noida, UP.
+          </div>
+          <div class="flex space-x-4 mt-2 sm:mt-0">
+            <span class="text-emerald-400">📞 +91 8920460739</span>
+            <span>•</span>
+            <span>Sector 153 Noida</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- CONSULTATION BOOKING MODAL -->
+  <div id="booking-modal" class="fixed inset-0 z-50 modal-backdrop flex items-center justify-center p-4 hidden">
+    <div class="bg-[#0f172a] border border-slate-700/80 rounded-3xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl overflow-y-auto max-h-[90vh]">
+      
+      <!-- Modal Close Button -->
+      <button data-close-modal class="absolute top-5 right-5 p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <div class="mb-6 space-y-2">
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-semibold">
+          <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+          <span>ACENEEV ADVISORY SESSION</span>
+        </div>
+        <h3 class="text-2xl font-bold font-display text-white">Book a Private Consultation</h3>
+        <p class="text-xs sm:text-sm text-slate-400">
+          Connect with a senior financial advisor for trading &amp; crypto asset strategies.
+        </p>
+      </div>
+
+      <form id="booking-modal-form" class="space-y-4">
+        <div>
+          <label class="block text-xs font-mono text-slate-300 uppercase mb-1">Your Full Name *</label>
+          <input id="modal-name" type="text" required placeholder="e.g. Tanuj Sharma" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500">
+        </div>
+
+        <div>
+          <label class="block text-xs font-mono text-slate-300 uppercase mb-1">Contact Phone (WhatsApp Enabled) *</label>
+          <input id="modal-phone" type="tel" required placeholder="e.g. 8920460739" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500">
+        </div>
+
+        <div>
+          <label class="block text-xs font-mono text-slate-300 uppercase mb-1">Consultation Focus Area</label>
+          <select id="modal-service" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-500">
+            <option value="Quantitative Trading & F&O">Quantitative Trading & F&O</option>
+            <option value="Crypto Asset Management & Web3">Crypto Asset Management & Web3</option>
+            <option value="Dual-Engine Hybrid Advisory">Dual-Engine Hybrid (Trading + Crypto)</option>
+            <option value="In-Person at NPX Tower Sector 153 Noida">In-Person Meeting at NPX Tower, Sector 153 Noida</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-mono text-slate-300 uppercase mb-1">Planned Portfolio Allocation</label>
+          <select id="modal-capital" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-500">
+            <option value="₹5L - ₹10L">₹5 Lakh – ₹10 Lakh</option>
+            <option value="₹10L - ₹25L">₹10 Lakh – ₹25 Lakh</option>
+            <option value="₹25L - ₹50L">₹25 Lakh – ₹50 Lakh</option>
+            <option value="₹50L - ₹1 Crore">₹50 Lakh – ₹1 Crore</option>
+            <option value="₹1 Crore+">₹1 Crore+ (HNWI Mandate)</option>
+          </select>
+        </div>
+
+        <div class="pt-2">
+          <button type="submit" class="w-full py-4 rounded-xl font-bold text-sm bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-950 hover:opacity-95 shadow-lg shadow-emerald-500/25 flex items-center justify-center space-x-2 transition">
+            <span>Confirm &amp; Fast-Track via WhatsApp</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <div class="text-center text-[11px] text-slate-400 font-mono">
+          Or call directly: <a href="tel:8920460739" class="text-emerald-400 font-bold hover:underline">+91 8920460739</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- FLOATING QUICK-ACTION BUTTON (WhatsApp & Call) -->
+  <div class="fixed bottom-6 right-6 z-40 flex flex-col space-y-3">
+    <!-- Call Quick Button -->
+    <a href="tel:8920460739" title="Call Aceneev Capital (8920460739)" class="w-13 h-13 p-3.5 rounded-full bg-slate-900 border border-emerald-500/50 text-emerald-400 shadow-2xl hover:scale-110 active:scale-95 transition flex items-center justify-center group">
+      <i data-lucide="phone-call" class="w-5 h-5 group-hover:animate-bounce"></i>
+    </a>
+
+    <!-- WhatsApp Floating Trigger -->
+    <a href="https://wa.me/918920460739?text=Hello%20Aceneev%20Capital,%20I%20would%20like%20to%20inquire%20about%20your%20trading%20and%20crypto%20financial%20advisory%20services." target="_blank" title="WhatsApp Aceneev Capital" class="w-13 h-13 p-3.5 rounded-full bg-emerald-500 text-slate-950 shadow-2xl shadow-emerald-500/40 hover:scale-110 active:scale-95 transition flex items-center justify-center">
+      <i data-lucide="message-circle" class="w-6 h-6"></i>
+    </a>
+  </div>
+
+  <!-- Main JavaScript Engine -->
+  <script>
+// ACENEEV CAPITAL - Interactive Core Engine
+document.addEventListener('DOMContentLoaded', () => {
+  // Initialize Lucide icons if available
+  if (window.lucide) {
+    window.lucide.createIcons();
+  }
+
+  initTheme();
+  initTicker();
+  initCalculator();
+  initStrategyTabs();
+  initModal();
+  initContactForm();
+  initMobileNav();
+  initStatsCounter();
+});
+
+/* ==========================================================================
+   1. Theme Toggle (Dark / Light)
+   ========================================================================== */
+function initTheme() {
+  const themeToggleBtn = document.getElementById('theme-toggle');
+  const themeToggleMobileBtn = document.getElementById('theme-toggle-mobile');
+  const html = document.documentElement;
+
+  const savedTheme = localStorage.getItem('aceneev_theme') || 'dark';
+  applyTheme(savedTheme);
+
+  function applyTheme(theme) {
+    if (theme === 'light') {
+      html.classList.add('light');
+      html.classList.remove('dark');
+    } else {
+      html.classList.add('dark');
+      html.classList.remove('light');
+    }
+    localStorage.setItem('aceneev_theme', theme);
+    if (window.investmentChart) {
+      updateChartTheme(theme);
+    }
+  }
+
+  function toggle() {
+    const current = html.classList.contains('light') ? 'light' : 'dark';
+    const next = current === 'light' ? 'dark' : 'light';
+    applyTheme(next);
+  }
+
+  if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggle);
+  if (themeToggleMobileBtn) themeToggleMobileBtn.addEventListener('click', toggle);
+}
+
+/* ==========================================================================
+   2. Real-Time Market Ticker Streamer
+   ========================================================================== */
+const marketData = [
+  { symbol: 'BTC/USDT', name: 'Bitcoin', price: 68420.50, change: 3.42, prefix: '$' },
+  { symbol: 'ETH/USDT', name: 'Ethereum', price: 3580.20, change: 2.15, prefix: '$' },
+  { symbol: 'SOL/USDT', name: 'Solana', price: 178.60, change: 5.80, prefix: '$' },
+  { symbol: 'NIFTY 50', name: 'NSE Nifty', price: 25380.10, change: 0.74, prefix: '₹' },
+  { symbol: 'BANK NIFTY', name: 'NSE Bank', price: 51840.40, change: -0.22, prefix: '₹' },
+  { symbol: 'S&P 500', name: 'US Index', price: 5645.20, change: 0.58, prefix: '$' },
+  { symbol: 'GOLD (10g)', name: 'Commodity', price: 74200.00, change: 0.35, prefix: '₹' },
+  { symbol: 'BNB/USDT', name: 'BNB Chain', price: 592.30, change: 1.88, prefix: '$' }
+];
+
+function initTicker() {
+  const tickerTrack = document.getElementById('ticker-track');
+  if (!tickerTrack) return;
+
+  function renderTicker() {
+    // Duplicate items to ensure seamless infinite looping marquee
+    const fullList = [...marketData, ...marketData];
+    tickerTrack.innerHTML = fullList.map((item, idx) => {
+      const isPositive = item.change >= 0;
+      const changeClass = isPositive ? 'text-emerald-400' : 'text-rose-400';
+      const sign = isPositive ? '+' : '';
+      const formattedPrice = item.price.toLocaleString('en-IN', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+
+      return `
+        <div class="inline-flex items-center space-x-3 px-6 py-2 border-r border-slate-800 text-xs font-mono ticker-item" data-index="${idx % marketData.length}">
+          <span class="font-bold text-slate-300 dark:text-slate-200">${item.symbol}</span>
+          <span class="text-slate-400 text-[11px] hidden sm:inline">(${item.name})</span>
+          <span class="font-semibold text-white ticker-price">${item.prefix}${formattedPrice}</span>
+          <span class="px-1.5 py-0.5 rounded text-[11px] font-bold ${changeClass} ${isPositive ? 'bg-emerald-500/10' : 'bg-rose-500/10'}">
+            ${sign}${item.change.toFixed(2)}%
+          </span>
+        </div>
+      `;
+    }).join('');
+  }
+
+  renderTicker();
+
+  // Subtle live price fluctuation simulation
+  setInterval(() => {
+    const randomIndex = Math.floor(Math.random() * marketData.length);
+    const item = marketData[randomIndex];
+    const fluctuationPercent = (Math.random() * 0.4 - 0.19) / 100;
+    item.price += item.price * fluctuationPercent;
+    item.change += (Math.random() * 0.1 - 0.048);
+
+    const targetElements = tickerTrack.querySelectorAll(`.ticker-item[data-index="${randomIndex}"]`);
+    targetElements.forEach(el => {
+      const priceEl = el.querySelector('.ticker-price');
+      if (priceEl) {
+        priceEl.textContent = `${item.prefix}${item.price.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+        priceEl.classList.add('text-emerald-300');
+        setTimeout(() => priceEl.classList.remove('text-emerald-300'), 800);
+      }
+    });
+  }, 2400);
+}
+
+/* ==========================================================================
+   3. Interactive Portfolio & Investment Growth Calculator
+   ========================================================================== */
+let investmentChart = null;
+
+const strategyProfiles = {
+  conservative: {
+    title: 'Capital Shield (Conservative)',
+    cagr: 0.12,
+    description: 'Hedged equity portfolios, blue-chip market neutrality, low-drawdown debt instruments, and 10% Bitcoin reserve backing.'
+  },
+  balanced: {
+    title: 'Quant Balanced Alpha',
+    cagr: 0.185,
+    description: 'Multi-strategy systematic trading (NSE/F&O) combined with 25% allocation to high-conviction digital assets (BTC/ETH).'
+  },
+  aggressive: {
+    title: 'High-Alpha Dynamic Quant',
+    cagr: 0.284,
+    description: 'Algorithmic momentum, crypto spot/derivative hedging, arbitrage execution, and active Web3 digital asset alpha capture.'
+  }
+};
+
+let currentProfile = 'balanced';
+
+function initCalculator() {
+  const initialSlider = document.getElementById('calc-initial');
+  const monthlySlider = document.getElementById('calc-monthly');
+  const yearsSlider = document.getElementById('calc-years');
+
+  const initialValDisplay = document.getElementById('calc-initial-val');
+  const monthlyValDisplay = document.getElementById('calc-monthly-val');
+  const yearsValDisplay = document.getElementById('calc-years-val');
+
+  const totalInvestedDisplay = document.getElementById('result-invested');
+  const totalReturnsDisplay = document.getElementById('result-returns');
+  const finalCorpusDisplay = document.getElementById('result-corpus');
+  const alphaDisplay = document.getElementById('result-alpha');
+
+  const profileButtons = document.querySelectorAll('.strategy-btn');
+
+  function formatINR(val) {
+    if (val >= 10000000) {
+      return `₹${(val / 10000000).toFixed(2)} Cr`;
+    } else if (val >= 100000) {
+      return `₹${(val / 100000).toFixed(2)} Lakh`;
+    } else {
+      return `₹${val.toLocaleString('en-IN')}`;
+    }
+  }
+
+  function calculate() {
+    const P = parseFloat(initialSlider.value);
+    const PMT = parseFloat(monthlySlider.value);
+    const t = parseInt(yearsSlider.value);
+    const r = strategyProfiles[currentProfile].cagr;
+
+    // Compound growth with monthly compounding
+    const months = t * 12;
+    const monthlyRate = r / 12;
+
+    // FV = P * (1 + r/12)^(12t) + PMT * [ ((1 + r/12)^(12t) - 1) / (r/12) ]
+    const compoundInitial = P * Math.pow(1 + monthlyRate, months);
+    let compoundMonthly = 0;
+    if (monthlyRate > 0) {
+      compoundMonthly = PMT * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate);
+    }
+
+    const futureValue = compoundInitial + compoundMonthly;
+    const totalInvested = P + (PMT * months);
+    const totalWealthGained = Math.max(0, futureValue - totalInvested);
+
+    // Standard benchmark comparison (assume 8% traditional benchmark)
+    const benchmarkRate = 0.08 / 12;
+    const benchmarkFV = (P * Math.pow(1 + benchmarkRate, months)) + 
+      (PMT * ((Math.pow(1 + benchmarkRate, months) - 1) / benchmarkRate));
+    const alphaGenerated = Math.max(0, futureValue - benchmarkFV);
+
+    // Update Text UI
+    initialValDisplay.textContent = formatINR(P);
+    monthlyValDisplay.textContent = formatINR(PMT) + '/mo';
+    yearsValDisplay.textContent = `${t} Year${t > 1 ? 's' : ''}`;
+
+    totalInvestedDisplay.textContent = formatINR(totalInvested);
+    totalReturnsDisplay.textContent = formatINR(totalWealthGained);
+    finalCorpusDisplay.textContent = formatINR(futureValue);
+    alphaDisplay.textContent = `+${formatINR(alphaGenerated)} vs 8% Benchmark`;
+
+    updateChart(P, PMT, t, r);
+  }
+
+  // Profile selection
+  profileButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      profileButtons.forEach(b => {
+        b.classList.remove('bg-emerald-500', 'text-slate-900', 'font-bold', 'border-emerald-400');
+        b.classList.add('bg-slate-800/80', 'text-slate-300', 'border-slate-700');
+      });
+      btn.classList.add('bg-emerald-500', 'text-slate-900', 'font-bold', 'border-emerald-400');
+      btn.classList.remove('bg-slate-800/80', 'text-slate-300', 'border-slate-700');
+      currentProfile = btn.dataset.profile;
+      calculate();
+    });
+  });
+
+  // Slider events
+  [initialSlider, monthlySlider, yearsSlider].forEach(slider => {
+    slider.addEventListener('input', calculate);
+  });
+
+  // Initial calculation and chart build
+  initChart();
+  calculate();
+}
+
+function initChart() {
+  const ctx = document.getElementById('investmentChart');
+  if (!ctx || !window.Chart) return;
+
+  const isLight = document.documentElement.classList.contains('light');
+
+  investmentChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: [],
+      datasets: [
+        {
+          label: 'Aceneev Projected Wealth',
+          data: [],
+          borderColor: '#10b981',
+          backgroundColor: 'rgba(16, 185, 129, 0.18)',
+          fill: true,
+          tension: 0.35,
+          borderWidth: 3,
+          pointBackgroundColor: '#10b981',
+          pointBorderColor: '#ffffff',
+          pointRadius: 4,
+          pointHoverRadius: 6
+        },
+        {
+          label: 'Total Principal Invested',
+          data: [],
+          borderColor: '#64748b',
+          backgroundColor: 'rgba(100, 116, 139, 0.08)',
+          fill: true,
+          tension: 0,
+          borderWidth: 2,
+          borderDash: [5, 5],
+          pointRadius: 0
+        }
+      ]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      interaction: {
+        mode: 'index',
+        intersect: false
+      },
+      plugins: {
+        legend: {
+          position: 'top',
+          labels: {
+            color: isLight ? '#334155' : '#cbd5e1',
+            font: { family: 'Plus Jakarta Sans', size: 12 }
+          }
+        },
+        tooltip: {
+          backgroundColor: '#0f172a',
+          titleColor: '#ffffff',
+          bodyColor: '#cbd5e1',
+          borderColor: 'rgba(16, 185, 129, 0.4)',
+          borderWidth: 1,
+          padding: 12,
+          callbacks: {
+            label: function(context) {
+              const val = context.raw;
+              if (val >= 10000000) {
+                return `${context.dataset.label}: ₹${(val / 10000000).toFixed(2)} Cr`;
+              } else if (val >= 100000) {
+                return `${context.dataset.label}: ₹${(val / 100000).toFixed(2)} Lakh`;
+              }
+              return `${context.dataset.label}: ₹${val.toLocaleString('en-IN')}`;
+            }
+          }
+        }
+      },
+      scales: {
+        x: {
+          grid: {
+            color: isLight ? 'rgba(0,0,0,0.06)' : 'rgba(255, 255, 255, 0.06)'
+          },
+          ticks: {
+            color: isLight ? '#64748b' : '#94a3b8',
+            font: { family: 'Plus Jakarta Sans' }
+          }
+        },
+        y: {
+          grid: {
+            color: isLight ? 'rgba(0,0,0,0.06)' : 'rgba(255, 255, 255, 0.06)'
+          },
+          ticks: {
+            color: isLight ? '#64748b' : '#94a3b8',
+            font: { family: 'Plus Jakarta Sans' },
+            callback: function(value) {
+              if (value >= 10000000) return '₹' + (value / 10000000).toFixed(1) + ' Cr';
+              if (value >= 100000) return '₹' + (value / 100000).toFixed(0) + ' L';
+              return '₹' + value;
+            }
+          }
+        }
+      }
+    }
+  });
+  window.investmentChart = investmentChart;
+}
+
+function updateChart(P, PMT, years, cagr) {
+  if (!investmentChart) return;
+
+  const labels = [];
+  const wealthData = [];
+  const investedData = [];
+
+  for (let year = 0; year <= years; year++) {
+    labels.push(`Year ${year}`);
+    const months = year * 12;
+    const monthlyRate = cagr / 12;
+
+    const invested = P + (PMT * months);
+    investedData.push(invested);
+
+    if (year === 0) {
+      wealthData.push(P);
+    } else {
+      const fv = (P * Math.pow(1 + monthlyRate, months)) +
+        (PMT * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate));
+      wealthData.push(Math.round(fv));
+    }
+  }
+
+  investmentChart.data.labels = labels;
+  investmentChart.data.datasets[0].data = wealthData;
+  investmentChart.data.datasets[1].data = investedData;
+  investmentChart.update();
+}
+
+function updateChartTheme(theme) {
+  if (!investmentChart) return;
+  const isLight = theme === 'light';
+  investmentChart.options.plugins.legend.labels.color = isLight ? '#334155' : '#cbd5e1';
+  investmentChart.options.scales.x.grid.color = isLight ? 'rgba(0,0,0,0.06)' : 'rgba(255, 255, 255, 0.06)';
+  investmentChart.options.scales.x.ticks.color = isLight ? '#64748b' : '#94a3b8';
+  investmentChart.options.scales.y.grid.color = isLight ? 'rgba(0,0,0,0.06)' : 'rgba(255, 255, 255, 0.06)';
+  investmentChart.options.scales.y.ticks.color = isLight ? '#64748b' : '#94a3b8';
+  investmentChart.update();
+}
+
+/* ==========================================================================
+   4. Strategy Matrix Tab Controller
+   ========================================================================== */
+function initStrategyTabs() {
+  const tabs = document.querySelectorAll('.strategy-tab');
+  const panels = document.querySelectorAll('.strategy-panel');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.target;
+      tabs.forEach(t => t.classList.remove('tab-active', 'border-emerald-500', 'text-white'));
+      panels.forEach(p => p.classList.add('hidden'));
+
+      tab.classList.add('tab-active', 'border-emerald-500', 'text-white');
+      const targetPanel = document.getElementById(target);
+      if (targetPanel) targetPanel.classList.remove('hidden');
+    });
+  });
+}
+
+/* ==========================================================================
+   5. Consultation Booking Modal & WhatsApp Fast-Track
+   ========================================================================== */
+function initModal() {
+  const modal = document.getElementById('booking-modal');
+  const openButtons = document.querySelectorAll('[data-open-modal="booking"]');
+  const closeButtons = document.querySelectorAll('[data-close-modal]');
+  const bookingForm = document.getElementById('booking-modal-form');
+
+  if (!modal) return;
+
+  function openModal() {
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.classList.add('hidden');
+    document.body.style.overflow = 'auto';
+  }
+
+  openButtons.forEach(btn => btn.addEventListener('click', (e) => {
+    e.preventDefault();
+    openModal();
+  }));
+
+  closeButtons.forEach(btn => btn.addEventListener('click', closeModal));
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal();
+  });
+
+  if (bookingForm) {
+    bookingForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('modal-name')?.value.trim() || 'Investor';
+      const phone = document.getElementById('modal-phone')?.value.trim() || '8920460739';
+      const service = document.getElementById('modal-service')?.value || 'Trading & Crypto Advisory';
+      const capital = document.getElementById('modal-capital')?.value || '₹10L - ₹50L';
+
+      // Create pre-composed WhatsApp inquiry
+      const waMsg = encodeURIComponent(
+        `Hello Aceneev Capital,\n\nI would like to book a consultation session.\nName: ${name}\nContact: ${phone}\nInterested Area: ${service}\nPlanned Capital: ${capital}\nOffice: NPX Tower, Sector 153, Noida`
+      );
+      const waUrl = `https://wa.me/918920460739?text=${waMsg}`;
+
+      closeModal();
+      showToast(`Thank you, ${name}! Your consultation request has been queued. Redirecting to WhatsApp for instant priority confirmation...`, 'success');
+
+      setTimeout(() => {
+        window.open(waUrl, '_blank');
+      }, 1200);
+
+      bookingForm.reset();
+    });
+  }
+}
+
+/* ==========================================================================
+   6. Contact Form & Direct Actions
+   ========================================================================== */
+function initContactForm() {
+  const contactForm = document.getElementById('contact-form');
+  if (!contactForm) return;
+
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('contact-name')?.value.trim() || 'Investor';
+    const email = document.getElementById('contact-email')?.value.trim();
+    const phone = document.getElementById('contact-phone')?.value.trim();
+    const message = document.getElementById('contact-message')?.value.trim();
+
+    const waMsg = encodeURIComponent(
+      `Hello Aceneev Capital,\n\nNew Inquiry from Website:\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nMessage: ${message}`
+    );
+    const waUrl = `https://wa.me/918920460739?text=${waMsg}`;
+
+    showToast(`Thank you ${name}! Our senior financial advisor will connect with you at ${phone || '8920460739'}. Opening WhatsApp priority channel...`, 'success');
+
+    setTimeout(() => {
+      window.open(waUrl, '_blank');
+    }, 1200);
+
+    contactForm.reset();
+  });
+}
+
+/* ==========================================================================
+   7. Mobile Navigation Drawer
+   ========================================================================== */
+function initMobileNav() {
+  const mobileToggle = document.getElementById('mobile-menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const navLinks = document.querySelectorAll('.mobile-nav-link');
+
+  if (!mobileToggle || !mobileMenu) return;
+
+  mobileToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
+
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+    });
+  });
+}
+
+/* ==========================================================================
+   8. Stats Dynamic Counter
+   ========================================================================== */
+function initStatsCounter() {
+  const counters = document.querySelectorAll('.counter-stat');
+  let started = false;
+
+  function countUp() {
+    counters.forEach(counter => {
+      const target = parseFloat(counter.getAttribute('data-target'));
+      const prefix = counter.getAttribute('data-prefix') || '';
+      const suffix = counter.getAttribute('data-suffix') || '';
+      const duration = 1800; // ms
+      const startTime = performance.now();
+
+      function update(now) {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easeProgress = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+        const currentVal = target * easeProgress;
+
+        if (target % 1 !== 0) {
+          counter.textContent = `${prefix}${currentVal.toFixed(1)}${suffix}`;
+        } else {
+          counter.textContent = `${prefix}${Math.floor(currentVal)}${suffix}`;
+        }
+
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        } else {
+          counter.textContent = `${prefix}${target}${suffix}`;
+        }
+      }
+      requestAnimationFrame(update);
+    });
+  }
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !started) {
+        started = true;
+        countUp();
+      }
+    });
+  }, { threshold: 0.3 });
+
+  const statsSection = document.getElementById('stats-section');
+  if (statsSection) observer.observe(statsSection);
+}
+
+/* ==========================================================================
+   Toast Notification Utility
+   ========================================================================== */
+function showToast(message, type = 'info') {
+  let toastContainer = document.getElementById('toast-container');
+  if (!toastContainer) {
+    toastContainer = document.createElement('div');
+    toastContainer.id = 'toast-container';
+    toastContainer.className = 'fixed bottom-6 right-6 z-50 flex flex-col space-y-3 max-w-md pointer-events-none';
+    document.body.appendChild(toastContainer);
+  }
+
+  const toast = document.createElement('div');
+  toast.className = `p-4 rounded-xl border pointer-events-auto shadow-2xl backdrop-blur-md transition-all duration-300 transform translate-y-4 opacity-0 flex items-start space-x-3 text-sm font-medium ${
+    type === 'success'
+      ? 'bg-slate-900/95 border-emerald-500/50 text-white shadow-emerald-900/30'
+      : 'bg-slate-900/95 border-slate-700 text-white'
+  }`;
+
+  const iconSvg = type === 'success'
+    ? `<svg class="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>`
+    : `<svg class="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`;
+
+  toast.innerHTML = `
+    ${iconSvg}
+    <div class="flex-1 leading-snug">${message}</div>
+  `;
+
+  toastContainer.appendChild(toast);
+
+  // Trigger animation
+  requestAnimationFrame(() => {
+    toast.classList.remove('translate-y-4', 'opacity-0');
+    toast.classList.add('translate-y-0', 'opacity-100');
+  });
+
+  setTimeout(() => {
+    toast.classList.add('opacity-0', 'translate-y-4');
+    setTimeout(() => toast.remove(), 400);
+  }, 4500);
+}
+
+</script>
+</body>
+</html>
