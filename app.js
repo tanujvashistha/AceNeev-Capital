@@ -1,6 +1,5 @@
-// ACENEEV CAPITAL - Interactive Core Engine
+// ACENEEV CAPITAL - Official Interactive Core Engine
 document.addEventListener('DOMContentLoaded', () => {
-  // Initialize Lucide icons if available
   if (window.lucide) {
     window.lucide.createIcons();
   }
@@ -8,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initTheme();
   initTicker();
   initCalculator();
-  initStrategyTabs();
   initModal();
   initContactForm();
   initMobileNav();
@@ -35,7 +33,7 @@ function initTheme() {
       html.classList.remove('light');
     }
     localStorage.setItem('aceneev_theme', theme);
-    if (window.investmentChart) {
+    if (window.weeklyChart) {
       updateChartTheme(theme);
     }
   }
@@ -51,17 +49,17 @@ function initTheme() {
 }
 
 /* ==========================================================================
-   2. Real-Time Market Ticker Streamer
+   2. Real-Time Market Ticker (Binance Live API + Exness Benchmarks)
    ========================================================================== */
-const marketData = [
-  { symbol: 'BTC/USDT', name: 'Bitcoin', price: 68420.50, change: 3.42, prefix: '$' },
-  { symbol: 'ETH/USDT', name: 'Ethereum', price: 3580.20, change: 2.15, prefix: '$' },
-  { symbol: 'SOL/USDT', name: 'Solana', price: 178.60, change: 5.80, prefix: '$' },
-  { symbol: 'NIFTY 50', name: 'NSE Nifty', price: 25380.10, change: 0.74, prefix: '₹' },
-  { symbol: 'BANK NIFTY', name: 'NSE Bank', price: 51840.40, change: -0.22, prefix: '₹' },
-  { symbol: 'S&P 500', name: 'US Index', price: 5645.20, change: 0.58, prefix: '$' },
-  { symbol: 'GOLD (10g)', name: 'Commodity', price: 74200.00, change: 0.35, prefix: '₹' },
-  { symbol: 'BNB/USDT', name: 'BNB Chain', price: 592.30, change: 1.88, prefix: '$' }
+const marketItems = [
+  { symbol: 'BTC/USDT', name: 'Bitcoin (Binance)', price: 67850.00, change: 2.84, prefix: '$', isCrypto: true, binanceSym: 'BTCUSDT' },
+  { symbol: 'ETH/USDT', name: 'Ethereum (Binance)', price: 3490.50, change: 1.95, prefix: '$', isCrypto: true, binanceSym: 'ETHUSDT' },
+  { symbol: 'SOL/USDT', name: 'Solana (Binance)', price: 172.40, change: 4.60, prefix: '$', isCrypto: true, binanceSym: 'SOLUSDT' },
+  { symbol: 'BNB/USDT', name: 'BNB (Binance)', price: 588.20, change: 1.45, prefix: '$', isCrypto: true, binanceSym: 'BNBUSDT' },
+  { symbol: 'GOLD (XAU/USD)', name: 'Exness Spot', price: 2684.50, change: 0.62, prefix: '$', isCrypto: false },
+  { symbol: 'EUR/USD', name: 'Forex Spot', price: 1.0865, change: 0.18, prefix: '$', isCrypto: false, decimals: 4 },
+  { symbol: 'USD/INR', name: 'Forex (Exness)', price: 86.42, change: 0.08, prefix: '₹', isCrypto: false, decimals: 2 },
+  { symbol: 'NIFTY 50', name: 'NSE Index', price: 25360.20, change: 0.65, prefix: '₹', isCrypto: false }
 ];
 
 function initTicker() {
@@ -69,23 +67,24 @@ function initTicker() {
   if (!tickerTrack) return;
 
   function renderTicker() {
-    // Duplicate items to ensure seamless infinite looping marquee
-    const fullList = [...marketData, ...marketData];
+    const fullList = [...marketItems, ...marketItems];
     tickerTrack.innerHTML = fullList.map((item, idx) => {
       const isPositive = item.change >= 0;
       const changeClass = isPositive ? 'text-emerald-400' : 'text-rose-400';
+      const bgChange = isPositive ? 'bg-emerald-500/10 border-emerald-500/30' : 'bg-rose-500/10 border-rose-500/30';
       const sign = isPositive ? '+' : '';
+      const decimals = item.decimals !== undefined ? item.decimals : 2;
       const formattedPrice = item.price.toLocaleString('en-IN', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
+        minimumFractionDigits: decimals,
+        maximumFractionDigits: decimals
       });
 
       return `
-        <div class="inline-flex items-center space-x-3 px-6 py-2 border-r border-slate-800 text-xs font-mono ticker-item" data-index="${idx % marketData.length}">
-          <span class="font-bold text-slate-300 dark:text-slate-200">${item.symbol}</span>
-          <span class="text-slate-400 text-[11px] hidden sm:inline">(${item.name})</span>
+        <div class="inline-flex items-center space-x-3 px-5 py-2 border-r border-slate-800/80 text-xs font-mono ticker-item" data-index="${idx % marketItems.length}">
+          <span class="font-bold text-slate-200">${item.symbol}</span>
+          <span class="text-slate-500 text-[10px] hidden sm:inline">(${item.name})</span>
           <span class="font-semibold text-white ticker-price">${item.prefix}${formattedPrice}</span>
-          <span class="px-1.5 py-0.5 rounded text-[11px] font-bold ${changeClass} ${isPositive ? 'bg-emerald-500/10' : 'bg-rose-500/10'}">
+          <span class="px-1.5 py-0.5 rounded text-[10px] font-bold border ${changeClass} ${bgChange}">
             ${sign}${item.change.toFixed(2)}%
           </span>
         </div>
@@ -95,66 +94,128 @@ function initTicker() {
 
   renderTicker();
 
-  // Subtle live price fluctuation simulation
+  // 1. Fetch live Crypto prices from Binance Public API
+  async function fetchBinancePrices() {
+    try {
+      const cryptoSymbols = marketItems.filter(i => i.isCrypto).map(i => `"${i.binanceSym}"`).join(',');
+      const res = await fetch(`https://api.binance.com/api/v3/ticker/24hr?symbols=[${cryptoSymbols}]`);
+      if (!res.ok) return;
+      const data = await res.json();
+      
+      data.forEach(ticker => {
+        const item = marketItems.find(i => i.binanceSym === ticker.symbol);
+        if (item) {
+          item.price = parseFloat(ticker.lastPrice);
+          item.change = parseFloat(ticker.priceChangePercent);
+        }
+      });
+      updateTickerDOM();
+    } catch (e) {
+      // Offline fallback: graceful silent handling
+    }
+  }
+
+  function updateTickerDOM() {
+    marketItems.forEach((item, idx) => {
+      const targetEls = tickerTrack.querySelectorAll(`.ticker-item[data-index="${idx}"]`);
+      const decimals = item.decimals !== undefined ? item.decimals : 2;
+      const formatted = `${item.prefix}${item.price.toLocaleString('en-IN', { minimumFractionDigits: decimals, maximumFractionDigits: decimals })}`;
+      const isPositive = item.change >= 0;
+      const sign = isPositive ? '+' : '';
+
+      targetEls.forEach(el => {
+        const priceEl = el.querySelector('.ticker-price');
+        if (priceEl) priceEl.textContent = formatted;
+        const changeEl = el.querySelector('span:last-child');
+        if (changeEl) {
+          changeEl.textContent = `${sign}${item.change.toFixed(2)}%`;
+          changeEl.className = `px-1.5 py-0.5 rounded text-[10px] font-bold border ${isPositive ? 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30' : 'text-rose-400 bg-rose-500/10 border-rose-500/30'}`;
+        }
+      });
+    });
+  }
+
+  // Attempt initial live Binance fetch
+  fetchBinancePrices();
+  // Poll Binance every 12 seconds when online
+  setInterval(fetchBinancePrices, 12000);
+
+  // Subtle live tick simulation for Forex & Gold
   setInterval(() => {
-    const randomIndex = Math.floor(Math.random() * marketData.length);
-    const item = marketData[randomIndex];
-    const fluctuationPercent = (Math.random() * 0.4 - 0.19) / 100;
+    const nonCryptoIndices = [4, 5, 6, 7];
+    const randomIndex = nonCryptoIndices[Math.floor(Math.random() * nonCryptoIndices.length)];
+    const item = marketItems[randomIndex];
+    const fluctuationPercent = (Math.random() * 0.08 - 0.038) / 100;
     item.price += item.price * fluctuationPercent;
-    item.change += (Math.random() * 0.1 - 0.048);
 
     const targetElements = tickerTrack.querySelectorAll(`.ticker-item[data-index="${randomIndex}"]`);
+    const decimals = item.decimals !== undefined ? item.decimals : 2;
     targetElements.forEach(el => {
       const priceEl = el.querySelector('.ticker-price');
       if (priceEl) {
-        priceEl.textContent = `${item.prefix}${item.price.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
-        priceEl.classList.add('text-emerald-300');
-        setTimeout(() => priceEl.classList.remove('text-emerald-300'), 800);
+        priceEl.textContent = `${item.prefix}${item.price.toLocaleString('en-IN', { minimumFractionDigits: decimals, maximumFractionDigits: decimals })}`;
       }
     });
-  }, 2400);
+  }, 2800);
 }
 
 /* ==========================================================================
-   3. Interactive Portfolio & Investment Growth Calculator
+   3. Simplified Return Calculator (2-3% Weekly Return Model, From ₹1 Lakh)
    ========================================================================== */
-let investmentChart = null;
+let weeklyChart = null;
 
-const strategyProfiles = {
-  conservative: {
-    title: 'Capital Shield (Conservative)',
-    cagr: 0.12,
-    description: 'Hedged equity portfolios, blue-chip market neutrality, low-drawdown debt instruments, and 10% Bitcoin reserve backing.'
+const riskPrograms = {
+  low: {
+    id: 'low',
+    name: 'Low Risk — Indian Share Market & Equities',
+    shortName: 'Low Risk (Equities)',
+    weeklyRate: 0.01, // 1% weekly target (~4% monthly)
+    rateDisplay: '0.75% – 1% / week',
+    badgeClass: 'badge-low-risk',
+    tag: 'Capital Preservation',
+    description: 'Disciplined blue-chip equity allocation, low-volatility swing positioning, and defensive market hedges.'
   },
-  balanced: {
-    title: 'Quant Balanced Alpha',
-    cagr: 0.185,
-    description: 'Multi-strategy systematic trading (NSE/F&O) combined with 25% allocation to high-conviction digital assets (BTC/ETH).'
+  medium: {
+    id: 'medium',
+    name: 'Moderate Risk — Crypto Asset Management',
+    shortName: 'Moderate Risk (Crypto)',
+    weeklyRate: 0.02, // 2% weekly target (~8% monthly)
+    rateDisplay: '1.5% – 2% / week',
+    badgeClass: 'badge-mid-risk',
+    tag: 'Strategic Alpha',
+    description: 'High-conviction digital assets (Bitcoin, Ethereum) managed with multi-sig safety and cycle momentum.'
   },
-  aggressive: {
-    title: 'High-Alpha Dynamic Quant',
-    cagr: 0.284,
-    description: 'Algorithmic momentum, crypto spot/derivative hedging, arbitrage execution, and active Web3 digital asset alpha capture.'
+  high: {
+    id: 'high',
+    name: 'High Risk — F&O (Derivatives) & Forex',
+    shortName: 'High Risk (F&O & Forex)',
+    weeklyRate: 0.025, // 2.5% weekly target (2-3% range, ~10-12% monthly)
+    rateDisplay: '2% – 3% / week',
+    badgeClass: 'badge-high-risk',
+    tag: 'Maximum Alpha',
+    description: 'Quantitative derivatives execution in NSE F&O and high-liquidity global Forex pairs with strict stop-losses.'
   }
 };
 
-let currentProfile = 'balanced';
+let currentRiskTier = 'high'; // Default high risk highlighting 2-3% per week
+let currentDurationWeeks = 12; // Default 12 weeks (3 months)
 
 function initCalculator() {
-  const initialSlider = document.getElementById('calc-initial');
-  const monthlySlider = document.getElementById('calc-monthly');
-  const yearsSlider = document.getElementById('calc-years');
+  const capitalSlider = document.getElementById('calc-capital');
+  const capitalDisplay = document.getElementById('calc-capital-val');
+  const weeklyRateSlider = document.getElementById('calc-rate');
+  const weeklyRateDisplay = document.getElementById('calc-rate-val');
 
-  const initialValDisplay = document.getElementById('calc-initial-val');
-  const monthlyValDisplay = document.getElementById('calc-monthly-val');
-  const yearsValDisplay = document.getElementById('calc-years-val');
+  const resultWeekly = document.getElementById('result-weekly-return');
+  const resultMonthly = document.getElementById('result-monthly-return');
+  const resultCorpus = document.getElementById('result-projected-corpus');
+  const resultGain = document.getElementById('result-net-gain');
+  const programDesc = document.getElementById('calc-program-desc');
+  const programBadge = document.getElementById('calc-program-badge');
 
-  const totalInvestedDisplay = document.getElementById('result-invested');
-  const totalReturnsDisplay = document.getElementById('result-returns');
-  const finalCorpusDisplay = document.getElementById('result-corpus');
-  const alphaDisplay = document.getElementById('result-alpha');
-
-  const profileButtons = document.querySelectorAll('.strategy-btn');
+  const riskTierBtns = document.querySelectorAll('.risk-tier-btn');
+  const durationBtns = document.querySelectorAll('.duration-btn');
+  const presetBtns = document.querySelectorAll('.capital-preset-btn');
 
   function formatINR(val) {
     if (val >= 10000000) {
@@ -162,92 +223,121 @@ function initCalculator() {
     } else if (val >= 100000) {
       return `₹${(val / 100000).toFixed(2)} Lakh`;
     } else {
-      return `₹${val.toLocaleString('en-IN')}`;
+      return `₹${Math.round(val).toLocaleString('en-IN')}`;
     }
   }
 
   function calculate() {
-    const P = parseFloat(initialSlider.value);
-    const PMT = parseFloat(monthlySlider.value);
-    const t = parseInt(yearsSlider.value);
-    const r = strategyProfiles[currentProfile].cagr;
+    const capital = parseFloat(capitalSlider.value) || 100000;
+    const weeklyRatePercent = parseFloat(weeklyRateSlider.value) || 2.5;
+    const wRate = weeklyRatePercent / 100;
 
-    // Compound growth with monthly compounding
-    const months = t * 12;
-    const monthlyRate = r / 12;
+    // Simple weekly returns
+    const weeklyReturn = capital * wRate;
+    const monthlyReturn = weeklyReturn * 4;
 
-    // FV = P * (1 + r/12)^(12t) + PMT * [ ((1 + r/12)^(12t) - 1) / (r/12) ]
-    const compoundInitial = P * Math.pow(1 + monthlyRate, months);
-    let compoundMonthly = 0;
-    if (monthlyRate > 0) {
-      compoundMonthly = PMT * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate);
-    }
-
-    const futureValue = compoundInitial + compoundMonthly;
-    const totalInvested = P + (PMT * months);
-    const totalWealthGained = Math.max(0, futureValue - totalInvested);
-
-    // Standard benchmark comparison (assume 8% traditional benchmark)
-    const benchmarkRate = 0.08 / 12;
-    const benchmarkFV = (P * Math.pow(1 + benchmarkRate, months)) + 
-      (PMT * ((Math.pow(1 + benchmarkRate, months) - 1) / benchmarkRate));
-    const alphaGenerated = Math.max(0, futureValue - benchmarkFV);
+    // Compounded future value over selected duration
+    const weeks = currentDurationWeeks;
+    const projectedCorpus = capital * Math.pow(1 + wRate, weeks);
+    const netGain = Math.max(0, projectedCorpus - capital);
 
     // Update Text UI
-    initialValDisplay.textContent = formatINR(P);
-    monthlyValDisplay.textContent = formatINR(PMT) + '/mo';
-    yearsValDisplay.textContent = `${t} Year${t > 1 ? 's' : ''}`;
+    capitalDisplay.textContent = formatINR(capital);
+    weeklyRateDisplay.textContent = `${weeklyRatePercent.toFixed(1)}% / week`;
 
-    totalInvestedDisplay.textContent = formatINR(totalInvested);
-    totalReturnsDisplay.textContent = formatINR(totalWealthGained);
-    finalCorpusDisplay.textContent = formatINR(futureValue);
-    alphaDisplay.textContent = `+${formatINR(alphaGenerated)} vs 8% Benchmark`;
+    if (resultWeekly) resultWeekly.textContent = formatINR(weeklyReturn);
+    if (resultMonthly) resultMonthly.textContent = formatINR(monthlyReturn);
+    if (resultCorpus) resultCorpus.textContent = formatINR(projectedCorpus);
+    if (resultGain) resultGain.textContent = `+${formatINR(netGain)} Net Return`;
 
-    updateChart(P, PMT, t, r);
+    if (programDesc) {
+      programDesc.textContent = riskPrograms[currentRiskTier].description;
+    }
+    if (programBadge) {
+      programBadge.textContent = riskPrograms[currentRiskTier].name;
+      programBadge.className = `inline-flex items-center px-3 py-1 rounded-full text-xs font-mono font-bold ${riskPrograms[currentRiskTier].badgeClass}`;
+    }
+
+    // Update preset button active states
+    presetBtns.forEach(btn => {
+      const val = parseFloat(btn.dataset.val);
+      if (val === capital) {
+        btn.classList.add('active', 'border-emerald-500', 'bg-emerald-500/20', 'text-emerald-300');
+        btn.classList.remove('border-slate-800', 'bg-slate-900', 'text-slate-400');
+      } else {
+        btn.classList.remove('active', 'border-emerald-500', 'bg-emerald-500/20', 'text-emerald-300');
+        btn.classList.add('border-slate-800', 'bg-slate-900', 'text-slate-400');
+      }
+    });
+
+    updateWeeklyChart(capital, wRate, weeks);
   }
 
-  // Profile selection
-  profileButtons.forEach(btn => {
+  // Risk tier switch
+  riskTierBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-      profileButtons.forEach(b => {
-        b.classList.remove('bg-emerald-500', 'text-slate-900', 'font-bold', 'border-emerald-400');
-        b.classList.add('bg-slate-800/80', 'text-slate-300', 'border-slate-700');
+      riskTierBtns.forEach(b => {
+        b.classList.remove('active-tier', 'border-emerald-500', 'bg-slate-800', 'text-white');
+        b.classList.add('border-slate-700/80', 'bg-slate-900/60', 'text-slate-400');
       });
-      btn.classList.add('bg-emerald-500', 'text-slate-900', 'font-bold', 'border-emerald-400');
-      btn.classList.remove('bg-slate-800/80', 'text-slate-300', 'border-slate-700');
-      currentProfile = btn.dataset.profile;
+      btn.classList.add('active-tier', 'border-emerald-500', 'bg-slate-800', 'text-white');
+      btn.classList.remove('border-slate-700/80', 'bg-slate-900/60', 'text-slate-400');
+
+      currentRiskTier = btn.dataset.tier;
+      const prog = riskPrograms[currentRiskTier];
+      weeklyRateSlider.value = (prog.weeklyRate * 100).toFixed(1);
       calculate();
     });
   });
 
-  // Slider events
-  [initialSlider, monthlySlider, yearsSlider].forEach(slider => {
-    slider.addEventListener('input', calculate);
+  // Capital preset clicks
+  presetBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      capitalSlider.value = btn.dataset.val;
+      calculate();
+    });
   });
 
-  // Initial calculation and chart build
-  initChart();
+  // Duration button clicks
+  durationBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      durationBtns.forEach(b => {
+        b.classList.remove('bg-emerald-500', 'text-slate-950', 'font-bold');
+        b.classList.add('bg-slate-800/80', 'text-slate-300');
+      });
+      btn.classList.add('bg-emerald-500', 'text-slate-950', 'font-bold');
+      btn.classList.remove('bg-slate-800/80', 'text-slate-300');
+      currentDurationWeeks = parseInt(btn.dataset.weeks);
+      calculate();
+    });
+  });
+
+  // Slider change listeners
+  capitalSlider.addEventListener('input', calculate);
+  weeklyRateSlider.addEventListener('input', calculate);
+
+  initWeeklyChart();
   calculate();
 }
 
-function initChart() {
-  const ctx = document.getElementById('investmentChart');
+function initWeeklyChart() {
+  const ctx = document.getElementById('weeklyChart');
   if (!ctx || !window.Chart) return;
 
   const isLight = document.documentElement.classList.contains('light');
 
-  investmentChart = new Chart(ctx, {
+  weeklyChart = new Chart(ctx, {
     type: 'line',
     data: {
       labels: [],
       datasets: [
         {
-          label: 'Aceneev Projected Wealth',
+          label: 'Compounded Capital',
           data: [],
           borderColor: '#10b981',
-          backgroundColor: 'rgba(16, 185, 129, 0.18)',
+          backgroundColor: 'rgba(16, 185, 129, 0.15)',
           fill: true,
-          tension: 0.35,
+          tension: 0.3,
           borderWidth: 3,
           pointBackgroundColor: '#10b981',
           pointBorderColor: '#ffffff',
@@ -255,14 +345,12 @@ function initChart() {
           pointHoverRadius: 6
         },
         {
-          label: 'Total Principal Invested',
+          label: 'Initial Principal',
           data: [],
           borderColor: '#64748b',
-          backgroundColor: 'rgba(100, 116, 139, 0.08)',
-          fill: true,
-          tension: 0,
+          backgroundColor: 'transparent',
+          borderDash: [4, 4],
           borderWidth: 2,
-          borderDash: [5, 5],
           pointRadius: 0
         }
       ]
@@ -292,12 +380,9 @@ function initChart() {
           callbacks: {
             label: function(context) {
               const val = context.raw;
-              if (val >= 10000000) {
-                return `${context.dataset.label}: ₹${(val / 10000000).toFixed(2)} Cr`;
-              } else if (val >= 100000) {
-                return `${context.dataset.label}: ₹${(val / 100000).toFixed(2)} Lakh`;
-              }
-              return `${context.dataset.label}: ₹${val.toLocaleString('en-IN')}`;
+              if (val >= 10000000) return `${context.dataset.label}: ₹${(val / 10000000).toFixed(2)} Cr`;
+              if (val >= 100000) return `${context.dataset.label}: ₹${(val / 100000).toFixed(2)} Lakh`;
+              return `${context.dataset.label}: ₹${Math.round(val).toLocaleString('en-IN')}`;
             }
           }
         }
@@ -329,72 +414,51 @@ function initChart() {
       }
     }
   });
-  window.investmentChart = investmentChart;
 }
 
-function updateChart(P, PMT, years, cagr) {
-  if (!investmentChart) return;
+function updateWeeklyChart(capital, wRate, weeks) {
+  if (!weeklyChart) return;
 
   const labels = [];
-  const wealthData = [];
-  const investedData = [];
+  const corpusData = [];
+  const principalData = [];
 
-  for (let year = 0; year <= years; year++) {
-    labels.push(`Year ${year}`);
-    const months = year * 12;
-    const monthlyRate = cagr / 12;
+  // Determine label step to keep x-axis clean
+  const step = weeks <= 12 ? 1 : (weeks <= 26 ? 2 : 4);
 
-    const invested = P + (PMT * months);
-    investedData.push(invested);
-
-    if (year === 0) {
-      wealthData.push(P);
-    } else {
-      const fv = (P * Math.pow(1 + monthlyRate, months)) +
-        (PMT * ((Math.pow(1 + monthlyRate, months) - 1) / monthlyRate));
-      wealthData.push(Math.round(fv));
-    }
+  for (let w = 0; w <= weeks; w += step) {
+    labels.push(w === 0 ? 'Start' : `Wk ${w}`);
+    principalData.push(capital);
+    const val = capital * Math.pow(1 + wRate, w);
+    corpusData.push(Math.round(val));
   }
 
-  investmentChart.data.labels = labels;
-  investmentChart.data.datasets[0].data = wealthData;
-  investmentChart.data.datasets[1].data = investedData;
-  investmentChart.update();
+  // Ensure last week is always included
+  if ((weeks % step) !== 0) {
+    labels.push(`Wk ${weeks}`);
+    principalData.push(capital);
+    corpusData.push(Math.round(capital * Math.pow(1 + wRate, weeks)));
+  }
+
+  weeklyChart.data.labels = labels;
+  weeklyChart.data.datasets[0].data = corpusData;
+  weeklyChart.data.datasets[1].data = principalData;
+  weeklyChart.update();
 }
 
 function updateChartTheme(theme) {
-  if (!investmentChart) return;
+  if (!weeklyChart) return;
   const isLight = theme === 'light';
-  investmentChart.options.plugins.legend.labels.color = isLight ? '#334155' : '#cbd5e1';
-  investmentChart.options.scales.x.grid.color = isLight ? 'rgba(0,0,0,0.06)' : 'rgba(255, 255, 255, 0.06)';
-  investmentChart.options.scales.x.ticks.color = isLight ? '#64748b' : '#94a3b8';
-  investmentChart.options.scales.y.grid.color = isLight ? 'rgba(0,0,0,0.06)' : 'rgba(255, 255, 255, 0.06)';
-  investmentChart.options.scales.y.ticks.color = isLight ? '#64748b' : '#94a3b8';
-  investmentChart.update();
+  weeklyChart.options.plugins.legend.labels.color = isLight ? '#334155' : '#cbd5e1';
+  weeklyChart.options.scales.x.grid.color = isLight ? 'rgba(0,0,0,0.06)' : 'rgba(255, 255, 255, 0.06)';
+  weeklyChart.options.scales.x.ticks.color = isLight ? '#64748b' : '#94a3b8';
+  weeklyChart.options.scales.y.grid.color = isLight ? 'rgba(0,0,0,0.06)' : 'rgba(255, 255, 255, 0.06)';
+  weeklyChart.options.scales.y.ticks.color = isLight ? '#64748b' : '#94a3b8';
+  weeklyChart.update();
 }
 
 /* ==========================================================================
-   4. Strategy Matrix Tab Controller
-   ========================================================================== */
-function initStrategyTabs() {
-  const tabs = document.querySelectorAll('.strategy-tab');
-  const panels = document.querySelectorAll('.strategy-panel');
-
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const target = tab.dataset.target;
-      tabs.forEach(t => t.classList.remove('tab-active', 'border-emerald-500', 'text-white'));
-      panels.forEach(p => p.classList.add('hidden'));
-
-      tab.classList.add('tab-active', 'border-emerald-500', 'text-white');
-      const targetPanel = document.getElementById(target);
-      if (targetPanel) targetPanel.classList.remove('hidden');
-    });
-  });
-}
-
-/* ==========================================================================
-   5. Consultation Booking Modal & WhatsApp Fast-Track
+   4. Consultation Booking Modal & Email Dispatch
    ========================================================================== */
 function initModal() {
   const modal = document.getElementById('booking-modal');
@@ -433,22 +497,30 @@ function initModal() {
     bookingForm.addEventListener('submit', (e) => {
       e.preventDefault();
       const name = document.getElementById('modal-name')?.value.trim() || 'Investor';
-      const phone = document.getElementById('modal-phone')?.value.trim() || '8920460739';
-      const service = document.getElementById('modal-service')?.value || 'Trading & Crypto Advisory';
-      const capital = document.getElementById('modal-capital')?.value || '₹10L - ₹50L';
+      const email = document.getElementById('modal-email')?.value.trim() || '';
+      const service = document.getElementById('modal-service')?.value || 'Digital Asset & Trading Advisory';
+      const capital = document.getElementById('modal-capital')?.value || '₹1 Lakh - ₹5 Lakh';
+      const notes = document.getElementById('modal-notes')?.value.trim() || 'Consultation request for custom investment plan.';
 
-      // Create pre-composed WhatsApp inquiry
-      const waMsg = encodeURIComponent(
-        `Hello Aceneev Capital,\n\nI would like to book a consultation session.\nName: ${name}\nContact: ${phone}\nInterested Area: ${service}\nPlanned Capital: ${capital}\nOffice: NPX Tower, Sector 153, Noida`
+      const mailSubject = encodeURIComponent(`Advisory Consultation Request — ${name} (${capital})`);
+      const mailBody = encodeURIComponent(
+        `Hello AceNeev Capital,\n\nI would like to schedule a private advisory consultation.\n\n` +
+        `• Name: ${name}\n` +
+        `• Email: ${email}\n` +
+        `• Strategy Interest: ${service}\n` +
+        `• Capital Budget: ${capital}\n` +
+        `• Message/Goals: ${notes}\n\n` +
+        `Looking forward to hearing from you.\n`
       );
-      const waUrl = `https://wa.me/918920460739?text=${waMsg}`;
+
+      const mailUrl = `mailto:aceneevcapital@gmail.com?subject=${mailSubject}&body=${mailBody}`;
 
       closeModal();
-      showToast(`Thank you, ${name}! Your consultation request has been queued. Redirecting to WhatsApp for instant priority confirmation...`, 'success');
+      showToast(`Thank you, ${name}! Your consultation details have been prepared. Opening email client to send to aceneevcapital@gmail.com...`, 'success');
 
       setTimeout(() => {
-        window.open(waUrl, '_blank');
-      }, 1200);
+        window.location.href = mailUrl;
+      }, 1000);
 
       bookingForm.reset();
     });
@@ -456,7 +528,7 @@ function initModal() {
 }
 
 /* ==========================================================================
-   6. Contact Form & Direct Actions
+   5. Contact Form Handler (Direct Email Dispatch)
    ========================================================================== */
 function initContactForm() {
   const contactForm = document.getElementById('contact-form');
@@ -465,27 +537,37 @@ function initContactForm() {
   contactForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const name = document.getElementById('contact-name')?.value.trim() || 'Investor';
-    const email = document.getElementById('contact-email')?.value.trim();
-    const phone = document.getElementById('contact-phone')?.value.trim();
-    const message = document.getElementById('contact-message')?.value.trim();
+    const email = document.getElementById('contact-email')?.value.trim() || '';
+    const program = document.getElementById('contact-service')?.value || 'Investment Inquiry';
+    const capital = document.getElementById('contact-capital')?.value || '₹1 Lakh+';
+    const message = document.getElementById('contact-message')?.value.trim() || 'Please share details on how to get started.';
 
-    const waMsg = encodeURIComponent(
-      `Hello Aceneev Capital,\n\nNew Inquiry from Website:\nName: ${name}\nPhone: ${phone}\nEmail: ${email}\nMessage: ${message}`
+    const mailSubject = encodeURIComponent(`Website Inquiry: ${program} — ${name}`);
+    const mailBody = encodeURIComponent(
+      `Hello AceNeev Capital Team,\n\n` +
+      `New consultation & inquiry from website:\n\n` +
+      `• Investor Name: ${name}\n` +
+      `• Contact Email: ${email}\n` +
+      `• Preferred Program: ${program}\n` +
+      `• Capital Budget: ${capital}\n` +
+      `• Specific Query: ${message}\n\n` +
+      `Kindly review and revert with advisory details.\n`
     );
-    const waUrl = `https://wa.me/918920460739?text=${waMsg}`;
 
-    showToast(`Thank you ${name}! Our senior financial advisor will connect with you at ${phone || '8920460739'}. Opening WhatsApp priority channel...`, 'success');
+    const mailUrl = `mailto:aceneevcapital@gmail.com?subject=${mailSubject}&body=${mailBody}`;
+
+    showToast(`Thank you, ${name}! Opening your email client to send your inquiry directly to aceneevcapital@gmail.com...`, 'success');
 
     setTimeout(() => {
-      window.open(waUrl, '_blank');
-    }, 1200);
+      window.location.href = mailUrl;
+    }, 1000);
 
     contactForm.reset();
   });
 }
 
 /* ==========================================================================
-   7. Mobile Navigation Drawer
+   6. Mobile Navigation Drawer
    ========================================================================== */
 function initMobileNav() {
   const mobileToggle = document.getElementById('mobile-menu-toggle');
@@ -506,7 +588,7 @@ function initMobileNav() {
 }
 
 /* ==========================================================================
-   8. Stats Dynamic Counter
+   7. Grounded Realistic Stats Counter
    ========================================================================== */
 function initStatsCounter() {
   const counters = document.querySelectorAll('.counter-stat');
@@ -517,13 +599,13 @@ function initStatsCounter() {
       const target = parseFloat(counter.getAttribute('data-target'));
       const prefix = counter.getAttribute('data-prefix') || '';
       const suffix = counter.getAttribute('data-suffix') || '';
-      const duration = 1800; // ms
+      const duration = 1600;
       const startTime = performance.now();
 
       function update(now) {
         const elapsed = now - startTime;
         const progress = Math.min(elapsed / duration, 1);
-        const easeProgress = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+        const easeProgress = 1 - Math.pow(1 - progress, 3);
         const currentVal = target * easeProgress;
 
         if (target % 1 !== 0) {
@@ -549,14 +631,14 @@ function initStatsCounter() {
         countUp();
       }
     });
-  }, { threshold: 0.3 });
+  }, { threshold: 0.25 });
 
   const statsSection = document.getElementById('stats-section');
   if (statsSection) observer.observe(statsSection);
 }
 
 /* ==========================================================================
-   Toast Notification Utility
+   8. Toast Notification System
    ========================================================================== */
 function showToast(message, type = 'info') {
   let toastContainer = document.getElementById('toast-container');
@@ -568,15 +650,13 @@ function showToast(message, type = 'info') {
   }
 
   const toast = document.createElement('div');
-  toast.className = `p-4 rounded-xl border pointer-events-auto shadow-2xl backdrop-blur-md transition-all duration-300 transform translate-y-4 opacity-0 flex items-start space-x-3 text-sm font-medium ${
+  toast.className = `p-4 rounded-2xl border pointer-events-auto shadow-2xl backdrop-blur-md transition-all duration-300 transform translate-y-4 opacity-0 flex items-start space-x-3 text-sm font-medium ${
     type === 'success'
-      ? 'bg-slate-900/95 border-emerald-500/50 text-white shadow-emerald-900/30'
+      ? 'bg-slate-900/95 border-emerald-500/50 text-white shadow-emerald-950/40'
       : 'bg-slate-900/95 border-slate-700 text-white'
   }`;
 
-  const iconSvg = type === 'success'
-    ? `<svg class="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>`
-    : `<svg class="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`;
+  const iconSvg = `<svg class="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>`;
 
   toast.innerHTML = `
     ${iconSvg}
@@ -585,7 +665,6 @@ function showToast(message, type = 'info') {
 
   toastContainer.appendChild(toast);
 
-  // Trigger animation
   requestAnimationFrame(() => {
     toast.classList.remove('translate-y-4', 'opacity-0');
     toast.classList.add('translate-y-0', 'opacity-100');

@@ -248,3 +248,47 @@ html.light .tab-active {
   color: #ffffff;
   border-color: #059669;
 }
+
+/* Risk Badges */
+.badge-low-risk {
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  color: #34d399;
+}
+.badge-mid-risk {
+  background: rgba(6, 182, 212, 0.12);
+  border: 1px solid rgba(6, 182, 212, 0.35);
+  color: #22d3ee;
+}
+.badge-high-risk {
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  color: #fbbf24;
+}
+
+/* Coming Soon Badge */
+.badge-coming-soon {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(236, 72, 153, 0.2));
+  border: 1px solid rgba(217, 70, 239, 0.4);
+  color: #f472b6;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Star Rating */
+.star-filled {
+  color: #f59e0b;
+}
+
+/* Quick Capital Preset Pill */
+.capital-preset-btn {
+  transition: all 0.2s ease;
+}
+.capital-preset-btn.active {
+  background: rgba(16, 185, 129, 0.2);
+  border-color: #10b981;
+  color: #34d399;
+  font-weight: 700;
+}
+
