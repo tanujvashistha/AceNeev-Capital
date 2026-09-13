@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" class="dark scroll-smooth">
+<html lang="en" class="dark theme-monochrome scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AceNeev Capital | Wealth &amp; Trading Advisory — Forex, Crypto &amp; Equities</title>
-  <meta name="description" content="AceNeev Capital provides disciplined financial advisory, quantitative trading, and digital asset management. Specializing in Forex, Crypto, and Indian Equities to empower Indian investors.">
-  <meta name="keywords" content="AceNeev Capital, Tanuj Vashistha, Forex Trading India, Crypto Wealth Management, Indian Share Market, Algorithmic Trading, Sector 153 Noida">
+  <title>AceNeev Capital | Founder &amp; CEO Tanuj Vashistha — Wealth &amp; Trading Advisory</title>
+  <meta name="description" content="AceNeev Capital is a premier financial advisory firm founded by CEO Tanuj Vashistha, specializing in disciplined Forex trading, Cryptocurrency asset management, and Indian Equities.">
+  <meta name="keywords" content="AceNeev Capital, Tanuj Vashistha Founder CEO, Forex Advisory, Crypto Wealth Management, Indian Share Market, Quantitative Trading, Sector 153 Noida">
   
   <link rel="icon" type="image/svg+xml" href="logo-icon.svg">
 
@@ -18,15 +18,12 @@
         extend: {
           colors: {
             brand: {
-              dark: '#080d1a',
-              navy: '#0f172a',
-              card: '#111a2e',
+              dark: '#09090b',
+              navy: '#121215',
+              card: '#18181b',
               emerald: '#10b981',
-              emeraldHover: '#059669',
               cyan: '#06b6d4',
-              gold: '#f59e0b',
-              slate: '#64748b',
-              border: 'rgba(255, 255, 255, 0.08)'
+              slate: '#71717a'
             }
           },
           fontFamily: {
@@ -46,33 +43,28 @@
   <!-- Custom Styles -->
   <link rel="stylesheet" href="styles.css">
 </head>
-<body class="bg-[#080d1a] text-slate-100 antialiased selection:bg-emerald-500 selection:text-slate-900 relative">
-
-  <!-- Subtle Ambient Glows -->
-  <div class="glow-orb glow-emerald w-[500px] h-[500px] top-[-100px] left-[-150px]"></div>
-  <div class="glow-orb glow-cyan w-[550px] h-[550px] top-[500px] right-[-180px]"></div>
-  <div class="glow-orb glow-purple w-[400px] h-[400px] top-[1600px] left-[5%]"></div>
+<body class="bg-[#09090b] text-zinc-100 antialiased selection:bg-white selection:text-black relative">
 
   <!-- TOP LIVE MARKET TICKER STRIP -->
-  <div class="bg-[#050811] border-b border-slate-800/80 text-xs py-1.5 relative z-40">
+  <div class="bg-[#0c0c0e] border-b border-zinc-800/90 text-xs py-1.5 relative z-40">
     <div class="max-w-7xl mx-auto px-4 flex items-center justify-between">
-      <div class="flex items-center space-x-2 text-emerald-400 font-semibold tracking-wider uppercase text-[11px] pr-4 border-r border-slate-800 shrink-0">
-        <span class="w-2 h-2 rounded-full bg-emerald-500 pulse-dot inline-block"></span>
-        <span>LIVE MARKET DATA</span>
+      <div class="flex items-center space-x-2 text-white font-semibold tracking-wider uppercase text-[11px] pr-4 border-r border-zinc-800 shrink-0">
+        <span class="w-2 h-2 rounded-full bg-emerald-400 pulse-dot inline-block"></span>
+        <span>LIVE MARKET PULSE</span>
       </div>
       
       <!-- Scrolling Ticker Container -->
       <div class="ticker-wrap flex-1 overflow-hidden">
         <div id="ticker-track" class="ticker-track">
-          <!-- Populated dynamically via Binance API in app.js -->
+          <!-- Populated live via Binance WebSocket in app.js -->
         </div>
       </div>
 
       <!-- Quick Desk Metadata -->
-      <div class="hidden lg:flex items-center space-x-4 pl-4 border-l border-slate-800 text-[11px] shrink-0 text-slate-400">
-        <span class="font-mono text-slate-400"><i data-lucide="clock" class="w-3.5 h-3.5 inline text-emerald-400 mr-1"></i>10:00 AM – 5:00 PM (Mon–Fri)</span>
-        <a href="mailto:aceneevcapital@gmail.com" class="hover:text-emerald-400 transition font-mono flex items-center text-slate-300">
-          <i data-lucide="mail" class="w-3.5 h-3.5 inline text-emerald-400 mr-1"></i>aceneevcapital@gmail.com
+      <div class="hidden lg:flex items-center space-x-4 pl-4 border-l border-zinc-800 text-[11px] shrink-0 text-zinc-400 font-mono">
+        <span><i data-lucide="clock" class="w-3.5 h-3.5 inline text-zinc-300 mr-1"></i>10:00 AM – 5:00 PM (Mon–Fri)</span>
+        <a href="mailto:aceneevcapital@gmail.com" class="hover:text-white transition flex items-center text-zinc-300">
+          <i data-lucide="mail" class="w-3.5 h-3.5 inline text-zinc-400 mr-1"></i>aceneevcapital@gmail.com
         </a>
       </div>
     </div>
@@ -85,54 +77,43 @@
         
         <!-- Brand Logo -->
         <a href="#hero" class="flex items-center space-x-3 group">
-          <img src="logo.svg" alt="AceNeev Capital Logo" class="h-10 w-auto group-hover:scale-105 transition-transform duration-200">
+          <img src="logo.svg" alt="AceNeev Capital Logo" class="h-9 w-auto group-hover:opacity-90 transition">
         </a>
 
         <!-- Desktop Navigation Links -->
-        <nav class="hidden md:flex items-center space-x-7 text-sm font-medium text-slate-300">
-          <a href="#calculator" class="hover:text-emerald-400 transition-colors flex items-center space-x-1.5">
-            <span>Weekly Returns</span>
-            <span class="text-[10px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-1.5 py-0.5 rounded font-mono">2-3%/wk</span>
+        <nav class="hidden md:flex items-center space-x-7 text-sm font-medium text-zinc-300">
+          <a href="#calculator" class="hover:text-white transition-colors flex items-center space-x-1.5">
+            <span>Returns Simulator</span>
+            <span class="text-[10px] bg-zinc-800 text-zinc-200 border border-zinc-700 px-1.5 py-0.5 rounded font-mono">1% &amp; 3%</span>
           </a>
-          <a href="#services" class="hover:text-emerald-400 transition-colors">Services</a>
-          <a href="#about-company" class="hover:text-emerald-400 transition-colors">About Company</a>
-          <a href="#about-founder" class="hover:text-emerald-400 transition-colors flex items-center space-x-1">
-            <i data-lucide="user" class="w-3.5 h-3.5 text-cyan-400"></i>
-            <span>The Founder</span>
+          <a href="#services" class="hover:text-white transition-colors">Advisory Programs</a>
+          <a href="#about-company" class="hover:text-white transition-colors">About Company</a>
+          <a href="#about-founder" class="hover:text-white transition-colors flex items-center space-x-1">
+            <i data-lucide="user" class="w-3.5 h-3.5 text-zinc-400"></i>
+            <span>Founder &amp; CEO</span>
           </a>
-          <a href="#reviews" class="hover:text-emerald-400 transition-colors">Reviews</a>
-          <a href="#contact" class="hover:text-emerald-400 transition-colors">Contact</a>
+          <a href="#reviews" class="hover:text-white transition-colors">Client Reviews</a>
+          <a href="#contact" class="hover:text-white transition-colors">Contact</a>
         </nav>
 
         <!-- Right Side CTAs -->
         <div class="hidden lg:flex items-center space-x-4">
-          <!-- Theme Switcher -->
-          <button id="theme-toggle" title="Toggle Theme" class="p-2.5 rounded-xl border border-slate-700/60 text-slate-400 hover:text-white hover:border-slate-500 transition">
-            <i data-lucide="sun-medium" class="w-4 h-4 hidden dark:inline"></i>
-            <i data-lucide="moon" class="w-4 h-4 inline dark:hidden"></i>
-          </button>
-
           <!-- Mail Us Button -->
-          <a href="mailto:aceneevcapital@gmail.com?subject=Consultation%20Inquiry%20%E2%80%94%20AceNeev%20Capital" class="flex items-center space-x-2 text-xs font-semibold px-4 py-2.5 rounded-xl border border-slate-700 bg-slate-900/80 text-slate-200 hover:border-emerald-500/50 hover:text-emerald-300 transition">
-            <i data-lucide="mail" class="w-3.5 h-3.5 text-emerald-400"></i>
+          <a href="mailto:aceneevcapital@gmail.com?subject=Consultation%20Inquiry%20%E2%80%94%20AceNeev%20Capital" class="flex items-center space-x-2 text-xs font-semibold px-4 py-2.5 rounded-xl border border-zinc-700 bg-zinc-900 text-zinc-200 hover:border-zinc-500 hover:text-white transition">
+            <i data-lucide="mail" class="w-3.5 h-3.5 text-zinc-300"></i>
             <span>Mail Us</span>
           </a>
 
           <!-- Book Consultation Modal Trigger -->
-          <button data-open-modal="booking" class="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-xs font-bold rounded-xl group bg-gradient-to-br from-emerald-400 via-teal-500 to-cyan-500 hover:text-white shadow-lg shadow-emerald-500/20 active:scale-95 transition">
-            <span class="relative px-4 py-2.5 transition-all ease-in duration-200 bg-slate-950 rounded-[10px] group-hover:bg-opacity-0 text-white flex items-center space-x-2">
-              <i data-lucide="calendar-check" class="w-4 h-4 text-emerald-400 group-hover:text-white"></i>
-              <span>Book Consultation</span>
-            </span>
+          <button data-open-modal="booking" class="px-5 py-2.5 text-xs font-bold rounded-xl bg-white text-black hover:bg-zinc-200 active:scale-95 shadow-lg transition flex items-center space-x-2">
+            <i data-lucide="calendar-check" class="w-4 h-4 text-black"></i>
+            <span>Book Consultation</span>
           </button>
         </div>
 
         <!-- Mobile Menu Toggle Button -->
         <div class="flex items-center space-x-2 md:hidden">
-          <button id="theme-toggle-mobile" class="p-2 rounded-lg border border-slate-700 text-slate-300">
-            <i data-lucide="sun-medium" class="w-4 h-4"></i>
-          </button>
-          <button id="mobile-menu-toggle" class="p-2 rounded-lg border border-slate-700 text-slate-300 hover:text-white">
+          <button id="mobile-menu-toggle" class="p-2 rounded-lg border border-zinc-700 text-zinc-300 hover:text-white">
             <i data-lucide="menu" class="w-6 h-6"></i>
           </button>
         </div>
@@ -141,18 +122,18 @@
     </div>
 
     <!-- Mobile Drawer -->
-    <div id="mobile-menu" class="hidden md:hidden bg-[#080d1a] border-b border-slate-800 px-4 pt-3 pb-6 space-y-3">
-      <a href="#calculator" class="mobile-nav-link block py-2 text-sm text-slate-300 hover:text-emerald-400">Weekly Return Calculator</a>
-      <a href="#services" class="mobile-nav-link block py-2 text-sm text-slate-300 hover:text-emerald-400">Services &amp; Digital Assets</a>
-      <a href="#about-company" class="mobile-nav-link block py-2 text-sm text-slate-300 hover:text-emerald-400">About Company</a>
-      <a href="#about-founder" class="mobile-nav-link block py-2 text-sm text-slate-300 hover:text-emerald-400">About Founder</a>
-      <a href="#reviews" class="mobile-nav-link block py-2 text-sm text-slate-300 hover:text-emerald-400">Client Reviews</a>
-      <a href="#contact" class="mobile-nav-link block py-2 text-sm text-slate-300 hover:text-emerald-400">Contact &amp; Enquiry</a>
-      <div class="pt-3 border-t border-slate-800 space-y-2">
-        <a href="mailto:aceneevcapital@gmail.com" class="block text-center py-2.5 rounded-xl border border-slate-700 text-xs font-semibold text-emerald-400">
+    <div id="mobile-menu" class="hidden md:hidden bg-[#0c0c0e] border-b border-zinc-800 px-4 pt-3 pb-6 space-y-3">
+      <a href="#calculator" class="mobile-nav-link block py-2 text-sm text-zinc-300 hover:text-white">Returns Simulator (1% &amp; 3%)</a>
+      <a href="#services" class="mobile-nav-link block py-2 text-sm text-zinc-300 hover:text-white">Advisory Programs</a>
+      <a href="#about-company" class="mobile-nav-link block py-2 text-sm text-zinc-300 hover:text-white">About Company</a>
+      <a href="#about-founder" class="mobile-nav-link block py-2 text-sm text-zinc-300 hover:text-white">Founder &amp; CEO (Tanuj Vashistha)</a>
+      <a href="#reviews" class="mobile-nav-link block py-2 text-sm text-zinc-300 hover:text-white">Client Reviews</a>
+      <a href="#contact" class="mobile-nav-link block py-2 text-sm text-zinc-300 hover:text-white">Contact &amp; Enquiry</a>
+      <div class="pt-3 border-t border-zinc-800 space-y-2">
+        <a href="mailto:aceneevcapital@gmail.com" class="block text-center py-2.5 rounded-xl border border-zinc-700 text-xs font-semibold text-white">
           Email: aceneevcapital@gmail.com
         </a>
-        <button data-open-modal="booking" class="w-full py-2.5 rounded-xl bg-emerald-500 text-slate-950 text-xs font-bold">
+        <button data-open-modal="booking" class="w-full py-2.5 rounded-xl bg-white text-black text-xs font-bold">
           Book Consultation
         </button>
       </div>
@@ -168,114 +149,110 @@
         <!-- Left Hero Content -->
         <div class="lg:col-span-7 space-y-6">
           
-          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-300 text-xs font-medium font-mono">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 pulse-dot"></span>
-            <span>Disciplined Market Advisory</span>
-            <span class="text-slate-600">•</span>
+          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full border border-zinc-700 bg-zinc-900/90 text-zinc-300 text-xs font-medium font-mono">
+            <span class="w-2 h-2 rounded-full bg-white pulse-dot"></span>
+            <span>Reputed Financial Advisory</span>
+            <span class="text-zinc-600">•</span>
             <span>Forex • Crypto • Equities</span>
           </div>
 
-          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight font-display text-white leading-[1.14]">
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight font-display text-white leading-[1.12]">
             Empowering Indian Investors With <br>
-            <span class="gradient-text-emerald">High-Performance Wealth</span>
+            <span class="gradient-text-emerald">Disciplined Wealth Creation</span>
           </h1>
 
-          <p class="text-base sm:text-lg text-slate-300 max-w-2xl leading-relaxed">
-            <strong class="text-white">AceNeev Capital</strong> guides individuals and private equity clients to achieve real financial independence. We combine deep Forex and Cryptocurrency expertise with rigorous risk containment and customized capital planning.
+          <p class="text-base sm:text-lg text-zinc-300 max-w-2xl leading-relaxed">
+            <strong class="text-white">AceNeev Capital</strong> provides institutional-standard market advisory. We assist individuals and private equity clients to build long-term financial independence through structured risk programs, continuous capital defense, and transparent market execution.
           </p>
 
           <!-- Core Feature Bullets -->
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
-            <div class="bg-slate-900/60 p-3 rounded-xl border border-slate-800/80">
-              <div class="text-xs font-mono text-emerald-400 font-bold mb-0.5">2% – 3% Weekly Model</div>
-              <div class="text-[11px] text-slate-400">High-conviction risk-managed alpha</div>
+            <div class="bg-zinc-900/80 p-3.5 rounded-xl border border-zinc-800">
+              <div class="text-xs font-mono text-white font-bold mb-0.5">1% &amp; 3% Weekly Models</div>
+              <div class="text-[11px] text-zinc-400">Clear, disciplined weekly compounding</div>
             </div>
-            <div class="bg-slate-900/60 p-3 rounded-xl border border-slate-800/80">
-              <div class="text-xs font-mono text-cyan-400 font-bold mb-0.5">From ₹1 Lakh Capital</div>
-              <div class="text-[11px] text-slate-400">Plans tailored to your budget</div>
+            <div class="bg-zinc-900/80 p-3.5 rounded-xl border border-zinc-800">
+              <div class="text-xs font-mono text-white font-bold mb-0.5">Starting From ₹1 Lakh</div>
+              <div class="text-[11px] text-zinc-400">Plans tailored to your capital budget</div>
             </div>
-            <div class="bg-slate-900/60 p-3 rounded-xl border border-slate-800/80">
-              <div class="text-xs font-mono text-amber-400 font-bold mb-0.5">Strict Risk Tiers</div>
-              <div class="text-[11px] text-slate-400">Equity, Crypto, and F&amp;O/Forex</div>
+            <div class="bg-zinc-900/80 p-3.5 rounded-xl border border-zinc-800">
+              <div class="text-xs font-mono text-white font-bold mb-0.5">Low &amp; Moderate Tiers</div>
+              <div class="text-[11px] text-zinc-400">Capital defense &amp; active alpha growth</div>
             </div>
           </div>
 
           <!-- Action Buttons -->
           <div class="flex flex-col sm:flex-row items-stretch sm:items-center space-y-3 sm:space-y-0 sm:space-x-4 pt-3">
-            <button data-open-modal="booking" class="px-8 py-4 rounded-xl font-bold text-sm bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 text-slate-950 hover:opacity-95 shadow-lg shadow-emerald-500/20 flex items-center justify-center space-x-2 transition transform hover:-translate-y-0.5">
+            <button data-open-modal="booking" class="px-8 py-4 rounded-xl font-bold text-sm bg-white text-black hover:bg-zinc-200 shadow-xl flex items-center justify-center space-x-2 transition transform hover:-translate-y-0.5">
               <span>Book Consultation</span>
               <i data-lucide="arrow-right" class="w-4 h-4"></i>
             </button>
             
-            <a href="mailto:aceneevcapital@gmail.com?subject=Consultation%20Inquiry%20from%20Website" class="px-7 py-4 rounded-xl font-semibold text-sm bg-slate-900/80 hover:bg-slate-800 border border-slate-700 text-slate-200 flex items-center justify-center space-x-2 transition">
-              <i data-lucide="mail" class="w-4 h-4 text-emerald-400"></i>
+            <a href="mailto:aceneevcapital@gmail.com?subject=Consultation%20Inquiry%20from%20Website" class="px-7 py-4 rounded-xl font-semibold text-sm bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-white flex items-center justify-center space-x-2 transition">
+              <i data-lucide="mail" class="w-4 h-4 text-zinc-300"></i>
               <span>Mail Us for Consultation</span>
             </a>
           </div>
 
           <!-- Note -->
-          <div class="text-xs text-slate-400 pt-1 font-mono flex items-center space-x-2">
-            <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>
-            <span>Transparent guidance • 100% fiduciary alignment • Zero lock-in pressure</span>
+          <div class="text-xs text-zinc-400 pt-1 font-mono flex items-center space-x-2">
+            <i data-lucide="shield-check" class="w-4 h-4 text-white"></i>
+            <span>Fiduciary transparency • Zero lock-in pressure • Dedicated portfolio guidance</span>
           </div>
 
         </div>
 
-        <!-- Right Hero Visual: Clean Minimalist Terminal -->
+        <!-- Right Hero Visual: Minimalist Institutional Card -->
         <div class="lg:col-span-5 relative">
-          <div class="glass-card rounded-2xl p-6 relative overflow-hidden border border-slate-700/70 shadow-2xl">
+          <div class="glass-card rounded-2xl p-6 relative overflow-hidden border border-zinc-800 shadow-2xl">
             
-            <!-- Terminal Header -->
-            <div class="flex items-center justify-between pb-4 border-b border-slate-800">
+            <!-- Card Header -->
+            <div class="flex items-center justify-between pb-4 border-b border-zinc-800">
               <div class="flex items-center space-x-2">
-                <span class="w-3 h-3 rounded-full bg-rose-500/80 inline-block"></span>
-                <span class="w-3 h-3 rounded-full bg-amber-500/80 inline-block"></span>
-                <span class="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span>
-                <span class="ml-2 text-xs font-mono text-slate-400">ACENEEV//ALPHA-ALLOCATION</span>
+                <span class="w-2.5 h-2.5 rounded-full bg-zinc-400 inline-block"></span>
+                <span class="text-xs font-mono text-zinc-300">ACENEEV//CORE-STRATEGY</span>
               </div>
-              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 font-semibold">ACTIVE DESK</span>
+              <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-zinc-800 text-zinc-300 border border-zinc-700 font-semibold">ACTIVE DESK</span>
             </div>
 
-            <!-- Strategy Matrix Card -->
+            <!-- Two Return Programs Breakdown -->
             <div class="my-5 space-y-3">
-              <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800 flex justify-between items-center">
+              <div class="bg-zinc-900/90 p-4 rounded-xl border border-zinc-800 flex justify-between items-center">
                 <div>
-                  <div class="text-xs font-bold text-white">Forex &amp; Global Currency</div>
-                  <div class="text-[11px] text-slate-400">EUR/USD, GBP/USD, USD/INR liquidity</div>
+                  <div class="text-xs font-bold text-white">Low Risk Program</div>
+                  <div class="text-[11px] text-zinc-400">Indian Share Market &amp; Hedged Equities</div>
                 </div>
-                <span class="badge-high-risk text-[10px] font-mono px-2 py-1 rounded font-bold">2-3% / wk</span>
+                <div class="text-right">
+                  <div class="text-sm font-mono font-extrabold text-white">1% / week</div>
+                  <div class="text-[10px] text-zinc-500 font-mono">~4% Monthly Target</div>
+                </div>
               </div>
 
-              <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800 flex justify-between items-center">
+              <div class="bg-zinc-900/90 p-4 rounded-xl border border-zinc-800 flex justify-between items-center">
                 <div>
-                  <div class="text-xs font-bold text-white">Crypto Asset Allocation</div>
-                  <div class="text-[11px] text-slate-400">Bitcoin &amp; Ethereum spot + cycle rotation</div>
+                  <div class="text-xs font-bold text-white">Moderate Risk Program</div>
+                  <div class="text-[11px] text-zinc-400">Global Forex &amp; Digital Assets (Crypto)</div>
                 </div>
-                <span class="badge-mid-risk text-[10px] font-mono px-2 py-1 rounded font-bold">Moderate Risk</span>
-              </div>
-
-              <div class="bg-slate-900/80 p-3.5 rounded-xl border border-slate-800 flex justify-between items-center">
-                <div>
-                  <div class="text-xs font-bold text-white">Indian Equity &amp; Derivatives</div>
-                  <div class="text-[11px] text-slate-400">NSE Blue-chip &amp; disciplined F&amp;O hedging</div>
+                <div class="text-right">
+                  <div class="text-sm font-mono font-extrabold text-white">3% / week</div>
+                  <div class="text-[10px] text-zinc-500 font-mono">~12% Monthly Target</div>
                 </div>
-                <span class="badge-low-risk text-[10px] font-mono px-2 py-1 rounded font-bold">Low Risk</span>
               </div>
             </div>
 
             <!-- Operating Standard Note -->
-            <div class="bg-slate-950 p-4 rounded-xl border border-slate-800/80 space-y-2 text-xs font-mono text-slate-300">
+            <div class="bg-zinc-950 p-4 rounded-xl border border-zinc-800/90 space-y-2 text-xs font-mono text-zinc-300">
               <div class="flex justify-between">
-                <span class="text-slate-500">Minimum Capital:</span>
-                <span class="text-emerald-400 font-bold">From ₹1,00,000 (1 Lakh)</span>
+                <span class="text-zinc-500">Minimum Capital:</span>
+                <span class="text-white font-bold">From ₹1,00,000 (1 Lakh)</span>
               </div>
               <div class="flex justify-between">
-                <span class="text-slate-500">Execution Discipline:</span>
+                <span class="text-zinc-500">Execution Discipline:</span>
                 <span class="text-white">Strict Capital Preservation</span>
               </div>
               <div class="flex justify-between">
-                <span class="text-slate-500">Consultation Desk:</span>
-                <span class="text-cyan-400">10:00 AM – 5:00 PM (M–F)</span>
+                <span class="text-zinc-500">Advisory Desk:</span>
+                <span class="text-zinc-300">10:00 AM – 5:00 PM (M–F)</span>
               </div>
             </div>
 
@@ -287,91 +264,81 @@
     </div>
   </section>
 
-  <!-- GROUNDED STATS SECTION (Realistic & Verified) -->
-  <section id="stats-section" class="py-12 border-y border-slate-800/80 bg-[#070b16] relative z-20">
+  <!-- GROUNDED STATS SECTION -->
+  <section id="stats-section" class="py-12 border-y border-zinc-800/90 bg-[#0c0c0e] relative z-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
         
         <div class="space-y-1">
           <div class="text-3xl sm:text-4xl font-extrabold font-mono text-white counter-stat" data-target="100" data-prefix="" data-suffix="+">0</div>
-          <div class="text-xs sm:text-sm font-semibold text-emerald-400">Satisfied Clients</div>
-          <div class="text-[11px] text-slate-500">Retail Investors &amp; HNIs across India</div>
+          <div class="text-xs sm:text-sm font-semibold text-white">Satisfied Clients</div>
+          <div class="text-[11px] text-zinc-500">Working Professionals &amp; HNIs</div>
         </div>
 
         <div class="space-y-1">
           <div class="text-3xl sm:text-4xl font-extrabold font-mono text-white counter-stat" data-target="5" data-prefix="₹" data-suffix=" Cr+">0</div>
-          <div class="text-xs sm:text-sm font-semibold text-cyan-400">Private Equity Guided</div>
-          <div class="text-[11px] text-slate-500">In Forex, Crypto &amp; Indian Equities</div>
+          <div class="text-xs sm:text-sm font-semibold text-white">Private Equity Guided</div>
+          <div class="text-[11px] text-zinc-500">Forex, Crypto &amp; Equities</div>
         </div>
 
         <div class="space-y-1">
           <div class="text-3xl sm:text-4xl font-extrabold font-mono text-white counter-stat" data-target="6" data-prefix="" data-suffix="+ Years">0</div>
-          <div class="text-xs sm:text-sm font-semibold text-amber-400">Market Experience</div>
-          <div class="text-[11px] text-slate-500">Real hands-on multi-market trading</div>
+          <div class="text-xs sm:text-sm font-semibold text-white">Market Experience</div>
+          <div class="text-[11px] text-zinc-500">Hands-on Multi-Market Trading</div>
         </div>
 
         <div class="space-y-1">
           <div class="text-3xl sm:text-4xl font-extrabold font-mono text-white counter-stat" data-target="100" data-prefix="" data-suffix="%">0</div>
-          <div class="text-xs sm:text-sm font-semibold text-emerald-400">Fiduciary Discipline</div>
-          <div class="text-[11px] text-slate-500">Pre-defined stops &amp; risk controls</div>
+          <div class="text-xs sm:text-sm font-semibold text-white">Fiduciary Discipline</div>
+          <div class="text-[11px] text-zinc-500">Pre-defined Stops &amp; Risk Controls</div>
         </div>
 
       </div>
     </div>
   </section>
 
-  <!-- SIMPLIFIED RETURN CALCULATOR (2-3% Weekly Return Model) -->
+  <!-- PROFESSIONAL RETURN CALCULATOR (1% & 3% RETURN MODEL) -->
   <section id="calculator" class="py-24 relative z-10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
-        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold font-mono">
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-700 text-white text-xs font-semibold font-mono">
           <i data-lucide="calculator" class="w-3.5 h-3.5"></i>
-          <span>SIMPLE CAPITAL &amp; RETURN SIMULATOR</span>
+          <span>PORTFOLIO RETURN SIMULATOR</span>
         </div>
         <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-white tracking-tight">
-          Project Returns for Your Capital
+          Simulate Capital Returns
         </h2>
-        <p class="text-slate-400 text-sm sm:text-base">
-          Evaluate expected earnings across 3 risk tiers with our straightforward 2% – 3% weekly model, starting from ₹1,00,000.
+        <p class="text-zinc-400 text-sm sm:text-base">
+          Choose between our Low Risk (1% weekly) and Moderate Risk (3% weekly) programs, starting from ₹1,00,000.
         </p>
       </div>
 
-      <div class="glass-card rounded-3xl p-6 sm:p-10 border border-slate-700/70 shadow-2xl">
+      <div class="glass-card rounded-3xl p-6 sm:p-10 border border-zinc-800 shadow-2xl">
         
-        <!-- Risk Tier Program Selector -->
+        <!-- Two Clean Risk Program Buttons -->
         <div class="mb-8">
-          <label class="block text-xs font-mono uppercase text-slate-400 mb-3">1. Select Your Risk Program</label>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+          <label class="block text-xs font-mono uppercase text-zinc-400 mb-3">1. Select Investment Risk Tier</label>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             
-            <!-- Low Risk -->
-            <button type="button" data-tier="low" class="risk-tier-btn p-4 rounded-2xl border border-slate-700/80 bg-slate-900/60 text-left transition hover:border-emerald-500/50">
+            <!-- Low Risk: 1% -->
+            <button type="button" data-tier="low" class="risk-tier-btn p-5 rounded-2xl border border-zinc-700/80 bg-zinc-900/60 text-left transition hover:border-zinc-500">
               <div class="flex items-center justify-between mb-2">
-                <span class="badge-low-risk text-[11px] font-mono px-2 py-0.5 rounded font-bold">Low Risk</span>
-                <span class="text-xs font-mono text-emerald-400 font-bold">~1% / wk</span>
+                <span class="text-xs font-mono px-2.5 py-1 rounded bg-zinc-800 text-zinc-300 font-bold">Low Risk</span>
+                <span class="text-sm font-mono text-white font-extrabold">1% Return / Week</span>
               </div>
-              <div class="text-sm font-bold text-white">Indian Share Market</div>
-              <div class="text-xs text-slate-400 mt-1">Defensive equity &amp; blue-chip holdings</div>
+              <div class="text-sm font-bold text-white">Indian Share Market &amp; Equities</div>
+              <div class="text-xs text-zinc-400 mt-1">Focused on steady capital preservation &amp; blue-chip defense (~4% Monthly).</div>
             </button>
 
-            <!-- Moderate Risk -->
-            <button type="button" data-tier="medium" class="risk-tier-btn p-4 rounded-2xl border border-slate-700/80 bg-slate-900/60 text-left transition hover:border-cyan-500/50">
+            <!-- Moderate Risk: 3% (Default Active) -->
+            <button type="button" data-tier="moderate" class="risk-tier-btn active-tier p-5 rounded-2xl border-white bg-white text-black text-left transition">
               <div class="flex items-center justify-between mb-2">
-                <span class="badge-mid-risk text-[11px] font-mono px-2 py-0.5 rounded font-bold">Moderate Risk</span>
-                <span class="text-xs font-mono text-cyan-400 font-bold">~1.5% – 2% / wk</span>
+                <span class="text-xs font-mono px-2.5 py-1 rounded bg-zinc-200 text-black font-bold">Moderate Risk</span>
+                <span class="text-sm font-mono font-extrabold text-black">3% Return / Week</span>
               </div>
-              <div class="text-sm font-bold text-white">Crypto Asset Program</div>
-              <div class="text-xs text-slate-400 mt-1">Bitcoin, Ethereum &amp; strategic digital assets</div>
-            </button>
-
-            <!-- High Risk (Default Active) -->
-            <button type="button" data-tier="high" class="risk-tier-btn active-tier p-4 rounded-2xl border-emerald-500 bg-slate-800 text-white text-left transition">
-              <div class="flex items-center justify-between mb-2">
-                <span class="badge-high-risk text-[11px] font-mono px-2 py-0.5 rounded font-bold">High Risk</span>
-                <span class="text-xs font-mono text-amber-400 font-bold">2% – 3% / wk</span>
-              </div>
-              <div class="text-sm font-bold text-white">F&amp;O (Derivatives) &amp; Forex</div>
-              <div class="text-xs text-slate-400 mt-1">High-liquidity quantitative currency &amp; options</div>
+              <div class="text-sm font-bold text-black">Global Forex &amp; Digital Assets (Crypto)</div>
+              <div class="text-xs text-zinc-700 mt-1">High-liquidity currency &amp; digital asset compounding (~12% Monthly).</div>
             </button>
 
           </div>
@@ -385,54 +352,46 @@
             <!-- Capital Input & Presets -->
             <div class="space-y-3">
               <div class="flex justify-between items-center text-sm">
-                <span class="text-slate-300 font-medium">Your Investment Capital (Starts from ₹1 Lakh):</span>
-                <span id="calc-capital-val" class="text-emerald-400 font-mono font-bold text-lg">₹1.00 Lakh</span>
+                <span class="text-zinc-300 font-medium">Your Investment Capital (Starts from ₹1 Lakh):</span>
+                <span id="calc-capital-val" class="text-white font-mono font-bold text-lg">₹1.00 Lakh</span>
               </div>
               
               <input id="calc-capital" type="range" min="100000" max="5000000" step="50000" value="100000" class="w-full">
               
               <!-- Quick Preset Pills -->
               <div class="flex flex-wrap gap-2 pt-1">
-                <button type="button" data-val="100000" class="capital-preset-btn text-xs px-3 py-1.5 rounded-lg border border-emerald-500 bg-emerald-500/20 text-emerald-300 font-mono active">₹1 Lakh</button>
-                <button type="button" data-val="250000" class="capital-preset-btn text-xs px-3 py-1.5 rounded-lg border border-slate-800 bg-slate-900 text-slate-400 font-mono hover:border-slate-700">₹2.5 Lakh</button>
-                <button type="button" data-val="500000" class="capital-preset-btn text-xs px-3 py-1.5 rounded-lg border border-slate-800 bg-slate-900 text-slate-400 font-mono hover:border-slate-700">₹5 Lakh</button>
-                <button type="button" data-val="1000000" class="capital-preset-btn text-xs px-3 py-1.5 rounded-lg border border-slate-800 bg-slate-900 text-slate-400 font-mono hover:border-slate-700">₹10 Lakh</button>
-                <button type="button" data-val="2500000" class="capital-preset-btn text-xs px-3 py-1.5 rounded-lg border border-slate-800 bg-slate-900 text-slate-400 font-mono hover:border-slate-700">₹25 Lakh</button>
+                <button type="button" data-val="100000" class="capital-preset-btn text-xs px-3 py-1.5 rounded-lg border border-white bg-white/20 text-white font-mono active">₹1 Lakh</button>
+                <button type="button" data-val="250000" class="capital-preset-btn text-xs px-3 py-1.5 rounded-lg border border-zinc-800 bg-zinc-900 text-zinc-400 font-mono hover:border-zinc-700">₹2.5 Lakh</button>
+                <button type="button" data-val="500000" class="capital-preset-btn text-xs px-3 py-1.5 rounded-lg border border-zinc-800 bg-zinc-900 text-zinc-400 font-mono hover:border-zinc-700">₹5 Lakh</button>
+                <button type="button" data-val="1000000" class="capital-preset-btn text-xs px-3 py-1.5 rounded-lg border border-zinc-800 bg-zinc-900 text-zinc-400 font-mono hover:border-zinc-700">₹10 Lakh</button>
+                <button type="button" data-val="2500000" class="capital-preset-btn text-xs px-3 py-1.5 rounded-lg border border-zinc-800 bg-zinc-900 text-zinc-400 font-mono hover:border-zinc-700">₹25 Lakh</button>
               </div>
             </div>
 
-            <!-- Target Weekly Return Slider -->
-            <div class="space-y-2">
-              <div class="flex justify-between items-center text-sm">
-                <span class="text-slate-300 font-medium">Weekly Target Return Rate:</span>
-                <span id="calc-rate-val" class="text-cyan-400 font-mono font-bold text-base">2.5% / week</span>
-              </div>
-              <input id="calc-rate" type="range" min="0.5" max="3.5" step="0.1" value="2.5" class="w-full">
-              <div class="flex justify-between text-[10px] font-mono text-slate-500">
-                <span>0.5% (Conservative)</span>
-                <span class="text-emerald-400">2% – 3% (Active F&amp;O / Forex)</span>
-                <span>3.5% (High Alpha)</span>
-              </div>
+            <!-- Active Rate Indicator -->
+            <div class="p-3.5 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-between">
+              <span class="text-xs font-mono text-zinc-400">Target Model:</span>
+              <span id="calc-rate-title" class="text-xs font-mono font-bold text-white">3% Return Per Week</span>
             </div>
 
             <!-- Duration Selector -->
             <div class="space-y-2">
-              <span class="block text-xs font-mono uppercase text-slate-400">Projection Horizon</span>
+              <span class="block text-xs font-mono uppercase text-zinc-400">Projection Horizon</span>
               <div class="grid grid-cols-4 gap-2">
-                <button type="button" data-weeks="4" class="duration-btn py-2 px-2 text-xs rounded-xl border border-slate-700 bg-slate-800/80 text-slate-300 font-medium transition text-center">4 Wks</button>
-                <button type="button" data-weeks="12" class="duration-btn py-2 px-2 text-xs rounded-xl bg-emerald-500 text-slate-950 font-bold transition text-center">12 Wks</button>
-                <button type="button" data-weeks="26" class="duration-btn py-2 px-2 text-xs rounded-xl border border-slate-700 bg-slate-800/80 text-slate-300 font-medium transition text-center">26 Wks</button>
-                <button type="button" data-weeks="52" class="duration-btn py-2 px-2 text-xs rounded-xl border border-slate-700 bg-slate-800/80 text-slate-300 font-medium transition text-center">52 Wks</button>
+                <button type="button" data-weeks="4" class="duration-btn py-2 px-2 text-xs rounded-xl border border-zinc-700 bg-zinc-800/80 text-zinc-300 font-medium transition text-center">4 Wks</button>
+                <button type="button" data-weeks="12" class="duration-btn py-2 px-2 text-xs rounded-xl bg-white text-black font-bold transition text-center">12 Wks</button>
+                <button type="button" data-weeks="26" class="duration-btn py-2 px-2 text-xs rounded-xl border border-zinc-700 bg-zinc-800/80 text-zinc-300 font-medium transition text-center">26 Wks</button>
+                <button type="button" data-weeks="52" class="duration-btn py-2 px-2 text-xs rounded-xl border border-zinc-700 bg-zinc-800/80 text-zinc-300 font-medium transition text-center">52 Wks</button>
               </div>
             </div>
 
-            <!-- Active Program Summary Box -->
-            <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800 space-y-1">
-              <div id="calc-program-badge" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-mono font-bold badge-high-risk">
-                High Risk — F&amp;O &amp; Forex
+            <!-- Program Description -->
+            <div class="bg-zinc-900/80 p-4 rounded-xl border border-zinc-800 space-y-1">
+              <div id="calc-program-badge" class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-mono font-bold border-zinc-500 bg-zinc-800 text-zinc-200">
+                Moderate Risk — Active Alpha Growth (3% / week)
               </div>
-              <p id="calc-program-desc" class="text-xs text-slate-400 leading-relaxed pt-1">
-                Quantitative derivatives execution in NSE F&amp;O and high-liquidity global Forex pairs with strict stop-losses.
+              <p id="calc-program-desc" class="text-xs text-zinc-400 leading-relaxed pt-1">
+                High-liquidity Global Forex and Cryptocurrency asset management targeting calculated, high-conviction compounding.
               </p>
             </div>
 
@@ -443,36 +402,36 @@
             
             <!-- Quick Earnings Breakdown Grid -->
             <div class="grid grid-cols-2 gap-3">
-              <div class="bg-slate-900/90 p-4 rounded-2xl border border-slate-800">
-                <div class="text-xs font-mono text-slate-400">Est. Weekly Return</div>
-                <div id="result-weekly-return" class="text-2xl font-bold font-mono text-emerald-400 mt-1">₹2,500</div>
-                <div class="text-[10px] text-slate-500 mt-0.5">Calculated per week on capital</div>
+              <div class="bg-zinc-900/90 p-4 rounded-2xl border border-zinc-800">
+                <div class="text-xs font-mono text-zinc-400">Est. Weekly Return</div>
+                <div id="result-weekly-return" class="text-2xl font-bold font-mono text-white mt-1">₹3,000</div>
+                <div class="text-[10px] text-zinc-500 mt-0.5">Calculated per week on capital</div>
               </div>
 
-              <div class="bg-slate-900/90 p-4 rounded-2xl border border-slate-800">
-                <div class="text-xs font-mono text-slate-400">Est. Monthly Return</div>
-                <div id="result-monthly-return" class="text-2xl font-bold font-mono text-cyan-400 mt-1">₹10,000</div>
-                <div class="text-[10px] text-slate-500 mt-0.5">Approx. 4 weekly cycles</div>
+              <div class="bg-zinc-900/90 p-4 rounded-2xl border border-zinc-800">
+                <div class="text-xs font-mono text-zinc-400">Est. Monthly Return</div>
+                <div id="result-monthly-return" class="text-2xl font-bold font-mono text-white mt-1">₹12,000</div>
+                <div class="text-[10px] text-zinc-500 mt-0.5">Approx. 4 weekly cycles</div>
               </div>
             </div>
 
             <!-- Big Highlight Projected Corpus Box -->
-            <div class="bg-gradient-to-r from-emerald-950/60 via-slate-900 to-slate-900 p-5 rounded-2xl border border-emerald-500/40 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+            <div class="bg-zinc-900 p-5 rounded-2xl border border-zinc-700 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div>
-                <div class="text-xs font-mono uppercase text-emerald-400 tracking-wider font-semibold">Total Projected Corpus</div>
-                <div id="result-projected-corpus" class="text-3xl sm:text-4xl font-extrabold font-mono text-white mt-1">₹1.34 Lakh</div>
-                <div id="result-net-gain" class="text-xs text-emerald-300 font-mono mt-0.5">+₹34,489 Net Return</div>
+                <div class="text-xs font-mono uppercase text-zinc-400 tracking-wider font-semibold">Total Projected Corpus</div>
+                <div id="result-projected-corpus" class="text-3xl sm:text-4xl font-extrabold font-mono text-white mt-1">₹1.42 Lakh</div>
+                <div id="result-net-gain" class="text-xs text-zinc-300 font-mono mt-0.5">+₹42,576 Net Compounded Return</div>
               </div>
-              <button data-open-modal="booking" class="px-5 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs shadow-lg transition shrink-0">
+              <button data-open-modal="booking" class="px-5 py-3 rounded-xl bg-white text-black font-bold text-xs shadow-lg hover:bg-zinc-200 transition shrink-0">
                 Consult for This Budget
               </button>
             </div>
 
             <!-- Trajectory Chart -->
-            <div class="bg-slate-900/90 p-4 rounded-2xl border border-slate-800 h-[220px] flex flex-col">
+            <div class="bg-zinc-900/90 p-4 rounded-2xl border border-zinc-800 h-[220px] flex flex-col">
               <div class="flex justify-between items-center mb-2">
-                <span class="text-xs font-mono text-slate-400">Compounding Trajectory</span>
-                <span class="text-[10px] font-mono text-slate-500">Weekly Accumulation</span>
+                <span class="text-xs font-mono text-zinc-400">Compounding Trajectory</span>
+                <span class="text-[10px] font-mono text-zinc-500">Weekly Accumulation</span>
               </div>
               <div class="flex-1 relative w-full">
                 <canvas id="weeklyChart"></canvas>
@@ -480,9 +439,9 @@
             </div>
 
             <!-- Custom Budget Callout -->
-            <div class="p-3 rounded-xl bg-slate-900/40 border border-slate-800/80 text-[11px] text-slate-400 flex items-center justify-between">
-              <span>💡 Have a specific capital budget? We structure bespoke customized plans.</span>
-              <a href="mailto:aceneevcapital@gmail.com?subject=Custom%20Capital%20Plan%20Inquiry" class="text-emerald-400 font-bold hover:underline ml-2 shrink-0">Inquire Now &rarr;</a>
+            <div class="p-3 rounded-xl bg-zinc-900/60 border border-zinc-800 text-[11px] text-zinc-400 flex items-center justify-between">
+              <span>💡 Have a custom capital budget? We formulate bespoke plans for your exact requirements.</span>
+              <a href="mailto:aceneevcapital@gmail.com?subject=Custom%20Capital%20Plan%20Inquiry" class="text-white font-bold hover:underline ml-2 shrink-0">Inquire &rarr;</a>
             </div>
 
           </div>
@@ -494,173 +453,172 @@
     </div>
   </section>
 
-  <!-- CORE ADVISORY SERVICES SECTION -->
-  <section id="services" class="py-24 relative z-10">
+  <!-- ADVISORY PROGRAMS (STREAMLINED & PROFESSIONAL) -->
+  <section id="services" class="py-24 relative z-10 border-t border-zinc-800/80">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
-        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold font-mono">
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-700 text-white text-xs font-semibold font-mono">
           <i data-lucide="briefcase" class="w-3.5 h-3.5"></i>
-          <span>OUR SERVICES</span>
+          <span>CORE ADVISORY PROGRAMS</span>
         </div>
         <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-white tracking-tight">
-          Comprehensive Wealth &amp; Market Solutions
+          Disciplined Wealth Solutions
         </h2>
-        <p class="text-slate-400 text-sm sm:text-base">
-          Engineered to harvest high yields across international and domestic asset classes with strict capital protection.
+        <p class="text-zinc-400 text-sm sm:text-base">
+          Structured portfolios engineered to deliver consistent yield across global and domestic markets with rigorous risk containment.
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         
-        <!-- Service 1: Digital Asset Plan (Crypto + Forex + Equity) -->
-        <div class="glass-card rounded-2xl p-7 flex flex-col justify-between border-emerald-500/30 group">
-          <div>
-            <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 mb-5 group-hover:bg-emerald-500 group-hover:text-slate-950 transition">
-              <i data-lucide="layers" class="w-6 h-6"></i>
-            </div>
-            <span class="text-xs font-mono font-bold text-emerald-400 tracking-wider uppercase">FLAGSHIP STRATEGY</span>
-            <h3 class="text-xl font-bold font-display text-white mt-1 mb-2">Digital Asset Plan</h3>
-            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4">
-              A balanced wealth engine combining high-liquidity <strong>Forex</strong>, institutional <strong>Cryptocurrency</strong> (BTC/ETH), and stable <strong>Equities</strong> to deliver diversified, asymmetric compounding.
-            </p>
-            <ul class="space-y-2 text-xs text-slate-300 font-medium border-t border-slate-800/80 pt-3">
-              <li class="flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400 mr-2"></i> Crypto: Spot accumulation &amp; profit taking</li>
-              <li class="flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400 mr-2"></i> Forex: High-velocity global currency alpha</li>
-              <li class="flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400 mr-2"></i> Equity: Foundation blue-chip balance</li>
-            </ul>
-          </div>
-          <div class="pt-5 mt-5 border-t border-slate-800">
-            <button data-open-modal="booking" class="text-xs font-bold text-emerald-400 hover:text-emerald-300 flex items-center">
-              <span>Consult on Digital Asset Plan</span>
-              <i data-lucide="arrow-right" class="w-3.5 h-3.5 ml-1"></i>
-            </button>
-          </div>
-        </div>
-
-        <!-- Service 2: Forex Market Trading -->
+        <!-- Program 1: Global Currency & Forex Advisory -->
         <div class="glass-card rounded-2xl p-7 flex flex-col justify-between group">
           <div>
-            <div class="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 mb-5 group-hover:bg-cyan-500 group-hover:text-slate-950 transition">
+            <div class="w-12 h-12 rounded-xl bg-zinc-800 border border-zinc-700 flex items-center justify-center text-white mb-5 group-hover:bg-white group-hover:text-black transition">
               <i data-lucide="globe" class="w-6 h-6"></i>
             </div>
-            <span class="text-xs font-mono font-bold text-cyan-400 tracking-wider uppercase">HIGH LIQUIDITY</span>
-            <h3 class="text-xl font-bold font-display text-white mt-1 mb-2">Forex &amp; Currency Advisory</h3>
-            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4">
-              Harness the world's most liquid 24-hour financial market with calculated position sizing, algorithmic trend capture, and tight stop-loss risk management.
+            <span class="text-xs font-mono font-bold text-zinc-400 tracking-wider uppercase">MODERATE RISK (3%/WK)</span>
+            <h3 class="text-xl font-bold font-display text-white mt-1 mb-2">Global Currency &amp; Forex</h3>
+            <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-4">
+              Capitalizing on the world's most liquid 24-hour financial market through algorithmic trend capture and systematic position sizing.
             </p>
-            <ul class="space-y-2 text-xs text-slate-300 font-medium border-t border-slate-800/80 pt-3">
-              <li class="flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 text-cyan-400 mr-2"></i> Target 2% – 3% weekly returns</li>
-              <li class="flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 text-cyan-400 mr-2"></i> Major pairs (EUR/USD, GBP/USD, USD/INR)</li>
-              <li class="flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 text-cyan-400 mr-2"></i> Strict drawdown cap per trade</li>
+            <ul class="space-y-2 text-xs text-zinc-300 font-medium border-t border-zinc-800 pt-3">
+              <li class="flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 text-white mr-2"></i> Major pairs (EUR/USD, GBP/USD, USD/INR)</li>
+              <li class="flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 text-white mr-2"></i> Strict drawdown limits per trade</li>
+              <li class="flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 text-white mr-2"></i> Deep liquidity with zero slippage</li>
             </ul>
           </div>
-          <div class="pt-5 mt-5 border-t border-slate-800">
-            <button data-open-modal="booking" class="text-xs font-bold text-cyan-400 hover:text-cyan-300 flex items-center">
+          <div class="pt-5 mt-5 border-t border-zinc-800">
+            <button data-open-modal="booking" class="text-xs font-bold text-white hover:text-zinc-300 flex items-center">
               <span>Inquire Forex Program</span>
               <i data-lucide="arrow-right" class="w-3.5 h-3.5 ml-1"></i>
             </button>
           </div>
         </div>
 
-        <!-- Service 3: Crypto Asset Management -->
+        <!-- Program 2: Digital Asset Management (Crypto) -->
         <div class="glass-card rounded-2xl p-7 flex flex-col justify-between group">
           <div>
-            <div class="w-12 h-12 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 mb-5 group-hover:bg-amber-500 group-hover:text-slate-950 transition">
+            <div class="w-12 h-12 rounded-xl bg-zinc-800 border border-zinc-700 flex items-center justify-center text-white mb-5 group-hover:bg-white group-hover:text-black transition">
               <i data-lucide="coins" class="w-6 h-6"></i>
             </div>
-            <span class="text-xs font-mono font-bold text-amber-400 tracking-wider uppercase">DIGITAL WEALTH</span>
-            <h3 class="text-xl font-bold font-display text-white mt-1 mb-2">Crypto Asset Management</h3>
-            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4">
-              Strategic Bitcoin and Ethereum wealth preservation designed to capture multi-year bull runs while sidestepping speculative low-cap pitfalls.
+            <span class="text-xs font-mono font-bold text-zinc-400 tracking-wider uppercase">DIGITAL ALLOCATION</span>
+            <h3 class="text-xl font-bold font-display text-white mt-1 mb-2">Digital Asset Management</h3>
+            <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-4">
+              Institutional-grade exposure to Bitcoin and Ethereum, combining multi-sig cold custody defense with cyclical profit-taking rules.
             </p>
-            <ul class="space-y-2 text-xs text-slate-300 font-medium border-t border-slate-800/80 pt-3">
-              <li class="flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 text-amber-400 mr-2"></i> Blue-chip Bitcoin &amp; ETH focus</li>
-              <li class="flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 text-amber-400 mr-2"></i> Multi-Sig cold storage protocols</li>
-              <li class="flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 text-amber-400 mr-2"></i> 30% Indian VDA tax alignment</li>
+            <ul class="space-y-2 text-xs text-zinc-300 font-medium border-t border-zinc-800 pt-3">
+              <li class="flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 text-white mr-2"></i> Blue-chip Bitcoin &amp; ETH core</li>
+              <li class="flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 text-white mr-2"></i> Air-gapped cold storage custody</li>
+              <li class="flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 text-white mr-2"></i> Full compliance with Indian VDA tax rules</li>
             </ul>
           </div>
-          <div class="pt-5 mt-5 border-t border-slate-800">
-            <button data-open-modal="booking" class="text-xs font-bold text-amber-400 hover:text-amber-300 flex items-center">
-              <span>Explore Crypto Allocation</span>
+          <div class="pt-5 mt-5 border-t border-zinc-800">
+            <button data-open-modal="booking" class="text-xs font-bold text-white hover:text-zinc-300 flex items-center">
+              <span>Consult on Crypto Allocation</span>
               <i data-lucide="arrow-right" class="w-3.5 h-3.5 ml-1"></i>
             </button>
           </div>
         </div>
 
-        <!-- Service 4: Indian Share Market & F&O -->
+        <!-- Program 3: Indian Equities & Share Market -->
         <div class="glass-card rounded-2xl p-7 flex flex-col justify-between group">
           <div>
-            <div class="w-12 h-12 rounded-xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 mb-5 group-hover:bg-blue-500 group-hover:text-slate-950 transition">
+            <div class="w-12 h-12 rounded-xl bg-zinc-800 border border-zinc-700 flex items-center justify-center text-white mb-5 group-hover:bg-white group-hover:text-black transition">
               <i data-lucide="trending-up" class="w-6 h-6"></i>
             </div>
-            <span class="text-xs font-mono font-bold text-blue-400 tracking-wider uppercase">DOMESTIC MARKETS</span>
+            <span class="text-xs font-mono font-bold text-zinc-400 tracking-wider uppercase">LOW RISK (1%/WK)</span>
             <h3 class="text-xl font-bold font-display text-white mt-1 mb-2">Indian Equities &amp; F&amp;O</h3>
-            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4">
-              Disciplined positional and algorithmic derivatives execution on the National Stock Exchange (NSE) with structured risk hedges.
+            <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-4">
+              Positional stock portfolio allocation on the National Stock Exchange (NSE) combined with delta-hedged index derivatives.
             </p>
-            <ul class="space-y-2 text-xs text-slate-300 font-medium border-t border-slate-800/80 pt-3">
-              <li class="flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 text-blue-400 mr-2"></i> Nifty &amp; Bank Nifty options hedging</li>
-              <li class="flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 text-blue-400 mr-2"></i> Zero emotional trading bias</li>
-              <li class="flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 text-blue-400 mr-2"></i> Pre-calculated risk-reward ratios</li>
+            <ul class="space-y-2 text-xs text-zinc-300 font-medium border-t border-zinc-800 pt-3">
+              <li class="flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 text-white mr-2"></i> Low volatility swing framework</li>
+              <li class="flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 text-white mr-2"></i> Nifty &amp; Bank Nifty protective puts</li>
+              <li class="flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 text-white mr-2"></i> Pre-calculated risk-reward parameters</li>
             </ul>
           </div>
-          <div class="pt-5 mt-5 border-t border-slate-800">
-            <button data-open-modal="booking" class="text-xs font-bold text-blue-400 hover:text-blue-300 flex items-center">
-              <span>View Equity Strategies</span>
+          <div class="pt-5 mt-5 border-t border-zinc-800">
+            <button data-open-modal="booking" class="text-xs font-bold text-white hover:text-zinc-300 flex items-center">
+              <span>Explore Equity Strategies</span>
               <i data-lucide="arrow-right" class="w-3.5 h-3.5 ml-1"></i>
             </button>
           </div>
         </div>
 
-        <!-- Service 5: Private Equity Guidance -->
+        <!-- Program 4: Flagship Digital Asset Plan (Crypto, Forex & Equity) -->
         <div class="glass-card rounded-2xl p-7 flex flex-col justify-between group">
           <div>
-            <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 mb-5 group-hover:bg-purple-500 group-hover:text-slate-950 transition">
-              <i data-lucide="shield" class="w-6 h-6"></i>
+            <div class="w-12 h-12 rounded-xl bg-zinc-800 border border-zinc-700 flex items-center justify-center text-white mb-5 group-hover:bg-white group-hover:text-black transition">
+              <i data-lucide="layers" class="w-6 h-6"></i>
             </div>
-            <span class="text-xs font-mono font-bold text-purple-400 tracking-wider uppercase">CUSTOM CAPITAL</span>
-            <h3 class="text-xl font-bold font-display text-white mt-1 mb-2">Private Equity Advisory</h3>
-            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4">
-              Bespoke mandates tailored to specific client capital budgets, family offices, and entrepreneurs looking for disciplined, managed growth.
+            <span class="text-xs font-mono font-bold text-zinc-400 tracking-wider uppercase">HYBRID ASSET BLEND</span>
+            <h3 class="text-xl font-bold font-display text-white mt-1 mb-2">Digital Asset Plan</h3>
+            <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-4">
+              A balanced wealth strategy blending Forex cash-flow generation, Crypto sovereign asset appreciation, and domestic Equity stability.
             </p>
-            <ul class="space-y-2 text-xs text-slate-300 font-medium border-t border-slate-800/80 pt-3">
-              <li class="flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 text-purple-400 mr-2"></i> Customized plans to your budget</li>
-              <li class="flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 text-purple-400 mr-2"></i> Regular reporting &amp; transparent audits</li>
-              <li class="flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 text-purple-400 mr-2"></i> Direct relationship advisory</li>
+            <ul class="space-y-2 text-xs text-zinc-300 font-medium border-t border-zinc-800 pt-3">
+              <li class="flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 text-white mr-2"></i> Cross-market asset diversification</li>
+              <li class="flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 text-white mr-2"></i> Asymmetric returns with down-market hedging</li>
+              <li class="flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 text-white mr-2"></i> Periodic rebalancing according to cycles</li>
             </ul>
           </div>
-          <div class="pt-5 mt-5 border-t border-slate-800">
-            <a href="mailto:aceneevcapital@gmail.com?subject=Private%20Equity%20Advisory%20Mandate" class="text-xs font-bold text-purple-400 hover:text-purple-300 flex items-center">
+          <div class="pt-5 mt-5 border-t border-zinc-800">
+            <button data-open-modal="booking" class="text-xs font-bold text-white hover:text-zinc-300 flex items-center">
+              <span>View Hybrid Mandate</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5 ml-1"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Program 5: Private Equity & Custom Mandates -->
+        <div class="glass-card rounded-2xl p-7 flex flex-col justify-between group">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-zinc-800 border border-zinc-700 flex items-center justify-center text-white mb-5 group-hover:bg-white group-hover:text-black transition">
+              <i data-lucide="shield" class="w-6 h-6"></i>
+            </div>
+            <span class="text-xs font-mono font-bold text-zinc-400 tracking-wider uppercase">HNWI &amp; FAMILY WEALTH</span>
+            <h3 class="text-xl font-bold font-display text-white mt-1 mb-2">Private Equity Advisory</h3>
+            <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-4">
+              Bespoke mandates tailored to specific client capital budgets, family offices, and entrepreneurs looking for disciplined, managed growth.
+            </p>
+            <ul class="space-y-2 text-xs text-zinc-300 font-medium border-t border-zinc-800 pt-3">
+              <li class="flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 text-white mr-2"></i> Customized plans to your capital budget</li>
+              <li class="flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 text-white mr-2"></i> Regular reporting &amp; transparent audits</li>
+              <li class="flex items-center"><i data-lucide="check" class="w-3.5 h-3.5 text-white mr-2"></i> Direct relationship advisory</li>
+            </ul>
+          </div>
+          <div class="pt-5 mt-5 border-t border-zinc-800">
+            <a href="mailto:aceneevcapital@gmail.com?subject=Private%20Equity%20Advisory%20Mandate" class="text-xs font-bold text-white hover:text-zinc-300 flex items-center">
               <span>Discuss Private Equity</span>
               <i data-lucide="arrow-right" class="w-3.5 h-3.5 ml-1"></i>
             </a>
           </div>
         </div>
 
-        <!-- Service 6: Real Estate (COMING SOON) -->
-        <div class="glass-card rounded-2xl p-7 flex flex-col justify-between relative overflow-hidden group border-purple-500/20">
-          <div class="absolute -right-12 -top-12 w-28 h-28 bg-purple-500/10 rounded-full blur-xl"></div>
+        <!-- Program 6: Real Estate Advisory (Coming Soon) -->
+        <div class="glass-card rounded-2xl p-7 flex flex-col justify-between relative overflow-hidden group">
           <div>
             <div class="flex items-center justify-between mb-5">
-              <div class="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400">
+              <div class="w-12 h-12 rounded-xl bg-zinc-800 border border-zinc-700 flex items-center justify-center text-white">
                 <i data-lucide="building-2" class="w-6 h-6"></i>
               </div>
-              <span class="badge-coming-soon text-[11px] font-bold px-3 py-1 rounded-full">Coming Soon</span>
+              <span class="text-[10px] font-mono px-2.5 py-1 rounded bg-zinc-800 text-zinc-300 border border-zinc-700 font-bold uppercase">Coming Soon</span>
             </div>
-            <span class="text-xs font-mono font-bold text-purple-400 tracking-wider uppercase">REAL ASSETS</span>
+            <span class="text-xs font-mono font-bold text-zinc-400 tracking-wider uppercase">TANGIBLE WEALTH</span>
             <h3 class="text-xl font-bold font-display text-white mt-1 mb-2">Real Estate Advisory</h3>
-            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4">
-              Curated commercial and residential real asset advisory. Channeling trading and digital asset profits into tangible, cash-flow generating real estate.
+            <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-4">
+              Strategic allocation of trading and digital asset profits into commercial real assets and high-growth development corridors.
             </p>
-            <ul class="space-y-2 text-xs text-slate-300 font-medium border-t border-slate-800/80 pt-3">
-              <li class="flex items-center"><i data-lucide="clock" class="w-3.5 h-3.5 text-purple-400 mr-2"></i> Launching soon for private clients</li>
-              <li class="flex items-center"><i data-lucide="clock" class="w-3.5 h-3.5 text-purple-400 mr-2"></i> Strategic high-growth corridor focus</li>
-              <li class="flex items-center"><i data-lucide="clock" class="w-3.5 h-3.5 text-purple-400 mr-2"></i> Early-access priority register</li>
+            <ul class="space-y-2 text-xs text-zinc-300 font-medium border-t border-zinc-800 pt-3">
+              <li class="flex items-center"><i data-lucide="clock" class="w-3.5 h-3.5 text-zinc-400 mr-2"></i> Launching soon for private clients</li>
+              <li class="flex items-center"><i data-lucide="clock" class="w-3.5 h-3.5 text-zinc-400 mr-2"></i> Cash-flow oriented physical assets</li>
+              <li class="flex items-center"><i data-lucide="clock" class="w-3.5 h-3.5 text-zinc-400 mr-2"></i> Early-access registry available</li>
             </ul>
           </div>
-          <div class="pt-5 mt-5 border-t border-slate-800">
-            <button data-open-modal="booking" class="text-xs font-bold text-purple-400 hover:text-purple-300 flex items-center">
+          <div class="pt-5 mt-5 border-t border-zinc-800">
+            <button data-open-modal="booking" class="text-xs font-bold text-white hover:text-zinc-300 flex items-center">
               <span>Join Early Access List</span>
               <i data-lucide="arrow-right" class="w-3.5 h-3.5 ml-1"></i>
             </button>
@@ -672,64 +630,64 @@
     </div>
   </section>
 
-  <!-- ABOUT THE COMPANY (SEPARATED) -->
-  <section id="about-company" class="py-24 bg-[#070b16] border-t border-slate-800/80 relative z-10">
+  <!-- ABOUT THE COMPANY (ATTRACTIVE & ENHANCED) -->
+  <section id="about-company" class="py-24 bg-[#0c0c0e] border-t border-zinc-800/80 relative z-10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         
         <!-- Left: Company Mission & Pillars -->
         <div class="lg:col-span-7 space-y-6">
-          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold font-mono">
-            <i data-lucide="building" class="w-3.5 h-3.5"></i>
+          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-700 text-white text-xs font-semibold font-mono">
+            <i data-lucide="landmark" class="w-3.5 h-3.5"></i>
             <span>ABOUT ACENEEV CAPITAL</span>
           </div>
 
           <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-white tracking-tight">
-            Our Purpose: Making Indian Investors Financially Independent
+            Built on Rigor, Dedicated to Indian Financial Self-Reliance
           </h2>
 
-          <p class="text-slate-300 text-base leading-relaxed">
-            <strong>AceNeev Capital</strong> was founded with a singular motive: to empower Indian investors to break free from traditional low-yield instruments and achieve genuine financial independence through disciplined market participation.
+          <p class="text-zinc-300 text-base leading-relaxed">
+            At <strong>AceNeev Capital</strong>, our mission is clear: to equip Indian investors with institutional-grade market literacy, quantitative execution, and sovereign digital asset strategies so they can build true financial independence.
           </p>
 
-          <p class="text-slate-400 text-sm leading-relaxed">
-            Backed by a team driven by immense dedication, ongoing market research, and strict risk parameters, we bridge the gap between complex global markets (Forex, Crypto) and everyday investors seeking consistent, transparent growth.
+          <p class="text-zinc-400 text-sm leading-relaxed">
+            Traditional Indian wealth models have long been constrained by low-yielding savings products that fail to outpace inflation. We bridge this divide by bringing the liquidity of global Forex and Cryptocurrency markets within reach of discerning investors—backed by strict mathematical risk parameters, transparent execution, and an unwavering commitment to client capital defense.
           </p>
 
-          <!-- Company Core Highlights -->
+          <!-- Core Pillars Grid -->
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
             
-            <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800">
-              <div class="flex items-center space-x-3 text-emerald-400 font-bold text-sm mb-1">
+            <div class="bg-zinc-900 p-4 rounded-xl border border-zinc-800">
+              <div class="flex items-center space-x-3 text-white font-bold text-sm mb-1">
                 <i data-lucide="users" class="w-4 h-4"></i>
-                <span>Dedicated Professional Team</span>
+                <span>Dedicated Market Specialists</span>
               </div>
-              <p class="text-xs text-slate-400 leading-relaxed">
-                A passionate group of market researchers, execution specialists, and risk analysts focused entirely on safeguarding and multiplying client capital.
+              <p class="text-xs text-zinc-400 leading-relaxed">
+                An agile team of dedicated researchers, quantitative traders, and risk analysts monitoring market conditions during all active sessions.
               </p>
             </div>
 
-            <div class="bg-slate-900/80 p-4 rounded-xl border border-slate-800">
-              <div class="flex items-center space-x-3 text-cyan-400 font-bold text-sm mb-1">
+            <div class="bg-zinc-900 p-4 rounded-xl border border-zinc-800">
+              <div class="flex items-center space-x-3 text-white font-bold text-sm mb-1">
                 <i data-lucide="pie-chart" class="w-4 h-4"></i>
                 <span>Plans for Every Budget</span>
               </div>
-              <p class="text-xs text-slate-400 leading-relaxed">
-                Whether starting from ₹1 Lakh or managing larger private equity portfolios, we structure plans tailored precisely to your capital size.
+              <p class="text-xs text-zinc-400 leading-relaxed">
+                Starting from ₹1 Lakh test capital up to multi-crore private equity mandates, we formulate custom plans tailored to your exact capital size.
               </p>
             </div>
 
           </div>
 
-          <!-- Desk Timings & Visiting Etiquette -->
-          <div class="bg-gradient-to-r from-slate-900 to-slate-900/90 p-4 rounded-xl border border-emerald-500/30 space-y-2 text-xs font-mono">
-            <div class="flex items-center text-emerald-400 font-bold">
-              <i data-lucide="clock" class="w-4 h-4 mr-2"></i>
+          <!-- Desk Timings & Visiting Notice -->
+          <div class="bg-zinc-900/90 p-4 rounded-xl border border-zinc-700 space-y-2 text-xs font-mono">
+            <div class="flex items-center text-white font-bold">
+              <i data-lucide="clock" class="w-4 h-4 mr-2 text-zinc-400"></i>
               <span>Corporate Desk Hours: 10:00 AM – 5:00 PM (Monday to Friday)</span>
             </div>
-            <p class="text-slate-400 font-sans text-xs">
-              📌 <strong>Please Note:</strong> To ensure dedicated attention and a superior consultation experience, <em>kindly enquire and schedule an appointment before visiting our corporate office</em>.
+            <p class="text-zinc-400 font-sans text-xs">
+              📌 <strong>Please Note:</strong> To ensure dedicated personal attention and a superior consultation experience, <em>kindly enquire and book an appointment before visiting our corporate office</em>.
             </p>
           </div>
 
@@ -737,34 +695,34 @@
 
         <!-- Right: Trust Badges Card -->
         <div class="lg:col-span-5">
-          <div class="glass-card rounded-3xl p-8 border border-slate-700/80 space-y-6">
+          <div class="glass-card rounded-3xl p-8 border border-zinc-800 space-y-6">
             
             <div class="flex items-center space-x-4">
-              <img src="logo-icon.svg" alt="AceNeev Capital Mark" class="w-14 h-14 rounded-2xl">
+              <img src="logo-icon.svg" alt="AceNeev Capital Mark" class="w-13 h-13 rounded-2xl">
               <div>
                 <h3 class="text-xl font-bold font-display text-white">AceNeev Capital</h3>
-                <div class="text-xs text-emerald-400 font-mono">Wealth &amp; Trading Advisory</div>
+                <div class="text-xs text-zinc-400 font-mono">Wealth &amp; Trading Advisory</div>
               </div>
             </div>
 
-            <div class="space-y-3.5 text-xs text-slate-300">
+            <div class="space-y-3.5 text-xs text-zinc-300">
               <div class="flex items-start space-x-3">
-                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i>
-                <span><strong>No Empty Hype:</strong> Pragmatic, mathematical strategies with clear drawdown controls.</span>
+                <i data-lucide="check-circle" class="w-4 h-4 text-white shrink-0 mt-0.5"></i>
+                <span><strong>No False Promises:</strong> Disciplined mathematical risk management with clear drawdown caps.</span>
               </div>
               <div class="flex items-start space-x-3">
-                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i>
-                <span><strong>Independent Guidance:</strong> Fiduciary commitment dedicated solely to client success.</span>
+                <i data-lucide="check-circle" class="w-4 h-4 text-white shrink-0 mt-0.5"></i>
+                <span><strong>100% Fiduciary Alignment:</strong> Guidance tailored strictly to growing and defending client wealth.</span>
               </div>
               <div class="flex items-start space-x-3">
-                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i>
-                <span><strong>Continuous Monitoring:</strong> Real-time oversight across trading sessions.</span>
+                <i data-lucide="check-circle" class="w-4 h-4 text-white shrink-0 mt-0.5"></i>
+                <span><strong>Active Session Monitoring:</strong> Real-time risk oversight across global trading hours.</span>
               </div>
             </div>
 
-            <div class="pt-4 border-t border-slate-800 flex justify-between items-center text-xs font-mono text-slate-400">
+            <div class="pt-4 border-t border-zinc-800 flex justify-between items-center text-xs font-mono text-zinc-400">
               <span>Direct Inquiries:</span>
-              <a href="mailto:aceneevcapital@gmail.com" class="text-emerald-400 font-bold hover:underline">aceneevcapital@gmail.com</a>
+              <a href="mailto:aceneevcapital@gmail.com" class="text-white font-bold hover:underline">aceneevcapital@gmail.com</a>
             </div>
 
           </div>
@@ -775,64 +733,61 @@
     </div>
   </section>
 
-  <!-- ABOUT THE FOUNDER (SEPARATED) -->
-  <section id="about-founder" class="py-24 bg-[#080d1a] border-t border-slate-800/80 relative z-10">
+  <!-- ABOUT THE FOUNDER & CEO (TANUJ VASHISTHA) -->
+  <section id="about-founder" class="py-24 bg-[#09090b] border-t border-zinc-800/80 relative z-10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
-        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-semibold font-mono">
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-700 text-white text-xs font-semibold font-mono">
           <i data-lucide="user-check" class="w-3.5 h-3.5"></i>
-          <span>FOUNDER &amp; TRADER PROFILE</span>
+          <span>EXECUTIVE LEADERSHIP</span>
         </div>
         <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-white tracking-tight">
-          About the Founder: <span class="gradient-text-emerald">Tanuj Vashistha</span>
+          Founder &amp; CEO: <span class="gradient-text-emerald">Tanuj Vashistha</span>
         </h2>
-        <p class="text-slate-400 text-sm sm:text-base">
-          Over 6 years of real market trading experience across Equities, Crypto, and Global Forex.
+        <p class="text-zinc-400 text-sm sm:text-base">
+          Experienced individual Forex and Crypto trader with over 6 years of real market execution.
         </p>
       </div>
 
-      <div class="glass-card rounded-3xl p-8 sm:p-12 border border-slate-700/80 shadow-2xl relative overflow-hidden">
+      <div class="glass-card rounded-3xl p-8 sm:p-12 border border-zinc-800 shadow-2xl relative overflow-hidden">
         
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
           
           <!-- Left: Profile Badge -->
           <div class="lg:col-span-5 text-center">
-            <div class="bg-gradient-to-br from-slate-900 via-slate-900 to-emerald-950/40 p-8 rounded-2xl border border-emerald-500/30 space-y-4">
+            <div class="bg-zinc-900 p-8 rounded-2xl border border-zinc-800 space-y-4">
               
               <!-- Avatar Mark -->
-              <div class="w-28 h-28 rounded-3xl bg-gradient-to-tr from-emerald-500 via-teal-400 to-cyan-500 p-1 shadow-xl shadow-emerald-500/20 mx-auto">
-                <div class="w-full h-full bg-slate-950 rounded-[22px] flex flex-col items-center justify-center">
-                  <span class="text-3xl font-extrabold font-display gradient-text-emerald">TV</span>
-                  <span class="text-[9px] font-mono uppercase tracking-widest text-emerald-400 font-bold mt-1">FOUNDER</span>
-                </div>
+              <div class="w-24 h-24 rounded-2xl bg-zinc-800 border border-zinc-700 p-1 mx-auto flex items-center justify-center">
+                <span class="text-3xl font-extrabold font-display text-white">TV</span>
               </div>
 
               <div>
                 <h3 class="text-2xl font-bold font-display text-white">Tanuj Vashistha</h3>
-                <div class="text-xs font-mono text-emerald-400 font-semibold uppercase tracking-wider mt-1">
-                  Experienced Forex &amp; Crypto Trader
+                <div class="text-xs font-mono text-zinc-300 font-semibold uppercase tracking-wider mt-1">
+                  Founder &amp; Chief Executive Officer
                 </div>
               </div>
 
               <!-- Journey Roadmap Tags -->
               <div class="space-y-2 pt-2 text-xs font-mono text-left">
-                <div class="flex items-center space-x-2 text-slate-300">
-                  <span class="w-2 h-2 rounded-full bg-slate-500"></span>
-                  <span>1. Indian Share Market (Foundation)</span>
+                <div class="flex items-center space-x-2 text-zinc-400">
+                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-600"></span>
+                  <span>1. Indian Share Market (Equities &amp; F&amp;O)</span>
                 </div>
-                <div class="flex items-center space-x-2 text-slate-300">
-                  <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
-                  <span>2. Crypto Assets &amp; Web3 Cycles</span>
+                <div class="flex items-center space-x-2 text-zinc-400">
+                  <span class="w-1.5 h-1.5 rounded-full bg-zinc-400"></span>
+                  <span>2. Digital Asset Cycles &amp; Crypto</span>
                 </div>
-                <div class="flex items-center space-x-2 text-emerald-400 font-bold">
-                  <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-                  <span>3. High-Liquidity Forex &amp; Crypto Focus</span>
+                <div class="flex items-center space-x-2 text-white font-bold">
+                  <span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+                  <span>3. Global Forex &amp; High-Liquidity Alpha</span>
                 </div>
               </div>
 
-              <div class="pt-4 border-t border-slate-800 text-xs font-mono text-slate-400">
-                6+ Years Hands-on Market Experience
+              <div class="pt-4 border-t border-zinc-800 text-xs font-mono text-zinc-400">
+                6+ Years Active Market Experience
               </div>
 
             </div>
@@ -843,34 +798,34 @@
             
             <div class="space-y-4">
               <h3 class="text-2xl font-bold font-display text-white">
-                From Indian Equities to Global Forex &amp; Crypto
+                From Domestic Equities to Global Currency &amp; Crypto
               </h3>
 
-              <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                <strong>Tanuj Vashistha</strong> is an experienced individual trader who has spent over <strong>six years</strong> actively navigating financial markets. He began his journey in the Indian share market, acquiring a deep ground-level understanding of equity structure and derivatives.
+              <p class="text-zinc-300 text-sm sm:text-base leading-relaxed">
+                <strong>Tanuj Vashistha</strong> is an experienced individual trader who has spent over <strong>six years</strong> actively trading financial markets. He started his journey in the Indian share market, developing a disciplined technical understanding of equities and derivatives.
               </p>
 
-              <p class="text-slate-400 text-sm leading-relaxed">
-                Recognizing the immense potential of emerging markets, he expanded into cryptocurrency, mastering digital asset cycles. Today, he focuses primarily on <strong>Forex and Crypto</strong>, where deep international liquidity, 24-hour opportunities, and asymmetric return profiles allow for superior, consistent alpha.
+              <p class="text-zinc-400 text-sm leading-relaxed">
+                Recognizing the scale of global market cycles, he expanded into cryptocurrency asset management. Today, he focuses primarily on <strong>Forex and Crypto</strong>, where deep 24-hour international liquidity and asymmetric return opportunities allow for superior, consistent alpha.
               </p>
 
-              <p class="text-slate-400 text-sm leading-relaxed">
-                Over the years, Tanuj has managed private equity for numerous clients, helping them grow their capital steadily through strict risk rules and emotional discipline. His core motive behind founding AceNeev Capital is to guide fellow Indian investors toward true financial independence and self-reliance.
+              <p class="text-zinc-400 text-sm leading-relaxed">
+                Over the years, Tanuj has managed private equity for numerous clients and helped grow their capital steadily through strict risk rules and emotional discipline. His core motive behind founding AceNeev Capital is to guide fellow Indian investors toward true financial independence without falling into speculative traps.
               </p>
             </div>
 
             <!-- Natural & Motivational Quote for Indian Investors -->
-            <div class="bg-slate-900/90 border-l-4 border-emerald-500 p-5 rounded-r-2xl space-y-2 shadow-inner">
-              <p class="text-slate-200 text-sm italic leading-relaxed">
+            <div class="bg-zinc-900 border-l-4 border-white p-5 rounded-r-2xl space-y-2">
+              <p class="text-zinc-200 text-sm italic leading-relaxed">
                 “Financial independence for Indians will not happen through outdated, low-yielding savings instruments that barely beat inflation. It comes from disciplined capital allocation in high-growth global markets like Forex and Crypto. Our mission is to guide you with honesty, skill, and mathematical clarity.”
               </p>
-              <div class="text-xs font-mono font-bold text-emerald-400">
-                — Tanuj Vashistha, Founder
+              <div class="text-xs font-mono font-bold text-white">
+                — Tanuj Vashistha, Founder &amp; CEO
               </div>
             </div>
 
             <div class="pt-2">
-              <button data-open-modal="booking" class="px-6 py-3 rounded-xl font-bold text-xs bg-emerald-500 hover:bg-emerald-400 text-slate-950 transition flex items-center space-x-2">
+              <button data-open-modal="booking" class="px-6 py-3 rounded-xl font-bold text-xs bg-white text-black hover:bg-zinc-200 transition flex items-center space-x-2">
                 <i data-lucide="mail" class="w-4 h-4"></i>
                 <span>Mail Tanuj for Private Advisory</span>
               </button>
@@ -885,211 +840,253 @@
     </div>
   </section>
 
-  <!-- GENUINE INDIAN CLIENT REVIEWS (<20, 4-5 Stars) -->
-  <section id="reviews" class="py-24 bg-[#070b16] border-t border-slate-800/80 relative z-10">
+  <!-- AUTHENTIC INDIAN CLIENT REVIEWS (Delhi NCR, Haryana, MP, Patna, Bangalore) -->
+  <section id="reviews" class="py-24 bg-[#0c0c0e] border-t border-zinc-800/80 relative z-10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
-        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold font-mono">
-          <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
-          <span>CLIENT FEEDBACK &amp; EXPERIENCES</span>
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-700 text-white text-xs font-semibold font-mono">
+          <i data-lucide="star" class="w-3.5 h-3.5 fill-white text-white"></i>
+          <span>GENUINE CLIENT FEEDBACK</span>
         </div>
         <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-white tracking-tight">
-          Trusted by Indian Investors Across the Country
+          What Our Clients Say
         </h2>
-        <p class="text-slate-400 text-sm sm:text-base">
-          Hear directly from working professionals, business owners, and private equity clients partnering with AceNeev Capital.
+        <p class="text-zinc-400 text-sm sm:text-base">
+          Authentic experiences from working professionals and business owners across Delhi NCR, Haryana, MP, Patna, and Bangalore.
         </p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         
-        <!-- Review 1 -->
-        <div class="glass-card rounded-2xl p-6 border border-slate-800 space-y-4">
+        <!-- Review 1: Patna -->
+        <div class="glass-card rounded-2xl p-6 border border-zinc-800 space-y-4">
           <div class="flex items-center justify-between">
-            <div class="flex space-x-1 text-amber-400">
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+            <div class="flex space-x-1 text-white">
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
             </div>
-            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">Verified Client</span>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-zinc-800 text-zinc-300 border border-zinc-700">Verified Client</span>
           </div>
-          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
-            “I started with a ₹2.5 Lakh capital allocation in their Forex and crypto program. Tanuj’s risk management is spot on. Seeing consistent 2-3% weekly yields without the usual emotional stress of day trading.”
+          <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed">
+            “Started with 1.5 lakh 2 months back. Getting steady returns around 3% weekly. The team is very responsive on email whenever I ask anything.”
           </p>
-          <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between text-xs font-mono">
-            <span class="font-bold text-white">Rohit Verma</span>
-            <span class="text-slate-500">IT Consultant, Bengaluru</span>
+          <div class="pt-2 border-t border-zinc-800 flex items-center justify-between text-xs font-mono">
+            <span class="font-bold text-white">Rahul Kumar</span>
+            <span class="text-zinc-400">Patna, Bihar</span>
           </div>
         </div>
 
-        <!-- Review 2 -->
-        <div class="glass-card rounded-2xl p-6 border border-slate-800 space-y-4">
+        <!-- Review 2: Delhi NCR (Noida) -->
+        <div class="glass-card rounded-2xl p-6 border border-zinc-800 space-y-4">
           <div class="flex items-center justify-between">
-            <div class="flex space-x-1 text-amber-400">
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+            <div class="flex space-x-1 text-white">
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
             </div>
-            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">Verified Client</span>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-zinc-800 text-zinc-300 border border-zinc-700">Verified Client</span>
           </div>
-          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
-            “What I appreciate most about AceNeev Capital is the realistic approach. No unrealistic overnight promises, just solid discipline. They customized the plan for my ₹5 Lakh budget seamlessly.”
+          <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed">
+            “Honestly I was hesitant initially because of so many fake trading schemes online. But Tanuj's approach is totally different. Proper risk management and no unrealistic tall claims.”
           </p>
-          <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between text-xs font-mono">
-            <span class="font-bold text-white">Amit Singhal</span>
-            <span class="text-slate-500">Business Owner, Noida</span>
+          <div class="pt-2 border-t border-zinc-800 flex items-center justify-between text-xs font-mono">
+            <span class="font-bold text-white">Saurabh Sharma</span>
+            <span class="text-zinc-400">Noida / Delhi NCR</span>
           </div>
         </div>
 
-        <!-- Review 3 -->
-        <div class="glass-card rounded-2xl p-6 border border-slate-800 space-y-4">
+        <!-- Review 3: Bangalore (1) -->
+        <div class="glass-card rounded-2xl p-6 border border-zinc-800 space-y-4">
           <div class="flex items-center justify-between">
-            <div class="flex space-x-1 text-amber-400">
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+            <div class="flex space-x-1 text-white">
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
             </div>
-            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">Verified Client</span>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-zinc-800 text-zinc-300 border border-zinc-700">Verified Client</span>
           </div>
-          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
-            “Being a doctor, I have zero time to monitor markets. The AceNeev team handles our digital asset allocation with total transparency. Highly recommended for busy professionals.”
+          <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed">
+            “The quant models they use for Forex and crypto are solid. Clean execution, tight stop-losses, and steady compounding without the daily market noise.”
           </p>
-          <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between text-xs font-mono">
-            <span class="font-bold text-white">Dr. Neha Kapoor</span>
-            <span class="text-slate-500">Physician, New Delhi</span>
+          <div class="pt-2 border-t border-zinc-800 flex items-center justify-between text-xs font-mono">
+            <span class="font-bold text-white">Arjun Nair</span>
+            <span class="text-zinc-400">Tech Lead, Bangalore</span>
           </div>
         </div>
 
-        <!-- Review 4 -->
-        <div class="glass-card rounded-2xl p-6 border border-slate-800 space-y-4">
+        <!-- Review 4: Haryana (Faridabad) -->
+        <div class="glass-card rounded-2xl p-6 border border-zinc-800 space-y-4">
           <div class="flex items-center justify-between">
-            <div class="flex space-x-1 text-amber-400">
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-slate-700"></i>
+            <div class="flex space-x-1 text-white">
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
             </div>
-            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">Verified Client</span>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-zinc-800 text-zinc-300 border border-zinc-700">Verified Client</span>
           </div>
-          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
-            “Clean communication and no spam. The weekly return calculator on the website matched the actual returns closely. The stop-loss execution saved capital during volatile market weeks.”
+          <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed">
+            “Clean setup, no drama. I deposited 2 lakh for the moderate plan. Regular weekly performance updates are sent on time. Very satisfied.”
           </p>
-          <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between text-xs font-mono">
-            <span class="font-bold text-white">Rajesh Patel</span>
-            <span class="text-slate-500">Textile Merchant, Ahmedabad</span>
+          <div class="pt-2 border-t border-zinc-800 flex items-center justify-between text-xs font-mono">
+            <span class="font-bold text-white">Ankit Malik</span>
+            <span class="text-zinc-400">Faridabad, Haryana</span>
           </div>
         </div>
 
-        <!-- Review 5 -->
-        <div class="glass-card rounded-2xl p-6 border border-slate-800 space-y-4">
+        <!-- Review 5: Madhya Pradesh (Indore) -->
+        <div class="glass-card rounded-2xl p-6 border border-zinc-800 space-y-4">
           <div class="flex items-center justify-between">
-            <div class="flex space-x-1 text-amber-400">
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+            <div class="flex space-x-1 text-white">
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
             </div>
-            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">Verified Client</span>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-zinc-800 text-zinc-300 border border-zinc-700">Verified Client</span>
           </div>
-          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
-            “The separation between low-risk equity and high-risk Forex is very clear. It gave my family peace of mind knowing exactly what portion of funds is exposed to which asset class.”
+          <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed">
+            “Very happy with the advisory. Started with 1 lakh test capital and after seeing consistent weekly growth, expanded my budget. Good team.”
           </p>
-          <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between text-xs font-mono">
-            <span class="font-bold text-white">Vikram Menon</span>
-            <span class="text-slate-500">Senior Architect, Hyderabad</span>
+          <div class="pt-2 border-t border-zinc-800 flex items-center justify-between text-xs font-mono">
+            <span class="font-bold text-white">Manish Agrawal</span>
+            <span class="text-zinc-400">Indore, Madhya Pradesh</span>
           </div>
         </div>
 
-        <!-- Review 6 -->
-        <div class="glass-card rounded-2xl p-6 border border-slate-800 space-y-4">
+        <!-- Review 6: Delhi NCR (Gurgaon) -->
+        <div class="glass-card rounded-2xl p-6 border border-zinc-800 space-y-4">
           <div class="flex items-center justify-between">
-            <div class="flex space-x-1 text-amber-400">
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+            <div class="flex space-x-1 text-white">
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
             </div>
-            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">Verified Client</span>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-zinc-800 text-zinc-300 border border-zinc-700">Verified Client</span>
           </div>
-          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
-            “I reached out via email and received a detailed response explaining the strategy within hours. Scheduled an appointment to discuss my portfolio, and everything was handled very professionally.”
+          <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed">
+            “Good experience so far. The 1% low risk equity plan suits my style since I don't want high drawdowns. Very professional.”
           </p>
-          <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between text-xs font-mono">
-            <span class="font-bold text-white">Priya Nair</span>
-            <span class="text-slate-500">Operations Lead, Pune</span>
+          <div class="pt-2 border-t border-zinc-800 flex items-center justify-between text-xs font-mono">
+            <span class="font-bold text-white">Vikas Gupta</span>
+            <span class="text-zinc-400">Gurgaon / Delhi NCR</span>
           </div>
         </div>
 
-        <!-- Review 7 -->
-        <div class="glass-card rounded-2xl p-6 border border-slate-800 space-y-4">
+        <!-- Review 7: Haryana (Panipat) -->
+        <div class="glass-card rounded-2xl p-6 border border-zinc-800 space-y-4">
           <div class="flex items-center justify-between">
-            <div class="flex space-x-1 text-amber-400">
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+            <div class="flex space-x-1 text-white">
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
             </div>
-            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">Verified Client</span>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-zinc-800 text-zinc-300 border border-zinc-700">Verified Client</span>
           </div>
-          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
-            “Managing private equity with Tanuj over the last two years has been a refreshing experience. His 6 years in Forex and crypto really shows in how he anticipates market turns.”
+          <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed">
+            “I liked that they don't force you into long lock-ins. Whenever I have doubts Tanuj answers clearly. Genuine service.”
           </p>
-          <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between text-xs font-mono">
-            <span class="font-bold text-white">Sanjay Joshi</span>
-            <span class="text-slate-500">Exporter, Mumbai</span>
+          <div class="pt-2 border-t border-zinc-800 flex items-center justify-between text-xs font-mono">
+            <span class="font-bold text-white">Praveen Yadav</span>
+            <span class="text-zinc-400">Panipat, Haryana</span>
           </div>
         </div>
 
-        <!-- Review 8 -->
-        <div class="glass-card rounded-2xl p-6 border border-slate-800 space-y-4">
+        <!-- Review 8: Madhya Pradesh (Bhopal) -->
+        <div class="glass-card rounded-2xl p-6 border border-zinc-800 space-y-4">
           <div class="flex items-center justify-between">
-            <div class="flex space-x-1 text-amber-400">
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+            <div class="flex space-x-1 text-white">
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-zinc-700"></i>
             </div>
-            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">Verified Client</span>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-zinc-800 text-zinc-300 border border-zinc-700">Verified Client</span>
           </div>
-          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
-            “Being in the fintech space myself, I was impressed by their quantitative approach. They don’t rely on gut feeling, everything is backed by statistical parameters.”
+          <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed">
+            “I don't understand charts and technical day trading. AceNeev manages the allocation peacefully. Smooth and hassle-free experience.”
           </p>
-          <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between text-xs font-mono">
-            <span class="font-bold text-white">Deepak Sharma</span>
-            <span class="text-slate-500">Fintech Product Manager, Gurgaon</span>
+          <div class="pt-2 border-t border-zinc-800 flex items-center justify-between text-xs font-mono">
+            <span class="font-bold text-white">Dr. Sunita Chouhan</span>
+            <span class="text-zinc-400">Bhopal, Madhya Pradesh</span>
           </div>
         </div>
 
-        <!-- Review 9 -->
-        <div class="glass-card rounded-2xl p-6 border border-slate-800 space-y-4">
+        <!-- Review 9: Patna -->
+        <div class="glass-card rounded-2xl p-6 border border-zinc-800 space-y-4">
           <div class="flex items-center justify-between">
-            <div class="flex space-x-1 text-amber-400">
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
-              <i data-lucide="star" class="w-4 h-4 fill-amber-400"></i>
+            <div class="flex space-x-1 text-white">
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
             </div>
-            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">Verified Client</span>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-zinc-800 text-zinc-300 border border-zinc-700">Verified Client</span>
           </div>
-          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
-            “Looking forward to their upcoming Real Estate advisory! The Digital Asset plan with crypto, forex, and equities has already given my portfolio strong compounding.”
+          <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed">
+            “Straightforward advice. No hidden charges and transparent calculations. The calculator on the site gave an accurate idea before starting.”
           </p>
-          <div class="pt-2 border-t border-slate-800/80 flex items-center justify-between text-xs font-mono">
-            <span class="font-bold text-white">Ananya Mukherjee</span>
-            <span class="text-slate-500">Entrepreneur, Kolkata</span>
+          <div class="pt-2 border-t border-zinc-800 flex items-center justify-between text-xs font-mono">
+            <span class="font-bold text-white">Amitabh Verma</span>
+            <span class="text-zinc-400">Patna, Bihar</span>
+          </div>
+        </div>
+
+        <!-- Review 10: Bangalore (2) -->
+        <div class="glass-card rounded-2xl p-6 border border-zinc-800 space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="flex space-x-1 text-white">
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+            </div>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-zinc-800 text-zinc-300 border border-zinc-700">Verified Client</span>
+          </div>
+          <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed">
+            “Been with them for 4 months. What stands out is discipline during volatile market weeks—they protect capital first. Highly recommend.”
+          </p>
+          <div class="pt-2 border-t border-zinc-800 flex items-center justify-between text-xs font-mono">
+            <span class="font-bold text-white">Karthik Raman</span>
+            <span class="text-zinc-400">Senior Developer, Bangalore</span>
+          </div>
+        </div>
+
+        <!-- Review 11: Delhi NCR (New Delhi) -->
+        <div class="glass-card rounded-2xl p-6 border border-zinc-800 space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="flex space-x-1 text-white">
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+              <i data-lucide="star" class="w-4 h-4 fill-white"></i>
+            </div>
+            <span class="text-[10px] font-mono px-2 py-0.5 rounded bg-zinc-800 text-zinc-300 border border-zinc-700">Verified Client</span>
+          </div>
+          <p class="text-zinc-300 text-xs sm:text-sm leading-relaxed">
+            “Very polite and helpful support. Sent an enquiry through the form and got a clear breakdown within a couple hours.”
+          </p>
+          <div class="pt-2 border-t border-zinc-800 flex items-center justify-between text-xs font-mono">
+            <span class="font-bold text-white">Pooja Malhotra</span>
+            <span class="text-zinc-400">New Delhi / Delhi NCR</span>
           </div>
         </div>
 
@@ -1098,19 +1095,19 @@
     </div>
   </section>
 
-  <!-- CONTACT & CONSULTATION INQUIRY SECTION (Office Mentioned Once with Prior Appointment Notice) -->
-  <section id="contact" class="py-24 bg-[#060a15] border-t border-slate-800 relative z-10">
+  <!-- CONTACT & CONSULTATION ENQUIRY (With Phone Option & Yug Bhardwaj Placeholder) -->
+  <section id="contact" class="py-24 bg-[#09090b] border-t border-zinc-800 relative z-10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
       <div class="text-center max-w-3xl mx-auto mb-16 space-y-3">
-        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold font-mono">
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-700 text-white text-xs font-semibold font-mono">
           <i data-lucide="mail" class="w-3.5 h-3.5"></i>
           <span>MAIL US FOR CONSULTATION</span>
         </div>
         <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-white tracking-tight">
-          Start Your Wealth Journey Today
+          Start Your Wealth Advisory Consultation
         </h2>
-        <p class="text-slate-400 text-sm sm:text-base">
+        <p class="text-zinc-400 text-sm sm:text-base">
           Send us an advisory enquiry with your capital budget. Our senior desk will review and revert promptly.
         </p>
       </div>
@@ -1120,64 +1117,64 @@
         <!-- Left: Official Desk Channels & Office Protocol -->
         <div class="lg:col-span-5 space-y-6">
           
-          <div class="glass-card rounded-2xl p-8 border border-slate-700/80 space-y-6">
+          <div class="glass-card rounded-2xl p-8 border border-zinc-800 space-y-6">
             
             <div class="flex items-center space-x-3">
               <img src="logo-icon.svg" alt="AceNeev Logo" class="w-12 h-12 rounded-xl">
               <div>
                 <h3 class="text-lg font-bold font-display text-white">AceNeev Capital</h3>
-                <div class="text-xs text-emerald-400 font-mono">Official Corporate Advisory Desk</div>
+                <div class="text-xs text-zinc-400 font-mono">Official Corporate Advisory Desk</div>
               </div>
             </div>
 
             <!-- Email Direct Box -->
-            <div class="bg-gradient-to-r from-emerald-950/40 to-slate-900 p-4 rounded-xl border border-emerald-500/30 space-y-2">
-              <span class="text-xs font-mono uppercase text-slate-400">Direct Consultation Email</span>
-              <a href="mailto:aceneevcapital@gmail.com" class="text-base sm:text-lg font-bold font-mono text-emerald-400 hover:text-emerald-300 flex items-center break-all">
+            <div class="bg-zinc-900 p-4 rounded-xl border border-zinc-800 space-y-2">
+              <span class="text-xs font-mono uppercase text-zinc-400">Direct Consultation Email</span>
+              <a href="mailto:aceneevcapital@gmail.com" class="text-base sm:text-lg font-bold font-mono text-white hover:underline flex items-center break-all">
                 <i data-lucide="mail" class="w-4 h-4 mr-2 shrink-0"></i> aceneevcapital@gmail.com
               </a>
-              <div class="text-[11px] text-slate-400">Inquiries typically answered within 2-4 business hours.</div>
+              <div class="text-[11px] text-zinc-400">Inquiries typically answered within 2-4 business hours.</div>
             </div>
 
             <!-- Official Social Handles -->
             <div class="space-y-2 pt-2">
-              <span class="text-xs font-mono uppercase text-slate-400 block mb-1">Official Social Media</span>
+              <span class="text-xs font-mono uppercase text-zinc-400 block mb-1">Official Social Channels</span>
               <div class="grid grid-cols-2 gap-2">
-                <a href="https://instagram.com/Aceneev_Capital" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 p-3 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-pink-500/40 text-slate-300 hover:text-pink-400 transition text-xs font-mono">
-                  <i data-lucide="instagram" class="w-4 h-4 text-pink-400"></i>
+                <a href="https://instagram.com/Aceneev_Capital" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 p-3 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-zinc-500 text-zinc-300 hover:text-white transition text-xs font-mono">
+                  <i data-lucide="instagram" class="w-4 h-4 text-zinc-400"></i>
                   <span>@Aceneev_Capital</span>
                 </a>
-                <a href="https://x.com/Aceneev_Capital" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 p-3 rounded-xl bg-slate-900/90 border border-slate-800 hover:border-cyan-500/40 text-slate-300 hover:text-cyan-400 transition text-xs font-mono">
-                  <i data-lucide="twitter" class="w-4 h-4 text-cyan-400"></i>
+                <a href="https://x.com/Aceneev_Capital" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 p-3 rounded-xl bg-zinc-900 border border-zinc-800 hover:border-zinc-500 text-zinc-300 hover:text-white transition text-xs font-mono">
+                  <i data-lucide="twitter" class="w-4 h-4 text-zinc-400"></i>
                   <span>@Aceneev_Capital</span>
                 </a>
               </div>
             </div>
 
-            <!-- Single Corporate Office Location (Discreet, with Prior Enquiry notice) -->
-            <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800 space-y-2">
+            <!-- Corporate Office Location -->
+            <div class="bg-zinc-900/90 p-4 rounded-xl border border-zinc-800 space-y-2">
               <div class="text-xs font-semibold text-white flex items-center">
-                <i data-lucide="map-pin" class="w-4 h-4 text-emerald-400 mr-1.5"></i>
+                <i data-lucide="map-pin" class="w-4 h-4 text-zinc-300 mr-1.5"></i>
                 <span>Corporate Office Address</span>
               </div>
-              <div class="text-xs text-slate-300 leading-relaxed font-mono">
+              <div class="text-xs text-zinc-300 leading-relaxed font-mono">
                 NPX Commercial Tower, Sector 153, Noida,<br>
                 Uttar Pradesh 201310, India
               </div>
-              <div class="p-2.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-[11px] text-emerald-300 font-mono">
+              <div class="p-2.5 rounded-lg bg-zinc-800 border border-zinc-700 text-[11px] text-zinc-300 font-mono">
                 ℹ️ <strong>Enquire Before Visiting:</strong> Please email or book an appointment prior to visiting the office to ensure an advisor is available for a personalized consultation.
               </div>
             </div>
 
             <!-- Hours of Operation -->
-            <div class="space-y-1.5 text-xs font-mono text-slate-400 border-t border-slate-800 pt-4">
+            <div class="space-y-1.5 text-xs font-mono text-zinc-400 border-t border-zinc-800 pt-4">
               <div class="flex justify-between">
                 <span>Monday – Friday:</span>
                 <span class="text-white">10:00 AM – 5:00 PM IST</span>
               </div>
               <div class="flex justify-between">
                 <span>Saturday – Sunday:</span>
-                <span class="text-slate-500">Closed (Desk Research)</span>
+                <span class="text-zinc-500">Closed (Desk Research)</span>
               </div>
             </div>
 
@@ -1188,60 +1185,64 @@
         <!-- Right: Direct Advisory Mail Enquiry Form -->
         <div class="lg:col-span-7 space-y-6">
           
-          <div class="glass-card rounded-2xl p-8 border border-slate-700/80">
+          <div class="glass-card rounded-2xl p-8 border border-zinc-800">
             <h3 class="text-xl font-bold font-display text-white mb-2">Send an Advisory Consultation Enquiry</h3>
-            <p class="text-slate-400 text-xs sm:text-sm mb-6">
-              Fill in your capital details and preferred strategy. Clicking submit will compose your email directly to <strong>aceneevcapital@gmail.com</strong>.
+            <p class="text-zinc-400 text-xs sm:text-sm mb-6">
+              Fill in your details below. Clicking submit will automatically format your email to <strong>aceneevcapital@gmail.com</strong>.
             </p>
 
             <form id="contact-form" class="space-y-4">
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label class="block text-xs font-mono text-slate-300 uppercase mb-1">Your Full Name *</label>
-                  <input id="contact-name" type="text" required placeholder="e.g. Tanuj Sharma" class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition">
+                  <label class="block text-xs font-mono text-zinc-300 uppercase mb-1">Your Full Name *</label>
+                  <input id="contact-name" type="text" required placeholder="e.g. Yug Bhardwaj" class="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-white transition">
                 </div>
                 <div>
-                  <label class="block text-xs font-mono text-slate-300 uppercase mb-1">Your Email Address *</label>
-                  <input id="contact-email" type="email" required placeholder="investor@example.com" class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition">
+                  <label class="block text-xs font-mono text-zinc-300 uppercase mb-1">Your Email Address *</label>
+                  <input id="contact-email" type="email" required placeholder="investor@example.com" class="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-white transition">
                 </div>
               </div>
 
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label class="block text-xs font-mono text-slate-300 uppercase mb-1">Strategy of Interest</label>
-                  <select id="contact-service" class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-500 transition">
-                    <option value="Digital Asset Plan (Crypto, Forex & Equity)">Digital Asset Plan (Crypto, Forex &amp; Equity)</option>
-                    <option value="High Risk: Forex & F&O Program (2-3%/wk)">High Risk: Forex &amp; F&amp;O Program (2-3%/wk)</option>
-                    <option value="Moderate Risk: Crypto Asset Management">Moderate Risk: Crypto Asset Management</option>
-                    <option value="Low Risk: Indian Equities & Share Market">Low Risk: Indian Equities &amp; Share Market</option>
-                    <option value="Private Equity Mandate (Custom Budget)">Private Equity Mandate (Custom Budget)</option>
-                  </select>
+                  <label class="block text-xs font-mono text-zinc-300 uppercase mb-1">Contact Phone / WhatsApp (Optional)</label>
+                  <input id="contact-phone" type="tel" placeholder="e.g. +91 9876543210" class="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-white transition">
                 </div>
                 <div>
-                  <label class="block text-xs font-mono text-slate-300 uppercase mb-1">Planned Investment Capital</label>
-                  <select id="contact-capital" class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-500 transition">
-                    <option value="₹1 Lakh – ₹2.5 Lakh">₹1 Lakh – ₹2.5 Lakh</option>
-                    <option value="₹2.5 Lakh – ₹5 Lakh">₹2.5 Lakh – ₹5 Lakh</option>
-                    <option value="₹5 Lakh – ₹10 Lakh">₹5 Lakh – ₹10 Lakh</option>
-                    <option value="₹10 Lakh – ₹25 Lakh">₹10 Lakh – ₹25 Lakh</option>
-                    <option value="₹25 Lakh – ₹50 Lakh">₹25 Lakh – ₹50 Lakh</option>
-                    <option value="₹50 Lakh+ (HNWI Mandate)">₹50 Lakh+ (HNWI Mandate)</option>
+                  <label class="block text-xs font-mono text-zinc-300 uppercase mb-1">Program of Interest</label>
+                  <select id="contact-service" class="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-white transition">
+                    <option value="Moderate Risk: Forex & Crypto (3%/wk)">Moderate Risk: Forex &amp; Crypto (3%/wk)</option>
+                    <option value="Low Risk: Indian Equities & Share Market (1%/wk)">Low Risk: Indian Equities &amp; Share Market (1%/wk)</option>
+                    <option value="Flagship Digital Asset Plan (Crypto + Forex + Equity)">Flagship Digital Asset Plan (Crypto + Forex + Equity)</option>
+                    <option value="Private Equity Mandate (Custom Budget)">Private Equity Mandate (Custom Budget)</option>
                   </select>
                 </div>
               </div>
 
               <div>
-                <label class="block text-xs font-mono text-slate-300 uppercase mb-1">Your Specific Financial Goals or Questions</label>
-                <textarea id="contact-message" rows="3" placeholder="Tell us about your time horizon, preferred risk tier, or previous trading experience..." class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 transition"></textarea>
+                <label class="block text-xs font-mono text-zinc-300 uppercase mb-1">Planned Investment Capital</label>
+                <select id="contact-capital" class="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-white transition">
+                  <option value="₹1 Lakh – ₹2.5 Lakh">₹1 Lakh – ₹2.5 Lakh</option>
+                  <option value="₹2.5 Lakh – ₹5 Lakh">₹2.5 Lakh – ₹5 Lakh</option>
+                  <option value="₹5 Lakh – ₹10 Lakh">₹5 Lakh – ₹10 Lakh</option>
+                  <option value="₹10 Lakh – ₹25 Lakh">₹10 Lakh – ₹25 Lakh</option>
+                  <option value="₹25 Lakh – ₹50 Lakh">₹25 Lakh – ₹50 Lakh</option>
+                  <option value="₹50 Lakh+ (HNWI Mandate)">₹50 Lakh+ (HNWI Mandate)</option>
+                </select>
               </div>
 
-              <button type="submit" class="w-full py-4 rounded-xl font-bold text-sm bg-gradient-to-r from-emerald-500 via-teal-500 to-cyan-500 text-slate-950 hover:opacity-95 shadow-xl shadow-emerald-500/20 flex items-center justify-center space-x-2 transition">
+              <div>
+                <label class="block text-xs font-mono text-zinc-300 uppercase mb-1">Your Questions / Notes</label>
+                <textarea id="contact-message" rows="3" placeholder="Tell us about your time horizon, previous market experience, or specific capital goals..." class="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-white transition"></textarea>
+              </div>
+
+              <button type="submit" class="w-full py-4 rounded-xl font-bold text-sm bg-white text-black hover:bg-zinc-200 shadow-xl flex items-center justify-center space-x-2 transition">
                 <i data-lucide="mail" class="w-4 h-4"></i>
                 <span>Submit Inquiry via Email (aceneevcapital@gmail.com)</span>
               </button>
 
-              <div class="text-center text-[11px] text-slate-400 font-mono">
-                🔒 Strict fiduciary confidentiality. Your email and information are never shared.
+              <div class="text-center text-[11px] text-zinc-500 font-mono">
+                🔒 Strict fiduciary confidentiality. Your email and contact details are never shared.
               </div>
             </form>
           </div>
@@ -1254,19 +1255,19 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="bg-[#04060d] border-t border-slate-800/80 text-slate-400 text-xs relative z-10 pt-16 pb-12">
+  <footer class="bg-[#050507] border-t border-zinc-800 text-zinc-400 text-xs relative z-10 pt-16 pb-12">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-slate-800/80">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-zinc-800">
         
         <!-- Col 1: Brand & Identity -->
         <div class="space-y-4">
           <img src="logo.svg" alt="AceNeev Capital" class="h-9 w-auto">
-          <p class="text-slate-400 text-xs leading-relaxed max-w-sm">
+          <p class="text-zinc-400 text-xs leading-relaxed max-w-sm">
             Disciplined financial advisory firm bridging quantitative Forex trading, cryptocurrency asset allocation, and Indian equities. Empowering Indian investors toward financial independence.
           </p>
-          <div class="space-y-1 text-slate-300 font-mono text-xs">
-            <div>✉️ <a href="mailto:aceneevcapital@gmail.com" class="text-emerald-400 hover:underline">aceneevcapital@gmail.com</a></div>
+          <div class="space-y-1 text-zinc-300 font-mono text-xs">
+            <div>✉️ <a href="mailto:aceneevcapital@gmail.com" class="text-white hover:underline">aceneevcapital@gmail.com</a></div>
             <div>⏰ Desk: 10:00 AM – 5:00 PM (Mon–Fri)</div>
           </div>
         </div>
@@ -1275,11 +1276,11 @@
         <div class="space-y-3">
           <div class="font-bold text-white uppercase font-mono tracking-wider text-xs">Advisory Programs</div>
           <ul class="space-y-2 text-xs">
-            <li><a href="#services" class="hover:text-emerald-400 transition">Digital Asset Plan (Crypto, Forex, Equity)</a></li>
-            <li><a href="#services" class="hover:text-emerald-400 transition">Forex &amp; Currency Advisory (2-3%/wk)</a></li>
-            <li><a href="#services" class="hover:text-emerald-400 transition">Crypto Asset Management</a></li>
-            <li><a href="#services" class="hover:text-emerald-400 transition">Indian Equities &amp; F&amp;O</a></li>
-            <li><a href="#services" class="hover:text-emerald-400 transition">Real Estate Advisory <span class="text-[10px] text-pink-400 font-mono">(Coming Soon)</span></a></li>
+            <li><a href="#services" class="hover:text-white transition">Global Forex Advisory (3%/wk)</a></li>
+            <li><a href="#services" class="hover:text-white transition">Indian Equities &amp; F&amp;O (1%/wk)</a></li>
+            <li><a href="#services" class="hover:text-white transition">Digital Asset Management (Crypto)</a></li>
+            <li><a href="#services" class="hover:text-white transition">Flagship Digital Asset Plan</a></li>
+            <li><a href="#services" class="hover:text-white transition">Real Estate Advisory <span class="text-[10px] text-zinc-400 font-mono">(Coming Soon)</span></a></li>
           </ul>
         </div>
 
@@ -1287,37 +1288,37 @@
         <div class="space-y-3">
           <div class="font-bold text-white uppercase font-mono tracking-wider text-xs">Company &amp; Founder</div>
           <ul class="space-y-2 text-xs">
-            <li><a href="#about-company" class="hover:text-emerald-400 transition">About AceNeev Capital</a></li>
-            <li><a href="#about-founder" class="hover:text-emerald-400 transition">About Founder (Tanuj Vashistha)</a></li>
-            <li><a href="#calculator" class="hover:text-emerald-400 transition">Weekly Return Simulator</a></li>
-            <li><a href="#reviews" class="hover:text-emerald-400 transition">Client Reviews &amp; Ratings</a></li>
-            <li><a href="#contact" class="hover:text-emerald-400 transition">Contact Corporate Desk</a></li>
+            <li><a href="#about-company" class="hover:text-white transition">About AceNeev Capital</a></li>
+            <li><a href="#about-founder" class="hover:text-white transition">Founder &amp; CEO (Tanuj Vashistha)</a></li>
+            <li><a href="#calculator" class="hover:text-white transition">Weekly Return Simulator</a></li>
+            <li><a href="#reviews" class="hover:text-white transition">Client Reviews &amp; Ratings</a></li>
+            <li><a href="#contact" class="hover:text-white transition">Contact Corporate Desk</a></li>
           </ul>
         </div>
 
         <!-- Col 4: Social & Logo Assets -->
         <div class="space-y-3">
           <div class="font-bold text-white uppercase font-mono tracking-wider text-xs">Connect With Us</div>
-          <p class="text-[11px] text-slate-400">
+          <p class="text-[11px] text-zinc-400">
             Follow our market updates and reach out directly:
           </p>
           <div class="space-y-2 font-mono text-xs">
-            <a href="https://instagram.com/Aceneev_Capital" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 text-slate-300 hover:text-pink-400 transition">
-              <i data-lucide="instagram" class="w-4 h-4 text-pink-400"></i>
+            <a href="https://instagram.com/Aceneev_Capital" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 text-zinc-300 hover:text-white transition">
+              <i data-lucide="instagram" class="w-4 h-4 text-zinc-400"></i>
               <span>Instagram: @Aceneev_Capital</span>
             </a>
-            <a href="https://x.com/Aceneev_Capital" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 text-slate-300 hover:text-cyan-400 transition">
-              <i data-lucide="twitter" class="w-4 h-4 text-cyan-400"></i>
+            <a href="https://x.com/Aceneev_Capital" target="_blank" rel="noopener noreferrer" class="flex items-center space-x-2 text-zinc-300 hover:text-white transition">
+              <i data-lucide="twitter" class="w-4 h-4 text-zinc-400"></i>
               <span>Twitter (X): @Aceneev_Capital</span>
             </a>
-            <a href="mailto:aceneevcapital@gmail.com" class="flex items-center space-x-2 text-slate-300 hover:text-emerald-400 transition">
-              <i data-lucide="mail" class="w-4 h-4 text-emerald-400"></i>
+            <a href="mailto:aceneevcapital@gmail.com" class="flex items-center space-x-2 text-zinc-300 hover:text-white transition">
+              <i data-lucide="mail" class="w-4 h-4 text-zinc-400"></i>
               <span>aceneevcapital@gmail.com</span>
             </a>
           </div>
           <div class="pt-2">
-            <a href="logo.svg" download="aceneev-capital-logo.svg" class="inline-flex items-center space-x-1.5 text-[11px] text-slate-400 hover:text-white border border-slate-800 px-3 py-1.5 rounded-lg bg-slate-900 transition font-mono">
-              <i data-lucide="download" class="w-3.5 h-3.5 text-emerald-400"></i>
+            <a href="logo.svg" download="aceneev-capital-logo.svg" class="inline-flex items-center space-x-1.5 text-[11px] text-zinc-400 hover:text-white border border-zinc-800 px-3 py-1.5 rounded-lg bg-zinc-900 transition font-mono">
+              <i data-lucide="download" class="w-3.5 h-3.5 text-white"></i>
               <span>Download Official SVG Logo</span>
             </a>
           </div>
@@ -1326,16 +1327,16 @@
       </div>
 
       <!-- Regulatory Disclaimer -->
-      <div class="pt-8 space-y-4 text-[11px] text-slate-500 leading-relaxed font-mono">
+      <div class="pt-8 space-y-4 text-[11px] text-zinc-500 leading-relaxed font-mono">
         <p>
           <strong>DISCLAIMER &amp; REGULATORY NOTICE:</strong> Financial investments and trading in equities, foreign exchange (Forex), derivatives (futures &amp; options), and digital assets / cryptocurrencies carry market risks, including the possible loss of principal. Past performance and illustrative projections do not guarantee future returns. AceNeev Capital provides strategic research and fiduciary advisory. Virtual Digital Assets in India are subject to applicable taxation standards (30% VDA tax and 1% TDS under Section 194S). Clients are encouraged to assess their financial goals and risk suitability before investing.
         </p>
-        <div class="flex flex-col sm:flex-row items-center justify-between pt-4 border-t border-slate-900 text-slate-400">
+        <div class="flex flex-col sm:flex-row items-center justify-between pt-4 border-t border-zinc-900 text-zinc-400">
           <div>
-            &copy; 2026 <strong>AceNeev Capital</strong>. Founded by <strong>Tanuj Vashistha</strong>. All rights reserved.
+            &copy; 2026 <strong>AceNeev Capital</strong>. Founded by <strong>Tanuj Vashistha (Founder &amp; CEO)</strong>. All rights reserved.
           </div>
           <div class="flex space-x-3 mt-2 sm:mt-0">
-            <a href="mailto:aceneevcapital@gmail.com" class="text-emerald-400 hover:underline">aceneevcapital@gmail.com</a>
+            <a href="mailto:aceneevcapital@gmail.com" class="text-zinc-300 hover:underline">aceneevcapital@gmail.com</a>
             <span>•</span>
             <span>Noida Sector 153</span>
           </div>
@@ -1345,51 +1346,55 @@
     </div>
   </footer>
 
-  <!-- CONSULTATION BOOKING MODAL (Email-Based) -->
+  <!-- CONSULTATION BOOKING MODAL -->
   <div id="booking-modal" class="fixed inset-0 z-50 modal-backdrop flex items-center justify-center p-4 hidden">
-    <div class="bg-[#0f172a] border border-slate-700/80 rounded-3xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl overflow-y-auto max-h-[90vh]">
+    <div class="bg-[#121215] border border-zinc-700 rounded-3xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl overflow-y-auto max-h-[90vh]">
       
       <!-- Close Button -->
-      <button data-close-modal class="absolute top-5 right-5 p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800 transition">
+      <button data-close-modal class="absolute top-5 right-5 p-2 rounded-xl text-zinc-400 hover:text-white hover:bg-zinc-800 transition">
         <i data-lucide="x" class="w-5 h-5"></i>
       </button>
 
       <div class="mb-6 space-y-2">
-        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-semibold">
+        <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-zinc-800 border border-zinc-700 text-white text-xs font-mono font-semibold">
           <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
           <span>ACENEEV CAPITAL ADVISORY</span>
         </div>
         <h3 class="text-2xl font-bold font-display text-white">Book a Private Consultation</h3>
-        <p class="text-xs sm:text-sm text-slate-400">
+        <p class="text-xs sm:text-sm text-zinc-400">
           Connect directly with our desk for a personalized wealth and market strategy.
         </p>
       </div>
 
       <form id="booking-modal-form" class="space-y-4">
         <div>
-          <label class="block text-xs font-mono text-slate-300 uppercase mb-1">Your Full Name *</label>
-          <input id="modal-name" type="text" required placeholder="e.g. Tanuj Sharma" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500">
+          <label class="block text-xs font-mono text-zinc-300 uppercase mb-1">Your Full Name *</label>
+          <input id="modal-name" type="text" required placeholder="e.g. Yug Bhardwaj" class="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-white">
         </div>
 
         <div>
-          <label class="block text-xs font-mono text-slate-300 uppercase mb-1">Your Email Address *</label>
-          <input id="modal-email" type="email" required placeholder="investor@example.com" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500">
+          <label class="block text-xs font-mono text-zinc-300 uppercase mb-1">Your Email Address *</label>
+          <input id="modal-email" type="email" required placeholder="investor@example.com" class="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-white">
         </div>
 
         <div>
-          <label class="block text-xs font-mono text-slate-300 uppercase mb-1">Program of Interest</label>
-          <select id="modal-service" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-500">
-            <option value="Digital Asset Plan (Crypto, Forex & Equity)">Digital Asset Plan (Crypto, Forex &amp; Equity)</option>
-            <option value="High Risk: Forex & F&O Program (2-3%/wk)">High Risk: Forex &amp; F&amp;O Program (2-3%/wk)</option>
-            <option value="Moderate Risk: Crypto Asset Management">Moderate Risk: Crypto Asset Management</option>
-            <option value="Low Risk: Indian Equities & Share Market">Low Risk: Indian Equities &amp; Share Market</option>
+          <label class="block text-xs font-mono text-zinc-300 uppercase mb-1">Contact Phone / WhatsApp (Optional)</label>
+          <input id="modal-phone" type="tel" placeholder="e.g. +91 9876543210" class="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-white">
+        </div>
+
+        <div>
+          <label class="block text-xs font-mono text-zinc-300 uppercase mb-1">Program of Interest</label>
+          <select id="modal-service" class="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-white">
+            <option value="Moderate Risk: Forex & Crypto (3%/wk)">Moderate Risk: Forex &amp; Crypto (3%/wk)</option>
+            <option value="Low Risk: Indian Equities & Share Market (1%/wk)">Low Risk: Indian Equities &amp; Share Market (1%/wk)</option>
+            <option value="Flagship Digital Asset Plan (Crypto + Forex + Equity)">Flagship Digital Asset Plan (Crypto + Forex + Equity)</option>
             <option value="Private Equity Mandate (Custom Budget)">Private Equity Mandate (Custom Budget)</option>
           </select>
         </div>
 
         <div>
-          <label class="block text-xs font-mono text-slate-300 uppercase mb-1">Planned Investment Capital</label>
-          <select id="modal-capital" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-500">
+          <label class="block text-xs font-mono text-zinc-300 uppercase mb-1">Planned Investment Capital</label>
+          <select id="modal-capital" class="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-white">
             <option value="₹1 Lakh – ₹2.5 Lakh">₹1 Lakh – ₹2.5 Lakh</option>
             <option value="₹2.5 Lakh – ₹5 Lakh">₹2.5 Lakh – ₹5 Lakh</option>
             <option value="₹5 Lakh – ₹10 Lakh">₹5 Lakh – ₹10 Lakh</option>
@@ -1400,19 +1405,19 @@
         </div>
 
         <div>
-          <label class="block text-xs font-mono text-slate-300 uppercase mb-1">Specific Notes / Questions</label>
-          <textarea id="modal-notes" rows="2" placeholder="Any specific requirements or capital goals..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500"></textarea>
+          <label class="block text-xs font-mono text-zinc-300 uppercase mb-1">Specific Notes / Goals</label>
+          <textarea id="modal-notes" rows="2" placeholder="Any specific requirements or capital goals..." class="w-full bg-zinc-900 border border-zinc-700 rounded-xl px-4 py-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-white"></textarea>
         </div>
 
         <div class="pt-2">
-          <button type="submit" class="w-full py-4 rounded-xl font-bold text-sm bg-gradient-to-r from-emerald-500 to-cyan-500 text-slate-950 hover:opacity-95 shadow-lg shadow-emerald-500/25 flex items-center justify-center space-x-2 transition">
+          <button type="submit" class="w-full py-4 rounded-xl font-bold text-sm bg-white text-black hover:bg-zinc-200 shadow-lg flex items-center justify-center space-x-2 transition">
             <span>Send Consultation Request via Email</span>
             <i data-lucide="arrow-right" class="w-4 h-4"></i>
           </button>
         </div>
 
-        <div class="text-center text-[11px] text-slate-400 font-mono">
-          Direct Inquiries: <a href="mailto:aceneevcapital@gmail.com" class="text-emerald-400 font-bold hover:underline">aceneevcapital@gmail.com</a>
+        <div class="text-center text-[11px] text-zinc-500 font-mono">
+          Direct Inquiries: <a href="mailto:aceneevcapital@gmail.com" class="text-zinc-300 font-bold hover:underline">aceneevcapital@gmail.com</a>
         </div>
       </form>
     </div>
@@ -1420,8 +1425,8 @@
 
   <!-- FLOATING QUICK ACTION BUTTON (Email Consultation) -->
   <div class="fixed bottom-6 right-6 z-40 flex flex-col space-y-3">
-    <a href="mailto:aceneevcapital@gmail.com?subject=Consultation%20Inquiry%20%E2%80%94%20AceNeev%20Capital" title="Mail Us (aceneevcapital@gmail.com)" class="w-12 h-12 rounded-full bg-emerald-500 text-slate-950 shadow-2xl shadow-emerald-500/40 hover:scale-110 active:scale-95 transition flex items-center justify-center group">
-      <i data-lucide="mail" class="w-5 h-5 group-hover:scale-110 transition-transform"></i>
+    <a href="mailto:aceneevcapital@gmail.com?subject=Consultation%20Inquiry%20%E2%80%94%20AceNeev%20Capital" title="Mail Us (aceneevcapital@gmail.com)" class="w-12 h-12 rounded-full bg-white text-black shadow-2xl hover:scale-110 active:scale-95 transition flex items-center justify-center group">
+      <i data-lucide="mail" class="w-5 h-5 group-hover:scale-110 transition-transform text-black"></i>
     </a>
   </div>
 

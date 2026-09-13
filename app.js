@@ -4,8 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.lucide.createIcons();
   }
 
-  initTheme();
-  initTicker();
+  initLiveMarketData();
   initCalculator();
   initModal();
   initContactForm();
@@ -14,55 +13,20 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* ==========================================================================
-   1. Theme Toggle (Dark / Light)
-   ========================================================================== */
-function initTheme() {
-  const themeToggleBtn = document.getElementById('theme-toggle');
-  const themeToggleMobileBtn = document.getElementById('theme-toggle-mobile');
-  const html = document.documentElement;
-
-  const savedTheme = localStorage.getItem('aceneev_theme') || 'dark';
-  applyTheme(savedTheme);
-
-  function applyTheme(theme) {
-    if (theme === 'light') {
-      html.classList.add('light');
-      html.classList.remove('dark');
-    } else {
-      html.classList.add('dark');
-      html.classList.remove('light');
-    }
-    localStorage.setItem('aceneev_theme', theme);
-    if (window.weeklyChart) {
-      updateChartTheme(theme);
-    }
-  }
-
-  function toggle() {
-    const current = html.classList.contains('light') ? 'light' : 'dark';
-    const next = current === 'light' ? 'dark' : 'light';
-    applyTheme(next);
-  }
-
-  if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggle);
-  if (themeToggleMobileBtn) themeToggleMobileBtn.addEventListener('click', toggle);
-}
-
-/* ==========================================================================
-   2. Real-Time Market Ticker (Binance Live API + Exness Benchmarks)
+   1. Real-Time Live Market Data (Binance Live WebSocket + Exness Benchmarks)
    ========================================================================== */
 const marketItems = [
-  { symbol: 'BTC/USDT', name: 'Bitcoin (Binance)', price: 67850.00, change: 2.84, prefix: '$', isCrypto: true, binanceSym: 'BTCUSDT' },
-  { symbol: 'ETH/USDT', name: 'Ethereum (Binance)', price: 3490.50, change: 1.95, prefix: '$', isCrypto: true, binanceSym: 'ETHUSDT' },
-  { symbol: 'SOL/USDT', name: 'Solana (Binance)', price: 172.40, change: 4.60, prefix: '$', isCrypto: true, binanceSym: 'SOLUSDT' },
-  { symbol: 'BNB/USDT', name: 'BNB (Binance)', price: 588.20, change: 1.45, prefix: '$', isCrypto: true, binanceSym: 'BNBUSDT' },
-  { symbol: 'GOLD (XAU/USD)', name: 'Exness Spot', price: 2684.50, change: 0.62, prefix: '$', isCrypto: false },
-  { symbol: 'EUR/USD', name: 'Forex Spot', price: 1.0865, change: 0.18, prefix: '$', isCrypto: false, decimals: 4 },
-  { symbol: 'USD/INR', name: 'Forex (Exness)', price: 86.42, change: 0.08, prefix: '₹', isCrypto: false, decimals: 2 },
-  { symbol: 'NIFTY 50', name: 'NSE Index', price: 25360.20, change: 0.65, prefix: '₹', isCrypto: false }
+  { symbol: 'BTC/USDT', name: 'Bitcoin (Binance)', price: 67920.00, change: 2.65, prefix: '$', isCrypto: true, stream: 'btcusdt@ticker' },
+  { symbol: 'ETH/USDT', name: 'Ethereum (Binance)', price: 3510.40, change: 1.84, prefix: '$', isCrypto: true, stream: 'ethusdt@ticker' },
+  { symbol: 'SOL/USDT', name: 'Solana (Binance)', price: 174.20, change: 4.15, prefix: '$', isCrypto: true, stream: 'solusdt@ticker' },
+  { symbol: 'BNB/USDT', name: 'BNB (Binance)', price: 590.10, change: 1.22, prefix: '$', isCrypto: true, stream: 'bnbusdt@ticker' },
+  { symbol: 'GOLD (XAU/USD)', name: 'Exness Spot', price: 2686.40, change: 0.58, prefix: '$', isCrypto: false },
+  { symbol: 'EUR/USD', name: 'Forex Spot', price: 1.0855, change: 0.14, prefix: '$', isCrypto: false, decimals: 4 },
+  { symbol: 'USD/INR', name: 'Forex (Exness)', price: 86.44, change: 0.06, prefix: '₹', isCrypto: false, decimals: 2 },
+  { symbol: 'NIFTY 50', name: 'NSE Index', price: 25375.80, change: 0.62, prefix: '₹', isCrypto: false }
 ];
 
-function initTicker() {
+function initLiveMarketData() {
   const tickerTrack = document.getElementById('ticker-track');
   if (!tickerTrack) return;
 
@@ -84,7 +48,7 @@ function initTicker() {
           <span class="font-bold text-slate-200">${item.symbol}</span>
           <span class="text-slate-500 text-[10px] hidden sm:inline">(${item.name})</span>
           <span class="font-semibold text-white ticker-price">${item.prefix}${formattedPrice}</span>
-          <span class="px-1.5 py-0.5 rounded text-[10px] font-bold border ${changeClass} ${bgChange}">
+          <span class="px-1.5 py-0.5 rounded text-[10px] font-bold border ${changeClass} ${bgChange} ticker-change">
             ${sign}${item.change.toFixed(2)}%
           </span>
         </div>
@@ -94,117 +58,135 @@ function initTicker() {
 
   renderTicker();
 
-  // 1. Fetch live Crypto prices from Binance Public API
-  async function fetchBinancePrices() {
-    try {
-      const cryptoSymbols = marketItems.filter(i => i.isCrypto).map(i => `"${i.binanceSym}"`).join(',');
-      const res = await fetch(`https://api.binance.com/api/v3/ticker/24hr?symbols=[${cryptoSymbols}]`);
-      if (!res.ok) return;
-      const data = await res.json();
-      
-      data.forEach(ticker => {
-        const item = marketItems.find(i => i.binanceSym === ticker.symbol);
-        if (item) {
-          item.price = parseFloat(ticker.lastPrice);
-          item.change = parseFloat(ticker.priceChangePercent);
+  function updateItemInDOM(index, flashColor = true) {
+    const item = marketItems[index];
+    const targetEls = tickerTrack.querySelectorAll(`.ticker-item[data-index="${index}"]`);
+    const decimals = item.decimals !== undefined ? item.decimals : 2;
+    const formatted = `${item.prefix}${item.price.toLocaleString('en-IN', { minimumFractionDigits: decimals, maximumFractionDigits: decimals })}`;
+    const isPositive = item.change >= 0;
+    const sign = isPositive ? '+' : '';
+
+    targetEls.forEach(el => {
+      const priceEl = el.querySelector('.ticker-price');
+      if (priceEl) {
+        priceEl.textContent = formatted;
+        if (flashColor) {
+          priceEl.classList.add('text-emerald-300');
+          setTimeout(() => priceEl.classList.remove('text-emerald-300'), 500);
         }
-      });
-      updateTickerDOM();
+      }
+      const changeEl = el.querySelector('.ticker-change');
+      if (changeEl) {
+        changeEl.textContent = `${sign}${item.change.toFixed(2)}%`;
+        changeEl.className = `px-1.5 py-0.5 rounded text-[10px] font-bold border ticker-change ${isPositive ? 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30' : 'text-rose-400 bg-rose-500/10 border-rose-500/30'}`;
+      }
+    });
+  }
+
+  // 1. Live Binance WebSocket Stream (Real-Time Live Exchange Data)
+  function connectBinanceWebSocket() {
+    try {
+      const streams = marketItems.filter(i => i.isCrypto).map(i => i.stream).join('/');
+      const ws = new WebSocket(`wss://stream.binance.com:9443/ws/${streams}`);
+
+      ws.onmessage = (event) => {
+        try {
+          const data = JSON.parse(event.data);
+          if (data && data.s) {
+            const sym = data.s; // e.g. BTCUSDT
+            const itemIndex = marketItems.findIndex(i => i.stream && i.stream.startsWith(sym.toLowerCase()));
+            if (itemIndex !== -1) {
+              const currentPrice = parseFloat(data.c);
+              const priceChange = parseFloat(data.P);
+              marketItems[itemIndex].price = currentPrice;
+              marketItems[itemIndex].change = priceChange;
+              updateItemInDOM(itemIndex, true);
+            }
+          }
+        } catch (err) {}
+      };
+
+      ws.onerror = () => {
+        // If WebSocket fails (firewall/offline), fallback to REST API polling
+        fallbackBinanceREST();
+      };
+
+      ws.onclose = () => {
+        // Reconnect after 5 seconds
+        setTimeout(connectBinanceWebSocket, 5000);
+      };
     } catch (e) {
-      // Offline fallback: graceful silent handling
+      fallbackBinanceREST();
     }
   }
 
-  function updateTickerDOM() {
-    marketItems.forEach((item, idx) => {
-      const targetEls = tickerTrack.querySelectorAll(`.ticker-item[data-index="${idx}"]`);
-      const decimals = item.decimals !== undefined ? item.decimals : 2;
-      const formatted = `${item.prefix}${item.price.toLocaleString('en-IN', { minimumFractionDigits: decimals, maximumFractionDigits: decimals })}`;
-      const isPositive = item.change >= 0;
-      const sign = isPositive ? '+' : '';
-
-      targetEls.forEach(el => {
-        const priceEl = el.querySelector('.ticker-price');
-        if (priceEl) priceEl.textContent = formatted;
-        const changeEl = el.querySelector('span:last-child');
-        if (changeEl) {
-          changeEl.textContent = `${sign}${item.change.toFixed(2)}%`;
-          changeEl.className = `px-1.5 py-0.5 rounded text-[10px] font-bold border ${isPositive ? 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30' : 'text-rose-400 bg-rose-500/10 border-rose-500/30'}`;
+  // 2. Fallback REST API for Crypto
+  async function fallbackBinanceREST() {
+    try {
+      const res = await fetch('https://api.binance.com/api/v3/ticker/24hr?symbols=["BTCUSDT","ETHUSDT","SOLUSDT","BNBUSDT"]');
+      if (!res.ok) return;
+      const tickers = await res.json();
+      tickers.forEach(t => {
+        const idx = marketItems.findIndex(i => i.stream && i.stream.startsWith(t.symbol.toLowerCase()));
+        if (idx !== -1) {
+          marketItems[idx].price = parseFloat(t.lastPrice);
+          marketItems[idx].change = parseFloat(t.priceChangePercent);
+          updateItemInDOM(idx, false);
         }
       });
-    });
+    } catch (e) {}
   }
 
-  // Attempt initial live Binance fetch
-  fetchBinancePrices();
-  // Poll Binance every 12 seconds when online
-  setInterval(fetchBinancePrices, 12000);
+  // Start live WebSocket stream
+  connectBinanceWebSocket();
+  // Also poll REST every 15s as backup
+  setInterval(fallbackBinanceREST, 15000);
 
-  // Subtle live tick simulation for Forex & Gold
+  // 3. Live Ticks for Gold & Forex (Exness Spot emulation)
   setInterval(() => {
-    const nonCryptoIndices = [4, 5, 6, 7];
-    const randomIndex = nonCryptoIndices[Math.floor(Math.random() * nonCryptoIndices.length)];
+    const fxIndices = [4, 5, 6, 7];
+    const randomIndex = fxIndices[Math.floor(Math.random() * fxIndices.length)];
     const item = marketItems[randomIndex];
-    const fluctuationPercent = (Math.random() * 0.08 - 0.038) / 100;
-    item.price += item.price * fluctuationPercent;
-
-    const targetElements = tickerTrack.querySelectorAll(`.ticker-item[data-index="${randomIndex}"]`);
-    const decimals = item.decimals !== undefined ? item.decimals : 2;
-    targetElements.forEach(el => {
-      const priceEl = el.querySelector('.ticker-price');
-      if (priceEl) {
-        priceEl.textContent = `${item.prefix}${item.price.toLocaleString('en-IN', { minimumFractionDigits: decimals, maximumFractionDigits: decimals })}`;
-      }
-    });
-  }, 2800);
+    const microMove = (Math.random() * 0.04 - 0.019) / 100;
+    item.price += item.price * microMove;
+    updateItemInDOM(randomIndex, true);
+  }, 2200);
 }
 
 /* ==========================================================================
-   3. Simplified Return Calculator (2-3% Weekly Return Model, From ₹1 Lakh)
+   2. Professional Return Calculator (1% Low Risk & 3% Moderate Risk)
    ========================================================================== */
 let weeklyChart = null;
 
 const riskPrograms = {
   low: {
     id: 'low',
-    name: 'Low Risk — Indian Share Market & Equities',
-    shortName: 'Low Risk (Equities)',
+    name: 'Low Risk — Capital Preservation',
     weeklyRate: 0.01, // 1% weekly target (~4% monthly)
-    rateDisplay: '0.75% – 1% / week',
-    badgeClass: 'badge-low-risk',
-    tag: 'Capital Preservation',
-    description: 'Disciplined blue-chip equity allocation, low-volatility swing positioning, and defensive market hedges.'
+    ratePercent: 1.0,
+    rateDisplay: '1% / week',
+    monthlyTarget: '~4% Monthly',
+    badgeClass: 'border-slate-500 bg-slate-800 text-slate-200',
+    description: 'Disciplined equity allocation and hedged Indian share market strategies engineered for steady capital defense.'
   },
-  medium: {
-    id: 'medium',
-    name: 'Moderate Risk — Crypto Asset Management',
-    shortName: 'Moderate Risk (Crypto)',
-    weeklyRate: 0.02, // 2% weekly target (~8% monthly)
-    rateDisplay: '1.5% – 2% / week',
-    badgeClass: 'badge-mid-risk',
-    tag: 'Strategic Alpha',
-    description: 'High-conviction digital assets (Bitcoin, Ethereum) managed with multi-sig safety and cycle momentum.'
-  },
-  high: {
-    id: 'high',
-    name: 'High Risk — F&O (Derivatives) & Forex',
-    shortName: 'High Risk (F&O & Forex)',
-    weeklyRate: 0.025, // 2.5% weekly target (2-3% range, ~10-12% monthly)
-    rateDisplay: '2% – 3% / week',
-    badgeClass: 'badge-high-risk',
-    tag: 'Maximum Alpha',
-    description: 'Quantitative derivatives execution in NSE F&O and high-liquidity global Forex pairs with strict stop-losses.'
+  moderate: {
+    id: 'moderate',
+    name: 'Moderate Risk — Active Alpha Growth',
+    weeklyRate: 0.03, // 3% weekly target (~12% monthly)
+    ratePercent: 3.0,
+    rateDisplay: '3% / week',
+    monthlyTarget: '~12% Monthly',
+    badgeClass: 'border-white bg-white text-black',
+    description: 'High-liquidity Global Forex and Cryptocurrency asset management targeting calculated, high-conviction compounding.'
   }
 };
 
-let currentRiskTier = 'high'; // Default high risk highlighting 2-3% per week
-let currentDurationWeeks = 12; // Default 12 weeks (3 months)
+let currentRiskTier = 'moderate'; // Default to 3% Moderate Risk
+let currentDurationWeeks = 12;     // Default 12 weeks (3 months)
 
 function initCalculator() {
   const capitalSlider = document.getElementById('calc-capital');
   const capitalDisplay = document.getElementById('calc-capital-val');
-  const weeklyRateSlider = document.getElementById('calc-rate');
-  const weeklyRateDisplay = document.getElementById('calc-rate-val');
 
   const resultWeekly = document.getElementById('result-weekly-return');
   const resultMonthly = document.getElementById('result-monthly-return');
@@ -212,6 +194,7 @@ function initCalculator() {
   const resultGain = document.getElementById('result-net-gain');
   const programDesc = document.getElementById('calc-program-desc');
   const programBadge = document.getElementById('calc-program-badge');
+  const rateTitle = document.getElementById('calc-rate-title');
 
   const riskTierBtns = document.querySelectorAll('.risk-tier-btn');
   const durationBtns = document.querySelectorAll('.duration-btn');
@@ -229,10 +212,10 @@ function initCalculator() {
 
   function calculate() {
     const capital = parseFloat(capitalSlider.value) || 100000;
-    const weeklyRatePercent = parseFloat(weeklyRateSlider.value) || 2.5;
-    const wRate = weeklyRatePercent / 100;
+    const prog = riskPrograms[currentRiskTier];
+    const wRate = prog.weeklyRate; // exactly 0.01 or 0.03
 
-    // Simple weekly returns
+    // Returns
     const weeklyReturn = capital * wRate;
     const monthlyReturn = weeklyReturn * 4;
 
@@ -243,7 +226,7 @@ function initCalculator() {
 
     // Update Text UI
     capitalDisplay.textContent = formatINR(capital);
-    weeklyRateDisplay.textContent = `${weeklyRatePercent.toFixed(1)}% / week`;
+    if (rateTitle) rateTitle.textContent = `${prog.ratePercent}% Return Per Week`;
 
     if (resultWeekly) resultWeekly.textContent = formatINR(weeklyReturn);
     if (resultMonthly) resultMonthly.textContent = formatINR(monthlyReturn);
@@ -251,21 +234,20 @@ function initCalculator() {
     if (resultGain) resultGain.textContent = `+${formatINR(netGain)} Net Return`;
 
     if (programDesc) {
-      programDesc.textContent = riskPrograms[currentRiskTier].description;
+      programDesc.textContent = prog.description;
     }
     if (programBadge) {
-      programBadge.textContent = riskPrograms[currentRiskTier].name;
-      programBadge.className = `inline-flex items-center px-3 py-1 rounded-full text-xs font-mono font-bold ${riskPrograms[currentRiskTier].badgeClass}`;
+      programBadge.textContent = `${prog.name} (${prog.rateDisplay})`;
     }
 
     // Update preset button active states
     presetBtns.forEach(btn => {
       const val = parseFloat(btn.dataset.val);
       if (val === capital) {
-        btn.classList.add('active', 'border-emerald-500', 'bg-emerald-500/20', 'text-emerald-300');
+        btn.classList.add('active', 'border-white', 'bg-white/20', 'text-white');
         btn.classList.remove('border-slate-800', 'bg-slate-900', 'text-slate-400');
       } else {
-        btn.classList.remove('active', 'border-emerald-500', 'bg-emerald-500/20', 'text-emerald-300');
+        btn.classList.remove('active', 'border-white', 'bg-white/20', 'text-white');
         btn.classList.add('border-slate-800', 'bg-slate-900', 'text-slate-400');
       }
     });
@@ -273,24 +255,22 @@ function initCalculator() {
     updateWeeklyChart(capital, wRate, weeks);
   }
 
-  // Risk tier switch
+  // Risk tier switch (Low Risk: 1% | Moderate Risk: 3%)
   riskTierBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       riskTierBtns.forEach(b => {
-        b.classList.remove('active-tier', 'border-emerald-500', 'bg-slate-800', 'text-white');
-        b.classList.add('border-slate-700/80', 'bg-slate-900/60', 'text-slate-400');
+        b.classList.remove('active-tier', 'border-white', 'bg-white', 'text-black');
+        b.classList.add('border-slate-700/80', 'bg-slate-900/60', 'text-slate-300');
       });
-      btn.classList.add('active-tier', 'border-emerald-500', 'bg-slate-800', 'text-white');
-      btn.classList.remove('border-slate-700/80', 'bg-slate-900/60', 'text-slate-400');
+      btn.classList.add('active-tier', 'border-white', 'bg-white', 'text-black');
+      btn.classList.remove('border-slate-700/80', 'bg-slate-900/60', 'text-slate-300');
 
       currentRiskTier = btn.dataset.tier;
-      const prog = riskPrograms[currentRiskTier];
-      weeklyRateSlider.value = (prog.weeklyRate * 100).toFixed(1);
       calculate();
     });
   });
 
-  // Capital preset clicks
+  // Capital presets
   presetBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       capitalSlider.value = btn.dataset.val;
@@ -298,23 +278,21 @@ function initCalculator() {
     });
   });
 
-  // Duration button clicks
+  // Duration buttons
   durationBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       durationBtns.forEach(b => {
-        b.classList.remove('bg-emerald-500', 'text-slate-950', 'font-bold');
+        b.classList.remove('bg-white', 'text-black', 'font-bold');
         b.classList.add('bg-slate-800/80', 'text-slate-300');
       });
-      btn.classList.add('bg-emerald-500', 'text-slate-950', 'font-bold');
+      btn.classList.add('bg-white', 'text-black', 'font-bold');
       btn.classList.remove('bg-slate-800/80', 'text-slate-300');
       currentDurationWeeks = parseInt(btn.dataset.weeks);
       calculate();
     });
   });
 
-  // Slider change listeners
   capitalSlider.addEventListener('input', calculate);
-  weeklyRateSlider.addEventListener('input', calculate);
 
   initWeeklyChart();
   calculate();
@@ -324,33 +302,31 @@ function initWeeklyChart() {
   const ctx = document.getElementById('weeklyChart');
   if (!ctx || !window.Chart) return;
 
-  const isLight = document.documentElement.classList.contains('light');
-
   weeklyChart = new Chart(ctx, {
     type: 'line',
     data: {
       labels: [],
       datasets: [
         {
-          label: 'Compounded Capital',
+          label: 'Compounded Corpus',
           data: [],
-          borderColor: '#10b981',
-          backgroundColor: 'rgba(16, 185, 129, 0.15)',
+          borderColor: '#ffffff',
+          backgroundColor: 'rgba(255, 255, 255, 0.12)',
           fill: true,
           tension: 0.3,
-          borderWidth: 3,
-          pointBackgroundColor: '#10b981',
-          pointBorderColor: '#ffffff',
+          borderWidth: 2.5,
+          pointBackgroundColor: '#ffffff',
+          pointBorderColor: '#09090b',
           pointRadius: 4,
           pointHoverRadius: 6
         },
         {
-          label: 'Initial Principal',
+          label: 'Principal Capital',
           data: [],
-          borderColor: '#64748b',
+          borderColor: '#52525b',
           backgroundColor: 'transparent',
           borderDash: [4, 4],
-          borderWidth: 2,
+          borderWidth: 1.5,
           pointRadius: 0
         }
       ]
@@ -366,17 +342,17 @@ function initWeeklyChart() {
         legend: {
           position: 'top',
           labels: {
-            color: isLight ? '#334155' : '#cbd5e1',
-            font: { family: 'Plus Jakarta Sans', size: 12 }
+            color: '#e4e4e7',
+            font: { family: 'Plus Jakarta Sans', size: 11 }
           }
         },
         tooltip: {
-          backgroundColor: '#0f172a',
+          backgroundColor: '#18181b',
           titleColor: '#ffffff',
-          bodyColor: '#cbd5e1',
-          borderColor: 'rgba(16, 185, 129, 0.4)',
+          bodyColor: '#e4e4e7',
+          borderColor: 'rgba(255, 255, 255, 0.3)',
           borderWidth: 1,
-          padding: 12,
+          padding: 10,
           callbacks: {
             label: function(context) {
               const val = context.raw;
@@ -389,20 +365,13 @@ function initWeeklyChart() {
       },
       scales: {
         x: {
-          grid: {
-            color: isLight ? 'rgba(0,0,0,0.06)' : 'rgba(255, 255, 255, 0.06)'
-          },
-          ticks: {
-            color: isLight ? '#64748b' : '#94a3b8',
-            font: { family: 'Plus Jakarta Sans' }
-          }
+          grid: { color: 'rgba(255, 255, 255, 0.05)' },
+          ticks: { color: '#a1a1aa', font: { family: 'Plus Jakarta Sans' } }
         },
         y: {
-          grid: {
-            color: isLight ? 'rgba(0,0,0,0.06)' : 'rgba(255, 255, 255, 0.06)'
-          },
+          grid: { color: 'rgba(255, 255, 255, 0.05)' },
           ticks: {
-            color: isLight ? '#64748b' : '#94a3b8',
+            color: '#a1a1aa',
             font: { family: 'Plus Jakarta Sans' },
             callback: function(value) {
               if (value >= 10000000) return '₹' + (value / 10000000).toFixed(1) + ' Cr';
@@ -423,7 +392,6 @@ function updateWeeklyChart(capital, wRate, weeks) {
   const corpusData = [];
   const principalData = [];
 
-  // Determine label step to keep x-axis clean
   const step = weeks <= 12 ? 1 : (weeks <= 26 ? 2 : 4);
 
   for (let w = 0; w <= weeks; w += step) {
@@ -433,7 +401,6 @@ function updateWeeklyChart(capital, wRate, weeks) {
     corpusData.push(Math.round(val));
   }
 
-  // Ensure last week is always included
   if ((weeks % step) !== 0) {
     labels.push(`Wk ${weeks}`);
     principalData.push(capital);
@@ -446,19 +413,8 @@ function updateWeeklyChart(capital, wRate, weeks) {
   weeklyChart.update();
 }
 
-function updateChartTheme(theme) {
-  if (!weeklyChart) return;
-  const isLight = theme === 'light';
-  weeklyChart.options.plugins.legend.labels.color = isLight ? '#334155' : '#cbd5e1';
-  weeklyChart.options.scales.x.grid.color = isLight ? 'rgba(0,0,0,0.06)' : 'rgba(255, 255, 255, 0.06)';
-  weeklyChart.options.scales.x.ticks.color = isLight ? '#64748b' : '#94a3b8';
-  weeklyChart.options.scales.y.grid.color = isLight ? 'rgba(0,0,0,0.06)' : 'rgba(255, 255, 255, 0.06)';
-  weeklyChart.options.scales.y.ticks.color = isLight ? '#64748b' : '#94a3b8';
-  weeklyChart.update();
-}
-
 /* ==========================================================================
-   4. Consultation Booking Modal & Email Dispatch
+   3. Consultation Booking Modal & Email Dispatch
    ========================================================================== */
 function initModal() {
   const modal = document.getElementById('booking-modal');
@@ -498,25 +454,27 @@ function initModal() {
       e.preventDefault();
       const name = document.getElementById('modal-name')?.value.trim() || 'Investor';
       const email = document.getElementById('modal-email')?.value.trim() || '';
-      const service = document.getElementById('modal-service')?.value || 'Digital Asset & Trading Advisory';
+      const phone = document.getElementById('modal-phone')?.value.trim() || 'Not provided';
+      const service = document.getElementById('modal-service')?.value || 'Advisory Program';
       const capital = document.getElementById('modal-capital')?.value || '₹1 Lakh - ₹5 Lakh';
-      const notes = document.getElementById('modal-notes')?.value.trim() || 'Consultation request for custom investment plan.';
+      const notes = document.getElementById('modal-notes')?.value.trim() || 'Consultation request for custom plan.';
 
-      const mailSubject = encodeURIComponent(`Advisory Consultation Request — ${name} (${capital})`);
+      const mailSubject = encodeURIComponent(`Consultation Request: ${name} (${capital})`);
       const mailBody = encodeURIComponent(
-        `Hello AceNeev Capital,\n\nI would like to schedule a private advisory consultation.\n\n` +
+        `Hello AceNeev Capital,\n\nI would like to schedule an advisory consultation.\n\n` +
         `• Name: ${name}\n` +
         `• Email: ${email}\n` +
-        `• Strategy Interest: ${service}\n` +
-        `• Capital Budget: ${capital}\n` +
-        `• Message/Goals: ${notes}\n\n` +
-        `Looking forward to hearing from you.\n`
+        `• Contact Phone/WhatsApp: ${phone}\n` +
+        `• Program: ${service}\n` +
+        `• Planned Capital: ${capital}\n` +
+        `• Details: ${notes}\n\n` +
+        `Kindly review and get in touch.\n`
       );
 
       const mailUrl = `mailto:aceneevcapital@gmail.com?subject=${mailSubject}&body=${mailBody}`;
 
       closeModal();
-      showToast(`Thank you, ${name}! Your consultation details have been prepared. Opening email client to send to aceneevcapital@gmail.com...`, 'success');
+      showToast(`Thank you, ${name}! Opening your email client to send your consultation request to aceneevcapital@gmail.com...`, 'success');
 
       setTimeout(() => {
         window.location.href = mailUrl;
@@ -528,7 +486,7 @@ function initModal() {
 }
 
 /* ==========================================================================
-   5. Contact Form Handler (Direct Email Dispatch)
+   4. Contact Form Handler (Direct Email Dispatch with Phone Option)
    ========================================================================== */
 function initContactForm() {
   const contactForm = document.getElementById('contact-form');
@@ -538,25 +496,27 @@ function initContactForm() {
     e.preventDefault();
     const name = document.getElementById('contact-name')?.value.trim() || 'Investor';
     const email = document.getElementById('contact-email')?.value.trim() || '';
-    const program = document.getElementById('contact-service')?.value || 'Investment Inquiry';
+    const phone = document.getElementById('contact-phone')?.value.trim() || 'Not provided';
+    const program = document.getElementById('contact-service')?.value || 'Advisory Program';
     const capital = document.getElementById('contact-capital')?.value || '₹1 Lakh+';
     const message = document.getElementById('contact-message')?.value.trim() || 'Please share details on how to get started.';
 
-    const mailSubject = encodeURIComponent(`Website Inquiry: ${program} — ${name}`);
+    const mailSubject = encodeURIComponent(`Website Consultation Enquiry: ${name} (${capital})`);
     const mailBody = encodeURIComponent(
       `Hello AceNeev Capital Team,\n\n` +
-      `New consultation & inquiry from website:\n\n` +
+      `New consultation enquiry from website:\n\n` +
       `• Investor Name: ${name}\n` +
       `• Contact Email: ${email}\n` +
-      `• Preferred Program: ${program}\n` +
+      `• Contact Phone/WhatsApp: ${phone}\n` +
+      `• Program: ${program}\n` +
       `• Capital Budget: ${capital}\n` +
-      `• Specific Query: ${message}\n\n` +
-      `Kindly review and revert with advisory details.\n`
+      `• Notes/Goals: ${message}\n\n` +
+      `Kindly revert with advisory details.\n`
     );
 
     const mailUrl = `mailto:aceneevcapital@gmail.com?subject=${mailSubject}&body=${mailBody}`;
 
-    showToast(`Thank you, ${name}! Opening your email client to send your inquiry directly to aceneevcapital@gmail.com...`, 'success');
+    showToast(`Thank you, ${name}! Opening your email client to send your enquiry directly to aceneevcapital@gmail.com...`, 'success');
 
     setTimeout(() => {
       window.location.href = mailUrl;
@@ -567,7 +527,7 @@ function initContactForm() {
 }
 
 /* ==========================================================================
-   6. Mobile Navigation Drawer
+   5. Mobile Navigation Drawer
    ========================================================================== */
 function initMobileNav() {
   const mobileToggle = document.getElementById('mobile-menu-toggle');
@@ -588,7 +548,7 @@ function initMobileNav() {
 }
 
 /* ==========================================================================
-   7. Grounded Realistic Stats Counter
+   6. Stats Counter
    ========================================================================== */
 function initStatsCounter() {
   const counters = document.querySelectorAll('.counter-stat');
@@ -638,9 +598,9 @@ function initStatsCounter() {
 }
 
 /* ==========================================================================
-   8. Toast Notification System
+   7. Toast Notification System
    ========================================================================== */
-function showToast(message, type = 'info') {
+function showToast(message, type = 'success') {
   let toastContainer = document.getElementById('toast-container');
   if (!toastContainer) {
     toastContainer = document.createElement('div');
@@ -650,17 +610,13 @@ function showToast(message, type = 'info') {
   }
 
   const toast = document.createElement('div');
-  toast.className = `p-4 rounded-2xl border pointer-events-auto shadow-2xl backdrop-blur-md transition-all duration-300 transform translate-y-4 opacity-0 flex items-start space-x-3 text-sm font-medium ${
-    type === 'success'
-      ? 'bg-slate-900/95 border-emerald-500/50 text-white shadow-emerald-950/40'
-      : 'bg-slate-900/95 border-slate-700 text-white'
-  }`;
+  toast.className = `p-4 rounded-2xl border pointer-events-auto shadow-2xl backdrop-blur-md transition-all duration-300 transform translate-y-4 opacity-0 flex items-start space-x-3 text-sm font-medium bg-zinc-900/95 border-zinc-700 text-white`;
 
-  const iconSvg = `<svg class="w-5 h-5 text-emerald-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>`;
+  const iconSvg = `<svg class="w-5 h-5 text-white flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>`;
 
   toast.innerHTML = `
     ${iconSvg}
-    <div class="flex-1 leading-snug">${message}</div>
+    <div class="flex-1 leading-snug text-zinc-200">${message}</div>
   `;
 
   toastContainer.appendChild(toast);
