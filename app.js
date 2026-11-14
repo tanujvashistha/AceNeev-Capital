@@ -154,7 +154,7 @@ function initLiveMarketData() {
 }
 
 /* ==========================================================================
-   2. Professional Return Calculator (1% Low Risk & 3% Moderate Risk)
+   2. Professional Return Calculator (3% Low Risk & 5% Moderate Risk Per Month)
    ========================================================================== */
 let weeklyChart = null;
 
@@ -162,27 +162,27 @@ const riskPrograms = {
   low: {
     id: 'low',
     name: 'Low Risk — Capital Preservation',
-    weeklyRate: 0.01, // 1% weekly target (~4% monthly)
-    ratePercent: 1.0,
-    rateDisplay: '1% / week',
-    monthlyTarget: '~4% Monthly',
+    monthlyRate: 0.03, // 3% monthly target
+    ratePercent: 3.0,
+    rateDisplay: '3% / month',
+    monthlyTarget: '3% Monthly',
     badgeClass: 'border-slate-500 bg-slate-800 text-slate-200',
     description: 'Disciplined equity allocation and hedged Indian share market strategies engineered for steady capital defense.'
   },
   moderate: {
     id: 'moderate',
     name: 'Moderate Risk — Active Alpha Growth',
-    weeklyRate: 0.03, // 3% weekly target (~12% monthly)
-    ratePercent: 3.0,
-    rateDisplay: '3% / week',
-    monthlyTarget: '~12% Monthly',
+    monthlyRate: 0.05, // 5% monthly target
+    ratePercent: 5.0,
+    rateDisplay: '5% / month',
+    monthlyTarget: '5% Monthly',
     badgeClass: 'border-white bg-white text-black',
     description: 'High-liquidity Global Forex and Cryptocurrency asset management targeting calculated, high-conviction compounding.'
   }
 };
 
-let currentRiskTier = 'moderate'; // Default to 3% Moderate Risk
-let currentDurationWeeks = 12;     // Default 12 weeks (3 months)
+let currentRiskTier = 'moderate'; // Default to 5% Moderate Risk
+let currentDurationMonths = 3;     // Default 3 months
 
 function initCalculator() {
   const capitalSlider = document.getElementById('calc-capital');
@@ -213,23 +213,22 @@ function initCalculator() {
   function calculate() {
     const capital = parseFloat(capitalSlider.value) || 100000;
     const prog = riskPrograms[currentRiskTier];
-    const wRate = prog.weeklyRate; // exactly 0.01 or 0.03
+    const mRate = prog.monthlyRate; // 0.03 or 0.05
 
     // Returns
-    const weeklyReturn = capital * wRate;
-    const monthlyReturn = weeklyReturn * 4;
+    const monthlyReturn = capital * mRate;
 
-    // Compounded future value over selected duration
-    const weeks = currentDurationWeeks;
-    const projectedCorpus = capital * Math.pow(1 + wRate, weeks);
+    // Compounded future value over selected duration in months
+    const months = currentDurationMonths;
+    const projectedCorpus = capital * Math.pow(1 + mRate, months);
     const netGain = Math.max(0, projectedCorpus - capital);
 
     // Update Text UI
     capitalDisplay.textContent = formatINR(capital);
-    if (rateTitle) rateTitle.textContent = `${prog.ratePercent}% Return Per Week`;
+    if (rateTitle) rateTitle.textContent = `${prog.ratePercent}% Return Per Month`;
 
-    if (resultWeekly) resultWeekly.textContent = formatINR(weeklyReturn);
     if (resultMonthly) resultMonthly.textContent = formatINR(monthlyReturn);
+    if (resultWeekly) resultWeekly.textContent = `${prog.ratePercent}.0%`;
     if (resultCorpus) resultCorpus.textContent = formatINR(projectedCorpus);
     if (resultGain) resultGain.textContent = `+${formatINR(netGain)} Net Return`;
 
@@ -252,10 +251,10 @@ function initCalculator() {
       }
     });
 
-    updateWeeklyChart(capital, wRate, weeks);
+    updateWeeklyChart(capital, mRate, months);
   }
 
-  // Risk tier switch (Low Risk: 1% | Moderate Risk: 3%)
+  // Risk tier switch (Low Risk: 3%/mo | Moderate Risk: 5%/mo)
   riskTierBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       riskTierBtns.forEach(b => {
@@ -287,7 +286,7 @@ function initCalculator() {
       });
       btn.classList.add('bg-white', 'text-black', 'font-bold');
       btn.classList.remove('bg-slate-800/80', 'text-slate-300');
-      currentDurationWeeks = parseInt(btn.dataset.weeks);
+      currentDurationMonths = parseInt(btn.dataset.months || btn.dataset.weeks || 3);
       calculate();
     });
   });
@@ -385,26 +384,18 @@ function initWeeklyChart() {
   });
 }
 
-function updateWeeklyChart(capital, wRate, weeks) {
+function updateWeeklyChart(capital, mRate, months) {
   if (!weeklyChart) return;
 
   const labels = [];
   const corpusData = [];
   const principalData = [];
 
-  const step = weeks <= 12 ? 1 : (weeks <= 26 ? 2 : 4);
-
-  for (let w = 0; w <= weeks; w += step) {
-    labels.push(w === 0 ? 'Start' : `Wk ${w}`);
+  for (let m = 0; m <= months; m++) {
+    labels.push(m === 0 ? 'Start' : `Mo ${m}`);
     principalData.push(capital);
-    const val = capital * Math.pow(1 + wRate, w);
+    const val = capital * Math.pow(1 + mRate, m);
     corpusData.push(Math.round(val));
-  }
-
-  if ((weeks % step) !== 0) {
-    labels.push(`Wk ${weeks}`);
-    principalData.push(capital);
-    corpusData.push(Math.round(capital * Math.pow(1 + wRate, weeks)));
   }
 
   weeklyChart.data.labels = labels;
